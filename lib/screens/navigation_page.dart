@@ -1,4 +1,4 @@
-import 'package:desktop_app/screens/primera_screen.dart';
+import 'package:desktop_app/screens/registerOrder/registerOrder.dart';
 import 'package:desktop_app/screens/segunda_screen.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
@@ -32,7 +32,7 @@ class _NavigationPageState extends State<NavigationPage> {
             ),
           )),
       pane: NavigationPane(
-          size: NavigationPaneSize(openWidth: 250),
+          size: const NavigationPaneSize(openWidth: 250),
           header: Padding(
             padding: const EdgeInsets.only(left: 20),
             child: DefaultTextStyle(
@@ -44,14 +44,15 @@ class _NavigationPageState extends State<NavigationPage> {
             PaneItem(
               icon: const Icon(FluentIcons.home),
               body: const PrimeraScreen(),
-              title: const Text("Home", style: TextStyle(fontSize: 16)),
+              title: const Text("Inicio", style: TextStyle(fontSize: 16)),
             ),
             PaneItemSeparator(),
             PaneItem(
                 icon: const Icon(FluentIcons.user_window),
                 body: const SegundaScreen(),
                 infoBadge: InfoBadge(source: Text("$num")),
-                title: const Text("Users", style: TextStyle(fontSize: 16)))
+                title: const Text("Compras registradas",
+                    style: TextStyle(fontSize: 16)))
           ],
           selected: _countPage,
           onChanged: (i) {

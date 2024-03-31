@@ -1,5 +1,5 @@
-import 'package:desktop_app/api/User.dart';
-import 'package:desktop_app/controllers/api.dart';
+import 'package:desktop_app/api/models/User.dart';
+import 'package:desktop_app/api/response_api.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
 class SegundaScreen extends StatefulWidget {
@@ -12,7 +12,7 @@ class SegundaScreen extends StatefulWidget {
 class _SegundaScreenState extends State<SegundaScreen> {
   int num = 0;
   Future<List<User>>? users;
-  Api api = Api();
+  ResponseApi api = ResponseApi();
   bool cargado = false;
 
   @override
@@ -23,7 +23,7 @@ class _SegundaScreenState extends State<SegundaScreen> {
 
   void fetchData() async {
     setState(() {
-      users = api.getData(); // Actualiza el estado con los datos obtenidos
+      // users = api.getData(); // Actualiza el estado con los datos obtenidos
       cargado = true; // Cambia el estado de cargado a verdadero
     });
   }
