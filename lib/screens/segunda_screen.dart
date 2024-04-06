@@ -34,7 +34,6 @@ class _SegundaScreenState extends State<SegundaScreen> {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           List<User> us = snapshot.data ?? [];
-
           return ListView.builder(
               itemCount: us.length,
               itemBuilder: (context, index) {

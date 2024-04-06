@@ -23,6 +23,15 @@ class _nameState extends State<PrimeraScreen> {
   String option = "";
   List<String> cat = ["Nequi", "Daviplata", "tarjetas de credito"];
   int numberBoxValueMinMax = 0;
+  bool checkedPrice = false;
+  bool checkedType = false;
+  List<String> headTale = ["Serial", "tipo de producto", "Precio"];
+  List<String> content = ["text", "text", "text"];
+  List<String> serial = [
+    "Serial",
+    "tipo ",
+  ];
+  List<String> tipoproduct = ["text", "text"];
 
   List<Cat> objectCats = [
     Cat(1, 'Abyssinian', true),
@@ -78,6 +87,70 @@ class _nameState extends State<PrimeraScreen> {
     );
   }
 
+  Widget textModified(String text, double size) {
+    return Text(
+      text,
+      style: TextStyle(fontSize: size, fontWeight: FontWeight.w400),
+    );
+  }
+
+  Widget detailProduct() {
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Column(
+            children: [
+              Container(
+                  margin: const EdgeInsets.only(bottom: 10, top: 20),
+                  child: textModified("productos Seleccionados", 16)),
+              Container(
+                  width: 200, child: table(context, 2, serial, tipoproduct)),
+              Container(
+                margin: const EdgeInsets.all(15.0),
+                child: button("modificar peiddos", () {}),
+              ),
+            ],
+          ),
+          Container(
+            margin: const EdgeInsets.all(12),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                alert("Buscar por"),
+                Container(
+                  margin: const EdgeInsets.symmetric(vertical: 10),
+                  child: Checkbox(
+                    checked: checkedType,
+                    onChanged: (value) {
+                      setState(() {
+                        checkedType = value ?? false;
+                      });
+                    },
+                    content: textModified(
+                      "Tipo de documento",
+                      15,
+                    ),
+                  ),
+                ),
+                Checkbox(
+                  checked: checkedPrice,
+                  onChanged: (value) {
+                    setState(() {
+                      checkedPrice = value ?? false;
+                    });
+                  },
+                  content: textModified("precio", 15),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
   Widget registroCompra() {
     return Container(
       width: MediaQuery.of(context).size.width / 3,
@@ -93,7 +166,10 @@ class _nameState extends State<PrimeraScreen> {
                 button("Buscar cliente", () {}),
               ],
             ),
-            const Text("Datos del cliente"),
+            const Text(
+              "Datos del cliente",
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            ),
             const TextBox(
               placeholder: 'Nombre',
               placeholderStyle:
@@ -187,41 +263,40 @@ class _nameState extends State<PrimeraScreen> {
 
   Widget inventario() {
     return Container(
-      width: MediaQuery.of(context).size.width / 3,
+      width: MediaQuery.of(context).size.width / 2.4,
       height: MediaQuery.of(context).size.height * 0.9,
       padding: const EdgeInsets.symmetric(vertical: 20),
       child: Container(
         color: MyColor.bgOrder,
-        child: Container(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: AutoSuggestBox(
-                    selectionWidthStyle: BoxWidthStyle.max,
-                    placeholder: "Buscar en inventario",
-                    leadingIcon: const Padding(
-                      padding: EdgeInsets.all(10.0),
-                      child: Icon(FluentIcons.search),
-                    ),
-                    items: objectCats
-                        .map<AutoSuggestBoxItem<Cat>>(
-                          (cat) => AutoSuggestBoxItem<Cat>(
-                            value: cat,
-                            label: cat.name,
-                            onFocusChange: (focused) {
-                              if (focused) {
-                                debugPrint('Focused #${cat.id} - ${cat.name}');
-                              }
-                            },
-                          ),
-                        )
-                        .toList(),
-                    onSelected: null),
-              ),
-              table(context)
-            ],
-          ),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 40),
+              child: AutoSuggestBox(
+                  selectionWidthStyle: BoxWidthStyle.max,
+                  placeholder: "Buscar en inventario",
+                  leadingIcon: const Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Icon(FluentIcons.search),
+                  ),
+                  items: objectCats
+                      .map<AutoSuggestBoxItem<Cat>>(
+                        (cat) => AutoSuggestBoxItem<Cat>(
+                          value: cat,
+                          label: cat.name,
+                          onFocusChange: (focused) {
+                            if (focused) {
+                              debugPrint('Focused #${cat.id} - ${cat.name}');
+                            }
+                          },
+                        ),
+                      )
+                      .toList(),
+                  onSelected: null),
+            ),
+            table(context, 8, headTale, content),
+            detailProduct()
+          ],
         ),
       ),
     );

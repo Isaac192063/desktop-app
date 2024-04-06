@@ -1,42 +1,47 @@
 import 'package:flutter/material.dart';
 
-dynamic as() {
+dynamic rowModified(List<String> product, bool styleTitle) {
   return TableRow(
-      decoration: BoxDecoration(
-          border: Border(top: BorderSide(width: 1.0, color: Colors.black))),
-      children: [
-        TableCell(
-          verticalAlignment: TableCellVerticalAlignment.middle,
-          child: Padding(
-            padding: EdgeInsets.all(8),
-            child: Text("text 1"),
+    decoration: const BoxDecoration(
+      color: Colors.white,
+      border: Border(
+        top: BorderSide(width: 0.8, color: Colors.grey),
+      ),
+    ),
+    children: List.generate(
+      product.length,
+      (index) => TableCell(
+        verticalAlignment: TableCellVerticalAlignment.middle,
+        child: Material(
+          child: InkWell(
+            onTap: () {
+              print(product[index]);
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(8),
+              child: Text(
+                product[index],
+                style: TextStyle(
+                  fontWeight: styleTitle ? FontWeight.bold : null,
+                  fontSize: 16,
+                ),
+              ),
+            ),
           ),
         ),
-        TableCell(
-          verticalAlignment: TableCellVerticalAlignment.middle,
-          child: Padding(
-            padding: EdgeInsets.all(8),
-            child: Text("text 1"),
-          ),
-        ),
-        TableCell(
-          verticalAlignment: TableCellVerticalAlignment.middle,
-          child: Padding(
-            padding: EdgeInsets.all(8),
-            child: Text("text 1"),
-          ),
-        ),
-      ]);
+      ),
+    ),
+  );
 }
 
-Widget table(BuildContext context) {
+Widget table(BuildContext context, int numberRows, List<String> header,
+    List<String> content) {
   return Center(
       child: Table(
-    border: TableBorder(
-      top: BorderSide(width: 1.0, color: Colors.black),
-      bottom: BorderSide.none,
-    ),
     defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-    children: [as(), ...List.generate(10, (index) => as())],
+    children: [
+      rowModified(header, true),
+      ...List.generate(numberRows, (index) => rowModified(content, false))
+    ],
   ));
 }
