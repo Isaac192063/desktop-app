@@ -12,6 +12,6 @@ class MyApp extends StatelessWidget {
         title: 'Material',
         debugShowCheckedModeBanner: false,
         theme: FluentThemeData.light(),
-        home: Logeo());
+        home: const Logeo());
   }
 }

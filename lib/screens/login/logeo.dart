@@ -32,9 +32,9 @@ class _LogeoState extends State<Logeo> {
                 border: Border.all(color: Colors.black, width: .5),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey.withOpacity(0.2), // Color de la sombra
-                    spreadRadius: 2, // Extensión de la sombra
-                    blurRadius: 4, // Difuminado de la sombra
+                    color: Colors.grey.withOpacity(0.2),
+                    spreadRadius: 2,
+                    blurRadius: 4,
                   )
                 ]),
             child: Column(
@@ -89,7 +89,6 @@ class _LogeoState extends State<Logeo> {
                     ),
                     child: const Text('Ingresar'),
                     onPressed: () {
-                      // notification(context);
                       _con.enviar(context);
                     },
                   ),

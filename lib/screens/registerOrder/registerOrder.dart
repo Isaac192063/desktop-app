@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:desktop_app/components/table.dart';
 import 'package:desktop_app/utils/myColors.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
@@ -19,6 +20,9 @@ class Cat {
 
 class _nameState extends State<PrimeraScreen> {
   Cat? selectedObjectCat;
+  String option = "";
+  List<String> cat = ["Nequi", "Daviplata", "tarjetas de credito"];
+  int numberBoxValueMinMax = 0;
 
   List<Cat> objectCats = [
     Cat(1, 'Abyssinian', true),
@@ -43,9 +47,35 @@ class _nameState extends State<PrimeraScreen> {
         ));
   }
 
-  Widget datosProductVender(String type, {String value = ""}) {
+  Widget dataProductShell(String type, {String value = ""}) {
     return Container(
-        margin: const EdgeInsets.all(10), child: Text("$type: $value"));
+        margin: const EdgeInsets.all(10),
+        child: Text("$type: $value",
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)));
+  }
+
+  Widget button(String description, Function asa) {
+    return FilledButton(
+        style: ButtonStyle(
+          padding: ButtonState.all(
+              const EdgeInsets.symmetric(vertical: 8, horizontal: 20)),
+        ),
+        child: Text(description,
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
+        onPressed: () {
+          asa();
+        });
+  }
+
+  Widget alert(String description) {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 10),
+      decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(Radius.circular(10)),
+          color: MyColor.btnColor),
+      child: Text(description,
+          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
+    );
   }
 
   Widget registroCompra() {
@@ -57,50 +87,98 @@ class _nameState extends State<PrimeraScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                FilledButton(
-                    child: const Text('Registro de venta'), onPressed: () {}),
-                FilledButton(
-                    child: const Text('Buscar Cliente'), onPressed: () {}),
+                alert("Registro de venta"),
+                button("Buscar cliente", () {}),
               ],
             ),
             const Text("Datos del cliente"),
             const TextBox(
-              placeholder: 'Name',
+              placeholder: 'Nombre',
+              placeholderStyle:
+                  TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              padding: EdgeInsets.all(10),
             ),
             const TextBox(
-              placeholder: 'Name',
+              placeholderStyle:
+                  TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              padding: EdgeInsets.all(10),
+              placeholder: 'Cedula',
             ),
             const TextBox(
-              placeholder: 'Name',
+              placeholderStyle:
+                  TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              padding: EdgeInsets.all(10),
+              placeholder: 'Ciudad de residencia',
             ),
             const TextBox(
-              placeholder: 'Name',
+              placeholderStyle:
+                  TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              padding: EdgeInsets.all(10),
+              placeholder: 'Telefono',
             ),
             const TextBox(
-              placeholder: 'Name',
+              placeholderStyle:
+                  TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              padding: EdgeInsets.all(10),
+              placeholder: 'Direccion',
             ),
-            const TextBox(
-              placeholder: 'Name',
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: ComboBox<String>(
+                value: option,
+                items: cat.map<ComboBoxItem<String>>((String e) {
+                  return ComboBoxItem<String>(
+                    child: Text(e),
+                  );
+                }).toList(),
+                onChanged: (value) {},
+                placeholder: const Text(
+                  'Seleccione el metodo de pago',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                ),
+              ),
             ),
-            const TextBox(
-              placeholder: 'Name',
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: alert("Datos del producto a vender"),
             ),
-            datosProductVender("Serial"),
-            datosProductVender("Ubicacion actual"),
-            datosProductVender("Precio"),
-            datosProductVender("Capacidad"),
-            const TextBox(
-              placeholder: 'Name',
+            dataProductShell("Serial"),
+            dataProductShell("Ubicacion actual"),
+            dataProductShell("Precio"),
+            dataProductShell("Capacidad"),
+            NumberBox(
+              value: numberBoxValueMinMax,
+              min: 0,
+              max: 20,
+              onChanged: _valueChangedMinMax,
+              mode: SpinButtonPlacementMode.inline,
+              placeholder: "Cantidad de cilindros",
+              leadingIcon: const Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Icon(FluentIcons.number_field),
+              ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
+                button("Agregar Producto", () {}),
                 FilledButton(
-                    child: const Text('Agregar Producto'), onPressed: () {}),
-                FilledButton(
-                    child: const Text('Registrar pedido'), onPressed: () {}),
+                    style: ButtonStyle(
+                      padding: ButtonState.all(const EdgeInsets.symmetric(
+                          vertical: 8, horizontal: 8)),
+                    ),
+                    child: const Text('Registrar pedido',
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w400)),
+                    onPressed: () {}),
               ],
             ),
           ]),
@@ -141,10 +219,21 @@ class _nameState extends State<PrimeraScreen> {
                         .toList(),
                     onSelected: null),
               ),
+              table(context)
             ],
           ),
         ),
       ),
     );
+  }
+
+// logic
+
+  void _valueChangedMinMax(int? newValue) {
+    if (newValue != null) {
+      setState(() {
+        numberBoxValueMinMax = newValue;
+      });
+    }
   }
 }

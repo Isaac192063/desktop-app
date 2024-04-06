@@ -1,6 +1,6 @@
 import 'package:desktop_app/api/response_api.dart';
 import 'package:desktop_app/api/user_provider.dart';
-import 'package:desktop_app/components/notificarion.dart';
+import 'package:desktop_app/components/notification.dart';
 import 'package:desktop_app/screens/navigation_page.dart';
 import 'package:flutter/material.dart';
 

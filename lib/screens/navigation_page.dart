@@ -18,13 +18,7 @@ class _NavigationPageState extends State<NavigationPage> {
     return NavigationView(
       appBar: const NavigationAppBar(
           title: Row(children: [
-            Text("dfdfg,"),
-            Text("dfdfg,"),
-            Text("dfdfg,"),
-            Text("dfdfg,"),
-            Text("dfdfg,"),
-            Text("dfdfg,"),
-            Text("dfdfg,"),
+            Text("Segunda navegacion?"),
           ]),
           leading: Center(
             child: FlutterLogo(

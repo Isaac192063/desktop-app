@@ -23,7 +23,7 @@ class UserProvider {
       return responseApi;
     } catch (e) {
       return ResponseApi.fromJson(
-          {'sucess': false, 'messge': "ocurrio un error"});
+          {'success': false, 'message': "ocurrio un error"});
     }
   }
 }
