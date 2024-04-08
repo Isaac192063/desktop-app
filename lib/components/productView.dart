@@ -1,5 +1,3 @@
-import 'package:desktop_app/screens/login/logeoControllers.dart';
-import 'package:desktop_app/utils/myColors.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
 class ProductView extends StatefulWidget {

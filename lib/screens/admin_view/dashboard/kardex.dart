@@ -40,7 +40,7 @@ class _kardexState extends State<kardex> {
             ),
           ),
           DataTable(
-              columnSpacing: 50,
+              columnSpacing: 40,
               border: TableBorder(
                   top: BorderSide(color: Colors.black),
                   bottom: BorderSide(color: Colors.black)),
