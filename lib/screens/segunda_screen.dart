@@ -28,7 +28,7 @@ class _SegundaScreenState extends State<SegundaScreen> {
     });
   }
 
-  Widget us(BuildContext context) {
+  Widget contentAdmin(BuildContext context) {
     return FutureBuilder(
       future: users,
       builder: (context, snapshot) {
@@ -65,7 +65,12 @@ class _SegundaScreenState extends State<SegundaScreen> {
   Widget build(BuildContext context) {
     return ScaffoldPage(
         content: Center(
-      child: cargado ? us(context) : ProgressRing(),
-    ));
+            // child: cargado ? contentAdmin(context) : ProgressRing(),
+            child: Center(
+      child: Text(
+        "Error",
+        style: TextStyle(fontSize: 20),
+      ),
+    )));
   }
 }

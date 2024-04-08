@@ -30,7 +30,7 @@ class User {
   });
 
   factory User.fromJson(Map<String, dynamic> json) => User(
-        idEmployee: json["id_employee"],
+        idEmployee: json["id_user"],
         name: json["name"],
         lastName: json["last_name"],
         phoneNumber: json["phone_number"],

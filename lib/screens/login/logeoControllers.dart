@@ -1,9 +1,12 @@
+import 'package:desktop_app/api/models/User.dart';
 import 'package:desktop_app/api/response_api.dart';
 import 'package:desktop_app/api/user_provider.dart';
 import 'package:desktop_app/components/notification.dart';
+import 'package:desktop_app/screens/admin_view/navigation_page_admin.dart';
 import 'package:desktop_app/screens/navigation_page.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:jwt_decode/jwt_decode.dart';
 
 class LogeoController {
   TextEditingController userCOntroller = TextEditingController();
@@ -24,12 +27,21 @@ class LogeoController {
     if (api.success! == false) {
       notification(context, api.message!, "Error", InfoBarSeverity.warning);
     } else {
-      notification(context, api.message!, "Success", InfoBarSeverity.success);
+      Map<String, dynamic> decodeToken = Jwt.parseJwt(api.token!);
 
-      Future.delayed(const Duration(milliseconds: 800), () {
+      notification(context, api.message!, "Success", InfoBarSeverity.success);
+      int id = decodeToken["id"];
+
+      ResponseApi api2 = await UserProvider().userById(id.toString());
+      User user = User.fromJson(api2.data);
+
+      if (decodeToken["rol"] == "user") {
         Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const NavigationPage()));
-      });
+            MaterialPageRoute(builder: (context) => NavigationPage(user)));
+      } else if (decodeToken["rol"] == "admin") {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => NavigationPageAdmin(user)));
+      }
     }
   }
 }

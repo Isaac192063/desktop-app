@@ -1,6 +1,13 @@
+import 'package:desktop_app/components/productView.dart';
 import 'package:flutter/material.dart';
 
-dynamic rowModified(List<String> product, bool styleTitle) {
+void _navigateToNewScreen(BuildContext context) {
+  Navigator.push(
+      context, MaterialPageRoute(builder: (context) => const ProductView()));
+}
+
+dynamic rowModified(
+    List<String> product, bool styleTitle, BuildContext context) {
   return TableRow(
     decoration: const BoxDecoration(
       color: Colors.white,
@@ -16,6 +23,7 @@ dynamic rowModified(List<String> product, bool styleTitle) {
           child: InkWell(
             onTap: () {
               print(product[index]);
+              _navigateToNewScreen(context);
             },
             child: Padding(
               padding: const EdgeInsets.all(8),
@@ -40,8 +48,9 @@ Widget table(BuildContext context, int numberRows, List<String> header,
       child: Table(
     defaultVerticalAlignment: TableCellVerticalAlignment.middle,
     children: [
-      rowModified(header, true),
-      ...List.generate(numberRows, (index) => rowModified(content, false))
+      rowModified(header, true, context),
+      ...List.generate(
+          numberRows, (index) => rowModified(content, false, context))
     ],
   ));
 }
