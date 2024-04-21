@@ -2,7 +2,7 @@ import 'package:desktop_app/api/models/User.dart';
 import 'package:desktop_app/components/options.dart';
 import 'package:desktop_app/components/setImgae.dart';
 import 'package:desktop_app/screens/admin_view/dashboard/kardex.dart';
-import 'package:desktop_app/screens/admin_view/registerEmployee/registerEmployee.dart';
+import 'package:desktop_app/screens/admin_view/registerEmployee/managedEmployee.dart';
 import 'package:desktop_app/screens/registerOrder/registerOrder.dart';
 import 'package:desktop_app/screens/segunda_screen.dart';
 import 'package:desktop_app/utils/myColors.dart';
@@ -82,7 +82,7 @@ class _NavigationPageAdminState extends State<NavigationPageAdmin> {
                     style: FluentTheme.of(context).typography.title!,
                     child: Column(
                       children: [
-                        setImage(userData!.image),
+                        setImage(userData!.image, 90),
                         Text(
                           "admin",
                           style: TextStyle(fontSize: 20, color: Colors.blue),
@@ -113,7 +113,7 @@ class _NavigationPageAdminState extends State<NavigationPageAdmin> {
                           style: TextStyle(fontSize: 16))),
                   PaneItem(
                       icon: const Icon(FluentIcons.employee_self_service),
-                      body: const ResgisterEmployee(),
+                      body: const ManageEmployee(),
                       infoBadge: InfoBadge(source: Text("$num")),
                       title: const Text("Empleados",
                           style: TextStyle(fontSize: 16))),

@@ -1,0 +1,10 @@
+^C:\USERS\ASUS\DESKTOP\ARCHIVOS\DEV\DESKTOP_APP\BUILD\WINDOWS\X64\CMAKEFILES\3D0093A084329FA4DB7B29853D7FF32F\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/Asus/Desktop/archivos/dev/desktop_app/windows -BC:/Users/Asus/Desktop/archivos/dev/desktop_app/build/windows/x64 --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/Asus/Desktop/archivos/dev/desktop_app/build/windows/x64/desktop_app.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

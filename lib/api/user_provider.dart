@@ -42,4 +42,19 @@ class UserProvider {
           {'success': false, 'message': "ocurrio un error"});
     }
   }
+
+  Future<ResponseApi> getAllEmployes() async {
+    try {
+      final res = await http.get(
+        Uri.parse("${Environment.API_RDQ}$_api/emp"),
+        headers: {'Content-type': 'application/json'},
+      );
+      final data = jsonDecode(res.body);
+      ResponseApi responseApi = ResponseApi.fromJson(data);
+      return responseApi;
+    } catch (e) {
+      return ResponseApi.fromJson(
+          {'success': false, 'message': "ocurrio un error"});
+    }
+  }
 }

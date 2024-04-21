@@ -8,6 +8,10 @@ User userFromJson(String str) => User.fromJson(json.decode(str));
 
 String userToJson(User data) => json.encode(data.toJson());
 
+List<User> convertToUserList(List<dynamic> userList) {
+  return userList.map((userData) => User.fromJson(userData)).toList();
+}
+
 class User {
   int idEmployee;
   String name;

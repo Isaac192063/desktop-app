@@ -5,14 +5,15 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:filepicker_windows/filepicker_windows.dart';
 
 class ResgisterEmployee extends StatefulWidget {
-  const ResgisterEmployee({super.key});
+  final RegisterEmployeeController con;
+  const ResgisterEmployee(this.con, {super.key});
 
   @override
   State<ResgisterEmployee> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<ResgisterEmployee> {
-  RegisterEmployeeController _con = RegisterEmployeeController();
+  RegisterEmployeeController? _con;
 
   File? images;
 
@@ -20,7 +21,9 @@ class _MyAppState extends State<ResgisterEmployee> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _con.init(context);
+    setState(() {
+      _con = widget.con;
+    });
   }
 
   Widget imageLocal() {
@@ -50,40 +53,37 @@ class _MyAppState extends State<ResgisterEmployee> {
               children: [
                 TextBox(
                   placeholder: "nombre",
-                  controller: _con.nameController,
+                  controller: _con!.nameController,
                   padding: EdgeInsets.all(10),
                   style: TextStyle(fontSize: 16),
                 ),
                 TextBox(
                   placeholder: "apellido",
-                  controller: _con.lastNameController,
+                  controller: _con!.lastNameController,
                   padding: EdgeInsets.all(10),
                   style: TextStyle(fontSize: 16),
                 ),
                 TextBox(
                   placeholder: "email",
-                  controller: _con.emailController,
+                  controller: _con!.emailController,
                   padding: EdgeInsets.all(10),
                   style: TextStyle(fontSize: 16),
                 ),
-                TextBox(
+                PasswordBox(
                   placeholder: "contraseña",
-                  controller: _con.passwordController,
+                  controller: _con!.passwordController,
                   padding: EdgeInsets.all(10),
                   style: TextStyle(fontSize: 16),
                 ),
                 TextBox(
                   placeholder: "telefono",
-                  controller: _con.numberPhoneController,
+                  controller: _con!.numberPhoneController,
                   padding: EdgeInsets.all(10),
                   style: TextStyle(fontSize: 16),
                 ),
                 imageLocal(),
                 FilledButton(
                     child: Text("seleccionar imagen"), onPressed: main),
-                FilledButton(
-                    child: Text("Registrar empleado"),
-                    onPressed: _con.register),
               ]),
         ),
       ),
@@ -102,7 +102,7 @@ class _MyAppState extends State<ResgisterEmployee> {
     setState(() {
       images = result;
     });
-    _con.imagen = result;
+    _con!.imagen = result;
     if (result != null) {
       print(result.path);
     } else {

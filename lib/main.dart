@@ -1,5 +1,4 @@
 import 'package:desktop_app/api/models/User.dart';
-import 'package:desktop_app/screens/admin_view/navigation_page_admin.dart';
 import 'package:desktop_app/screens/login/logeo.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
@@ -24,6 +23,6 @@ class MyApp extends StatelessWidget {
         title: 'Material',
         debugShowCheckedModeBanner: false,
         theme: FluentThemeData.light(),
-        home: NavigationPageAdmin(user));
+        home: const Logeo());
   }
 }

@@ -5,6 +5,7 @@ C:/Users/Asus/Desktop/archivo/dev/desktop_app/build/windows/runner/Debug/data/fl
 C:/Users/Asus/Desktop/archivo/dev/desktop_app/build/windows/runner/Debug/data/flutter_assets/FontManifest.json
 C:/Users/Asus/Desktop/archivo/dev/desktop_app/build/windows/runner/Debug/data/flutter_assets/fonts/MaterialIcons-Regular.otf
 C:/Users/Asus/Desktop/archivo/dev/desktop_app/build/windows/runner/Debug/data/flutter_assets/kernel_blob.bin
+C:/Users/Asus/Desktop/archivo/dev/desktop_app/build/windows/runner/Debug/data/flutter_assets/NOTICES
 C:/Users/Asus/Desktop/archivo/dev/desktop_app/build/windows/runner/Debug/data/flutter_assets/NOTICES.Z
 C:/Users/Asus/Desktop/archivo/dev/desktop_app/build/windows/runner/Debug/data/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf
 C:/Users/Asus/Desktop/archivo/dev/desktop_app/build/windows/runner/Debug/data/flutter_assets/packages/fluent_ui/assets/AcrylicNoise.png

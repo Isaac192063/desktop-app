@@ -1,8 +1,8 @@
 import 'dart:io';
-
 import 'package:desktop_app/api/environment.dart';
 import 'package:desktop_app/api/response_api.dart';
 import 'package:desktop_app/components/notification.dart';
+import 'package:desktop_app/config/dio.dart';
 import 'package:dio/dio.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
@@ -25,10 +25,6 @@ class RegisterEmployeeController {
     String lastName = lastNameController.text.trim();
     String numberPhone = numberPhoneController.text.trim();
     String password = passwordController.text.trim();
-    Dio dio = Dio()
-      ..options = BaseOptions(
-        validateStatus: (_) => true, // Permitir todos los códigos de estado
-      );
 
     FormData formData;
     if (imagen == null) {
@@ -53,27 +49,21 @@ class RegisterEmployeeController {
       });
     }
     try {
-      await dio
-          .post("${Environment.API_RDQ}/user", data: formData)
-          .then((value) {
-        Map<String, dynamic> json = value.data.cast<String, dynamic>();
+      final res = await dio.post("${Environment.API_RDQ}/user", data: formData);
 
-        ResponseApi responseApi = ResponseApi.fromJson(json);
-        print(responseApi.data);
-        print(responseApi.message);
+      Map<String, dynamic> json = res.data.cast<String, dynamic>();
+      ResponseApi responseApi = ResponseApi.fromJson(json);
 
-        if (responseApi.success!) {
-          notification(context!, "empleado registrado", "sucess",
-              InfoBarSeverity.success);
-        }
-        {
-          print("error");
-        }
-      }).catchError((onError) {
-        print(onError);
-      });
+      if (responseApi.success!) {
+        notification(
+            context!, "empleado registrado", "sucess", InfoBarSeverity.success);
+      } else {
+        notification(context!, "empleado no registrado", "alerta",
+            InfoBarSeverity.warning);
+      }
     } catch (error) {
-      print(error);
+      notification(context!, "Error al registrar al empleado", "error",
+          InfoBarSeverity.error);
     }
   }
 }
