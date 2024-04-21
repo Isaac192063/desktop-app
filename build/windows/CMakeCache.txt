@@ -195,6 +195,15 @@ desktop_app_IS_TOP_LEVEL:STATIC=ON
 desktop_app_SOURCE_DIR:STATIC=C:/Users/Asus/Desktop/archivo/dev/desktop_app/windows
 
 //Value Computed by CMake
+file_selector_windows_BINARY_DIR:STATIC=C:/Users/Asus/Desktop/archivo/dev/desktop_app/build/windows/plugins/file_selector_windows
+
+//Value Computed by CMake
+file_selector_windows_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+file_selector_windows_SOURCE_DIR:STATIC=C:/Users/Asus/Desktop/archivo/dev/desktop_app/windows/flutter/ephemeral/.plugin_symlinks/file_selector_windows/windows
+
+//Value Computed by CMake
 runner_BINARY_DIR:STATIC=C:/Users/Asus/Desktop/archivo/dev/desktop_app/build/windows/runner
 
 //Value Computed by CMake

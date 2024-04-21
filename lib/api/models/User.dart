@@ -8,6 +8,10 @@ User userFromJson(String str) => User.fromJson(json.decode(str));
 
 String userToJson(User data) => json.encode(data.toJson());
 
+List<User> convertToUserList(List<dynamic> userList) {
+  return userList.map((userData) => User.fromJson(userData)).toList();
+}
+
 class User {
   int idEmployee;
   String name;
@@ -30,7 +34,7 @@ class User {
   });
 
   factory User.fromJson(Map<String, dynamic> json) => User(
-        idEmployee: json["id_employee"],
+        idEmployee: json["id_user"],
         name: json["name"],
         lastName: json["last_name"],
         phoneNumber: json["phone_number"],

@@ -1,7 +1,18 @@
+import 'package:desktop_app/api/models/User.dart';
 import 'package:desktop_app/screens/login/logeo.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
 void main() => runApp(const MyApp());
+// usuario de ejemplo
+User user = User(
+    idEmployee: 1,
+    name: "gerardo",
+    lastName: "duarte",
+    phoneNumber: "31226234631",
+    initialData: DateTime.now(),
+    email: "gerardo@gmail.com",
+    password: "martin",
+    image: "paisaje-e1549600034372.jpg");
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -12,6 +23,6 @@ class MyApp extends StatelessWidget {
         title: 'Material',
         debugShowCheckedModeBanner: false,
         theme: FluentThemeData.light(),
-        home: Logeo());
+        home: const Logeo());
   }
 }

@@ -28,13 +28,12 @@ class _SegundaScreenState extends State<SegundaScreen> {
     });
   }
 
-  Widget us(BuildContext context) {
+  Widget contentAdmin(BuildContext context) {
     return FutureBuilder(
       future: users,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           List<User> us = snapshot.data ?? [];
-
           return ListView.builder(
               itemCount: us.length,
               itemBuilder: (context, index) {
@@ -66,7 +65,12 @@ class _SegundaScreenState extends State<SegundaScreen> {
   Widget build(BuildContext context) {
     return ScaffoldPage(
         content: Center(
-      child: cargado ? us(context) : ProgressRing(),
-    ));
+            // child: cargado ? contentAdmin(context) : ProgressRing(),
+            child: Center(
+      child: Text(
+        "Error",
+        style: TextStyle(fontSize: 20),
+      ),
+    )));
   }
 }
