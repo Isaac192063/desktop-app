@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:desktop_app/components/table.dart';
+import 'package:desktop_app/components/search_bar.dart';
 import 'package:desktop_app/utils/myColors.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
@@ -10,13 +11,7 @@ class PrimeraScreen extends StatefulWidget {
   State<PrimeraScreen> createState() => _nameState();
 }
 
-class Cat {
-  final int id;
-  final String name;
-  final bool hasTag;
 
-  const Cat(this.id, this.name, this.hasTag);
-}
 
 class _nameState extends State<PrimeraScreen> {
   Cat? selectedObjectCat;
@@ -33,14 +28,7 @@ class _nameState extends State<PrimeraScreen> {
   ];
   List<String> tipoproduct = ["text", "text"];
 
-  List<Cat> objectCats = [
-    Cat(1, 'Abyssinian', true),
-    Cat(2, 'Aegean', true),
-    Cat(3, 'American Bobtail', false),
-    Cat(4, 'American Curl', true),
-    Cat(5, 'American Ringtail', false),
-    Cat(6, 'American Shorthair', true),
-  ];
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -270,30 +258,7 @@ class _nameState extends State<PrimeraScreen> {
         color: MyColor.bgOrder,
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 40),
-              child: AutoSuggestBox(
-                  selectionWidthStyle: BoxWidthStyle.max,
-                  placeholder: "Buscar en inventario",
-                  leadingIcon: const Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: Icon(FluentIcons.search),
-                  ),
-                  items: objectCats
-                      .map<AutoSuggestBoxItem<Cat>>(
-                        (cat) => AutoSuggestBoxItem<Cat>(
-                          value: cat,
-                          label: cat.name,
-                          onFocusChange: (focused) {
-                            if (focused) {
-                              debugPrint('Focused #${cat.id} - ${cat.name}');
-                            }
-                          },
-                        ),
-                      )
-                      .toList(),
-                  onSelected: null),
-            ),
+            const Searchbar(),
             table(context, 8, headTale, content),
             detailProduct()
           ],

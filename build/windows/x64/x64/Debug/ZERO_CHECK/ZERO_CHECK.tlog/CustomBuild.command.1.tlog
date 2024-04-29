@@ -1,6 +1,6 @@
-^C:\USERS\ASUS\DESKTOP\ARCHIVOS\DEV\DESKTOP_APP\BUILD\WINDOWS\X64\CMAKEFILES\3D0093A084329FA4DB7B29853D7FF32F\GENERATE.STAMP.RULE
+^D:\DESKTOP\DESKTOP-APP\BUILD\WINDOWS\X64\CMAKEFILES\DDFF2EC881DB5F308E7E7A1815830F9A\GENERATE.STAMP.RULE
 setlocal
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/Asus/Desktop/archivos/dev/desktop_app/windows -BC:/Users/Asus/Desktop/archivos/dev/desktop_app/build/windows/x64 --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/Asus/Desktop/archivos/dev/desktop_app/build/windows/x64/desktop_app.sln
+"C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SD:/Desktop/desktop-app/windows -BD:/Desktop/desktop-app/build/windows/x64 --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/Desktop/desktop-app/build/windows/x64/desktop_app.sln
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

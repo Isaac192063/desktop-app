@@ -1,7 +1,8 @@
 import 'package:desktop_app/api/models/User.dart';
 import 'package:desktop_app/components/options.dart';
 import 'package:desktop_app/components/setImgae.dart';
-import 'package:desktop_app/screens/admin_view/dashboard/kardex.dart';
+import 'package:desktop_app/screens/admin_view/dashboard.dart';
+import 'package:desktop_app/screens/admin_view/kardex/kardex.dart';
 import 'package:desktop_app/screens/admin_view/registerEmployee/managedEmployee.dart';
 import 'package:desktop_app/screens/registerOrder/registerOrder.dart';
 import 'package:desktop_app/screens/segunda_screen.dart';
@@ -75,7 +76,7 @@ class _NavigationPageAdminState extends State<NavigationPageAdmin> {
                 ),
                 leading: null),
             pane: NavigationPane(
-                size: const NavigationPaneSize(openWidth: 250),
+                size: const NavigationPaneSize(openWidth: 300),
                 header: Padding(
                   padding: const EdgeInsets.only(left: 20),
                   child: DefaultTextStyle(
@@ -95,28 +96,48 @@ class _NavigationPageAdminState extends State<NavigationPageAdmin> {
                 items: [
                   PaneItem(
                       icon: const Icon(FluentIcons.b_i_dashboard),
-                      body: const kardex(),
+                      body: const Dashboard(),
                       title:
                           const Text("Inicio", style: TextStyle(fontSize: 16))),
                   PaneItemSeparator(),
-                  PaneItem(
-                    icon: const Icon(FluentIcons.business_card),
-                    body: const PrimeraScreen(),
-                    title: const Text("Registrar compra",
-                        style: TextStyle(fontSize: 16)),
-                  ),
-                  PaneItem(
-                      icon: const Icon(FluentIcons.user_window),
-                      body: const SegundaScreen(),
-                      infoBadge: InfoBadge(source: Text("$num")),
-                      title: const Text("Compras registradas",
-                          style: TextStyle(fontSize: 16))),
+                  PaneItemExpander(
+                      icon: const Icon(FluentIcons.business_card),
+                      body: const PrimeraScreen(),
+                      title: const Text("Remision",
+                          style: TextStyle(fontSize: 16)),
+                      items: [
+                        PaneItem(
+                            icon: const Icon(FluentIcons.user_window),
+                            body: const SegundaScreen(),
+                            infoBadge: InfoBadge(source: Text("$num")),
+                            title: const Text("Remisiones registradas",
+                                style: TextStyle(fontSize: 16))),
+                      ]),
+                      PaneItemExpander(
+                      icon: const Icon(FluentIcons.business_card),
+                      body: const PrimeraScreen(),
+                      title: const Text("Recepcion",
+                          style: TextStyle(fontSize: 16)),
+                      items: [
+                        PaneItem(
+                            icon: const Icon(FluentIcons.user_window),
+                            body: const SegundaScreen(),
+                            infoBadge: InfoBadge(source: Text("$num")),
+                            title: const Text("Recepciones registradas",
+                                style: TextStyle(fontSize: 16))),
+                      ]),
                   PaneItem(
                       icon: const Icon(FluentIcons.employee_self_service),
                       body: const ManageEmployee(),
                       infoBadge: InfoBadge(source: Text("$num")),
                       title: const Text("Empleados",
                           style: TextStyle(fontSize: 16))),
+                  PaneItem(
+                      icon: const Icon(FluentIcons.list),
+                      body: const Kardex(),
+                      infoBadge: InfoBadge(source: Text("$num")),
+                      title:
+                          const Text("Kardex", style: TextStyle(fontSize: 16))),
                 ],
                 selected: _countPage,
                 onChanged: (i) {

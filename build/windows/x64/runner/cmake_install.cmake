@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Asus/Desktop/archivos/dev/desktop_app/windows/runner
+# Install script for directory: D:/Desktop/desktop-app/windows/runner
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
