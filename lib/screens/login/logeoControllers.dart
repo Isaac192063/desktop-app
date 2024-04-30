@@ -1,7 +1,7 @@
 import 'package:desktop_app/api/models/User.dart';
 import 'package:desktop_app/api/response_api.dart';
 import 'package:desktop_app/api/user_provider.dart';
-import 'package:desktop_app/components/notification.dart';
+import 'package:desktop_app/widgets/notification.dart';
 import 'package:desktop_app/screens/admin_view/navigation_page_admin.dart';
 import 'package:desktop_app/screens/navigation_page.dart';
 import 'package:fluent_ui/fluent_ui.dart';

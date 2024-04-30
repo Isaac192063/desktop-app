@@ -1,5 +1,5 @@
 import 'package:desktop_app/api/models/User.dart';
-import 'package:desktop_app/components/options.dart';
+import 'package:desktop_app/widgets/options.dart';
 import 'package:desktop_app/screens/registerOrder/registerOrder.dart';
 import 'package:desktop_app/screens/segunda_screen.dart';
 import 'package:desktop_app/utils/myColors.dart';

@@ -1,8 +1,10 @@
 import 'package:desktop_app/api/models/User.dart';
-import 'package:desktop_app/components/options.dart';
-import 'package:desktop_app/components/setImgae.dart';
+import 'package:desktop_app/api/response_api.dart';
+import 'package:desktop_app/api/user_provider.dart';
+import 'package:desktop_app/widgets/options.dart';
+import 'package:desktop_app/widgets/setImgae.dart';
 import 'package:desktop_app/screens/admin_view/dashboard/kardex.dart';
-import 'package:desktop_app/screens/admin_view/registerEmployee/managedEmployee.dart';
+import 'package:desktop_app/screens/admin_view/gestion%20empleados/managedEmployee.dart';
 import 'package:desktop_app/screens/registerOrder/registerOrder.dart';
 import 'package:desktop_app/screens/segunda_screen.dart';
 import 'package:desktop_app/utils/myColors.dart';
@@ -19,7 +21,8 @@ class NavigationPageAdmin extends StatefulWidget {
 
 class _NavigationPageAdminState extends State<NavigationPageAdmin> {
   int _countPage = 0;
-  int num = 1;
+  int _numEmp = 0;
+  int _numOrd = 0;
 
   bool loading = true;
   User? userData;
@@ -28,11 +31,20 @@ class _NavigationPageAdminState extends State<NavigationPageAdmin> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Future.delayed(const Duration(milliseconds: 1200), () {
-      setState(() {
-        userData = widget.user;
-        loading = false;
-      });
+    // Future.delayed(const Duration(milliseconds: 1200), () {
+    setState(() {
+      userData = widget.user;
+      loading = false;
+      count();
+    });
+    // });
+  }
+
+  void count() async {
+    ResponseApi res = await UserProvider().getAllEmployes();
+    List<User> list = convertToUserList(res.data);
+    setState(() {
+      _numEmp = list.length;
     });
   }
 
@@ -56,20 +68,21 @@ class _NavigationPageAdminState extends State<NavigationPageAdmin> {
                       begin: Alignment.centerLeft,
                       end: Alignment.centerRight,
                       colors: [
+                        Colors.white,
                         MyColor.btnClaroColor,
                         MyColor.btnClaroColor,
-                        Colors.white
                       ],
                     ),
                   ),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      Image(image: AssetImage("assets/imgs/icon_rdq.png")),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 20.0, vertical: 8),
                         child: option(context),
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -108,13 +121,13 @@ class _NavigationPageAdminState extends State<NavigationPageAdmin> {
                   PaneItem(
                       icon: const Icon(FluentIcons.user_window),
                       body: const SegundaScreen(),
-                      infoBadge: InfoBadge(source: Text("$num")),
+                      infoBadge: InfoBadge(source: Text("$_numOrd")),
                       title: const Text("Compras registradas",
                           style: TextStyle(fontSize: 16))),
                   PaneItem(
                       icon: const Icon(FluentIcons.employee_self_service),
                       body: const ManageEmployee(),
-                      infoBadge: InfoBadge(source: Text("$num")),
+                      infoBadge: InfoBadge(source: Text("$_numEmp")),
                       title: const Text("Empleados",
                           style: TextStyle(fontSize: 16))),
                 ],

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:desktop_app/api/environment.dart';
+import 'package:desktop_app/api/models/User.dart';
 import 'package:desktop_app/api/response_api.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:http/http.dart' as http;
@@ -56,5 +57,17 @@ class UserProvider {
       return ResponseApi.fromJson(
           {'success': false, 'message': "ocurrio un error"});
     }
+  }
+
+  Future<List<User>> findByUserName(String name) async {
+    final response = await http.get(
+      Uri.parse("${Environment.API_RDQ}${_api}/search?name=${name}"),
+      headers: {'Content-type': 'application/json'},
+    );
+
+    final res = jsonDecode(response.body);
+    List<User> user = convertToUserList(res);
+
+    return user;
   }
 }

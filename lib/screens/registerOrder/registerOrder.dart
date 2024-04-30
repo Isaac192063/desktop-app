@@ -1,5 +1,5 @@
 import 'dart:ui';
-import 'package:desktop_app/components/table.dart';
+import 'package:desktop_app/widgets/table.dart';
 import 'package:desktop_app/utils/myColors.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
