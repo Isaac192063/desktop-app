@@ -66,6 +66,20 @@ Widget textModified(String text, double size) {
   );
 }
 
+DataColumn tableHeaderColumn(String text, double size){
+   return DataColumn(
+    label: Flexible(
+      child:Wrap(
+        children: [
+          Text(text,
+          softWrap: true, 
+          style:TextStyle(fontSize: size, fontWeight: FontWeight.w600),
+        )],
+      ))
+    );
+}
+
+
 Widget employessTbale(List<User> _users, context) {
   return Material(
     child: DataTable(

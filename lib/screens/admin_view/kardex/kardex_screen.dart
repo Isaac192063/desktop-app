@@ -62,7 +62,12 @@ class _MyWidgetState extends State<Kardex> {
               ],
             ),
           ),
-          table(context, 8, headTile, content)
+          Column(
+            children: [
+              table(context, 8, headTile, content)
+            ],
+          )
+          
           
         ],
       ),

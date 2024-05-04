@@ -134,7 +134,7 @@ class _NavigationPageAdminState extends State<NavigationPageAdmin> {
                           const Text("Kardex", style: TextStyle(fontSize: 16))),
                   PaneItem(
                       icon: const Icon(FluentIcons.list),
-                      body: const PurchaseScreen(),
+                      body: const RegisterOrder(),
                       infoBadge: InfoBadge(source: Text("$num")),
                       title: const Text("Compras",
                           style: TextStyle(fontSize: 16))),

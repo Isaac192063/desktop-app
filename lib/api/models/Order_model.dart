@@ -1,5 +1,4 @@
 
-import 'package:flutter/material.dart';
 
 class Order {
   final double cantidad;
@@ -58,6 +57,16 @@ const orderListItems = <Order>[
     valorUnitario: 70000,
   ),
   Order(
+    cantidad: 6.5,
+    descripcion: 'OXIND', 
+    numeroEnvase: '3638342Y', 
+    propietario: 'RDQ', 
+    lote: '', 
+    fechaVen: '',  
+    valorUnitario: 70000,
+  ),
+  Order(
+    
     cantidad: 6.5,
     descripcion: 'OXIND', 
     numeroEnvase: '3638342Y', 
