@@ -1,6 +1,7 @@
 import 'package:desktop_app/api/models/User.dart';
 import 'package:desktop_app/screens/admin_view/navigation_page_admin.dart';
 import 'package:desktop_app/screens/login/logeo.dart';
+import 'package:desktop_app/screens/registerOrder/registerOrder.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
 void main() => runApp(const MyApp());
@@ -21,6 +22,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FluentApp(
+        routes: {
+          '/Registrar_venta': (context) => const RegisterOrder(), // Define la página que quieres mostrar en el body
+        },
         title: 'Material',
         debugShowCheckedModeBanner: false,
         theme: FluentThemeData.light(),

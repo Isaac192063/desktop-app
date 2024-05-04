@@ -3,7 +3,7 @@ import 'package:desktop_app/components/table.dart';
 import 'package:desktop_app/components/search_bar.dart';
 import 'package:desktop_app/utils/myColors.dart';
 import 'package:fluent_ui/fluent_ui.dart';
-// import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' as material;
 
 class RegisterOrder extends StatefulWidget {
   const RegisterOrder({super.key});
@@ -11,8 +11,6 @@ class RegisterOrder extends StatefulWidget {
   @override
   State<RegisterOrder> createState() => _nameState();
 }
-
-
 
 class _nameState extends State<RegisterOrder> {
   Cat? selectedObjectCat;
@@ -28,8 +26,6 @@ class _nameState extends State<RegisterOrder> {
     "tipo ",
   ];
   List<String> tipoproduct = ["text", "text"];
-
- 
 
   @override
   Widget build(BuildContext context) {
@@ -148,6 +144,9 @@ class _nameState extends State<RegisterOrder> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            IconButton(
+                icon: Icon(FluentIcons.arrow_tall_up_left, size: 15),
+                onPressed: () => Navigator.pop(context)),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -200,11 +199,12 @@ class _nameState extends State<RegisterOrder> {
                 value: selectedPaymentMethod,
                 items: paymentMethods.map<ComboBoxItem<String>>((String e) {
                   return ComboBoxItem<String>(
-                    child:Text(e),
+                    child: Text(e),
                     value: e,
                   );
                 }).toList(),
-                onChanged: (paymentMethod) => setState(() => selectedPaymentMethod = paymentMethod),
+                onChanged: (paymentMethod) =>
+                    setState(() => selectedPaymentMethod = paymentMethod),
                 placeholder: const Text(
                   'Shola',
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),

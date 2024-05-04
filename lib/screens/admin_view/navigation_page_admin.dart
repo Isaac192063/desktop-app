@@ -3,9 +3,10 @@ import 'package:desktop_app/components/options.dart';
 import 'package:desktop_app/components/setImgae.dart';
 import 'package:desktop_app/screens/admin_view/dashboard.dart';
 import 'package:desktop_app/screens/admin_view/kardex/kardex_screen.dart';
-import 'package:desktop_app/screens/admin_view/purchase/purchase_screen.dart';
+// import 'package:desktop_app/screens/admin_view/purchase/purchase_screen.dart';
 import 'package:desktop_app/screens/admin_view/registerEmployee/managedEmployee.dart';
 import 'package:desktop_app/screens/registerOrder/indexOrder.dart';
+import 'package:desktop_app/screens/registerOrder/order_template.dart';
 import 'package:desktop_app/screens/registerOrder/registerOrder.dart';
 import 'package:desktop_app/utils/myColors.dart';
 import 'package:fluent_ui/fluent_ui.dart';
@@ -37,7 +38,9 @@ class _NavigationPageAdminState extends State<NavigationPageAdmin> {
       });
     });
   }
+  
 
+  
   @override
   Widget build(BuildContext context) {
     return loading
@@ -101,25 +104,25 @@ class _NavigationPageAdminState extends State<NavigationPageAdmin> {
                       title:
                           const Text("Inicio", style: TextStyle(fontSize: 16))),
                   PaneItemSeparator(),
-                  // PaneItemExpander(
-                  //     icon: const Icon(FluentIcons.business_card),
-                  //     body: const ShowOrders(),
-                  //     title: const Text("Ventas registradas",
-                  //         style: TextStyle(fontSize: 16)),
-                  //     items: [
-                  //       PaneItem(
-                  //           icon: const Icon(FluentIcons.user_window),
-                  //           body: const RegisterOrder(),
-                  //           infoBadge: InfoBadge(source: Text("$num")),
-                  //           title: const Text("Registrar venta",
-                  //               style: TextStyle(fontSize: 16))),
-                  //     ]),
-                  PaneItem(
-                    icon: const Icon(FluentIcons.business_card),
-                    body: const IndexOrder(),
-                    infoBadge: InfoBadge(source: Text("$num")),
-                    title: const Text("Ventas", style: TextStyle(fontSize: 16)),
-                  ),
+                  PaneItemExpander(
+                      icon: const Icon(FluentIcons.business_card),
+                      body: const IndexOrder(),
+                      title: const Text("Ventas registradas",
+                          style: TextStyle(fontSize: 16)),
+                      items: [
+                        PaneItem(
+                            icon: const Icon(FluentIcons.user_window),
+                            body: const RegisterOrder(),
+                            infoBadge: InfoBadge(source: Text("$num")),
+                            title: const Text("Registrar venta",
+                                style: TextStyle(fontSize: 16))),
+                      ]),
+                  // PaneItem(
+                  //   icon: const Icon(FluentIcons.business_card),
+                  //   body: const OrderTemplate(crud: 0),
+                  //   infoBadge: InfoBadge(source: Text("$num")),
+                  //   title: const Text("Ventas", style: TextStyle(fontSize: 16)),
+                  // ),
                   PaneItem(
                       icon: const Icon(FluentIcons.employee_self_service),
                       body: const ManageEmployee(),

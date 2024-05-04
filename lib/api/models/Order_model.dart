@@ -1,79 +1,45 @@
-
-
 class Order {
-  final double cantidad;
-  final String descripcion;
-  final String numeroEnvase;
-  final String propietario;
-  final String lote;
-  final String fechaVen;
-  final int valorUnitario;
+  final int id;
+  final String fechaRemision;
+  final int cantidadEnvases;
+  final String factura;
+  final int total;
 
   const Order(
-      {required this.cantidad,
-      required this.descripcion,
-      required this.numeroEnvase,
-      required this.propietario,
-      required this.lote,
-      required this.fechaVen,
-      required this.valorUnitario});
+      {required this.id,
+      required this.fechaRemision,
+      required this.cantidadEnvases,
+      required this.factura,
+      required this.total});
 }
 
 const orderListItems = <Order>[
   Order(
-    cantidad: 6.5,
-    descripcion: 'OXIND', 
-    numeroEnvase: '5127864', 
-    propietario: 'MENDEZ', 
-    lote: '', 
-    fechaVen: '',  
-    valorUnitario: 70000,
+    id: 1,
+    fechaRemision: '1/12/2002',
+    cantidadEnvases: 10 ,
+    factura: '34454B5',
+    total: 70000,
   ),
   Order(
-    cantidad: 6.5,
-    descripcion: 'OXIND', 
-    numeroEnvase: '9200033391', 
-    propietario: 'RDQ', 
-    lote: '', 
-    fechaVen: '',  
-    valorUnitario: 70000,
+    id: 1,
+    fechaRemision: '1/12/2002',
+    cantidadEnvases: 10 ,
+    factura: '34454B5',
+    total: 70000,
   ),
   Order(
-    cantidad: 6.5,
-    descripcion: 'OXIND', 
-    numeroEnvase: '3638342Y', 
-    propietario: 'RDQ', 
-    lote: '', 
-    fechaVen: '',  
-    valorUnitario: 70000,
+    id: 1,
+    fechaRemision: '1/12/2002',
+    cantidadEnvases: 10 ,
+    factura: '34454B5',
+    total: 70000,
   ),
   Order(
-    cantidad: 6.5,
-    descripcion: 'OXIND', 
-    numeroEnvase: '3638342Y', 
-    propietario: 'RDQ', 
-    lote: '', 
-    fechaVen: '',  
-    valorUnitario: 70000,
+    id: 1,
+    fechaRemision: '1/12/2002',
+    cantidadEnvases: 10 ,
+    factura: '34454B5',
+    total: 70000,
   ),
-  Order(
-    cantidad: 6.5,
-    descripcion: 'OXIND', 
-    numeroEnvase: '3638342Y', 
-    propietario: 'RDQ', 
-    lote: '', 
-    fechaVen: '',  
-    valorUnitario: 70000,
-  ),
-  Order(
-    
-    cantidad: 6.5,
-    descripcion: 'OXIND', 
-    numeroEnvase: '3638342Y', 
-    propietario: 'RDQ', 
-    lote: '', 
-    fechaVen: '',  
-    valorUnitario: 70000,
-  ),
-
 ];
