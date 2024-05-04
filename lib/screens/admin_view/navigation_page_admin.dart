@@ -2,10 +2,11 @@ import 'package:desktop_app/api/models/User.dart';
 import 'package:desktop_app/components/options.dart';
 import 'package:desktop_app/components/setImgae.dart';
 import 'package:desktop_app/screens/admin_view/dashboard.dart';
-import 'package:desktop_app/screens/admin_view/kardex/kardex.dart';
+import 'package:desktop_app/screens/admin_view/kardex/kardex_screen.dart';
+import 'package:desktop_app/screens/admin_view/purchase/purchase_screen.dart';
 import 'package:desktop_app/screens/admin_view/registerEmployee/managedEmployee.dart';
+import 'package:desktop_app/screens/registerOrder/indexOrder.dart';
 import 'package:desktop_app/screens/registerOrder/registerOrder.dart';
-import 'package:desktop_app/screens/segunda_screen.dart';
 import 'package:desktop_app/utils/myColors.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
@@ -76,7 +77,7 @@ class _NavigationPageAdminState extends State<NavigationPageAdmin> {
                 ),
                 leading: null),
             pane: NavigationPane(
-                size: const NavigationPaneSize(openWidth: 300),
+                size: const NavigationPaneSize(openWidth: 250),
                 header: Padding(
                   padding: const EdgeInsets.only(left: 20),
                   child: DefaultTextStyle(
@@ -100,32 +101,25 @@ class _NavigationPageAdminState extends State<NavigationPageAdmin> {
                       title:
                           const Text("Inicio", style: TextStyle(fontSize: 16))),
                   PaneItemSeparator(),
-                  PaneItemExpander(
-                      icon: const Icon(FluentIcons.business_card),
-                      body: const PrimeraScreen(),
-                      title: const Text("Remision",
-                          style: TextStyle(fontSize: 16)),
-                      items: [
-                        PaneItem(
-                            icon: const Icon(FluentIcons.user_window),
-                            body: const SegundaScreen(),
-                            infoBadge: InfoBadge(source: Text("$num")),
-                            title: const Text("Remisiones registradas",
-                                style: TextStyle(fontSize: 16))),
-                      ]),
-                      PaneItemExpander(
-                      icon: const Icon(FluentIcons.business_card),
-                      body: const PrimeraScreen(),
-                      title: const Text("Recepcion",
-                          style: TextStyle(fontSize: 16)),
-                      items: [
-                        PaneItem(
-                            icon: const Icon(FluentIcons.user_window),
-                            body: const SegundaScreen(),
-                            infoBadge: InfoBadge(source: Text("$num")),
-                            title: const Text("Recepciones registradas",
-                                style: TextStyle(fontSize: 16))),
-                      ]),
+                  // PaneItemExpander(
+                  //     icon: const Icon(FluentIcons.business_card),
+                  //     body: const ShowOrders(),
+                  //     title: const Text("Ventas registradas",
+                  //         style: TextStyle(fontSize: 16)),
+                  //     items: [
+                  //       PaneItem(
+                  //           icon: const Icon(FluentIcons.user_window),
+                  //           body: const RegisterOrder(),
+                  //           infoBadge: InfoBadge(source: Text("$num")),
+                  //           title: const Text("Registrar venta",
+                  //               style: TextStyle(fontSize: 16))),
+                  //     ]),
+                  PaneItem(
+                    icon: const Icon(FluentIcons.business_card),
+                    body: const IndexOrder(),
+                    infoBadge: InfoBadge(source: Text("$num")),
+                    title: const Text("Ventas", style: TextStyle(fontSize: 16)),
+                  ),
                   PaneItem(
                       icon: const Icon(FluentIcons.employee_self_service),
                       body: const ManageEmployee(),
@@ -138,6 +132,12 @@ class _NavigationPageAdminState extends State<NavigationPageAdmin> {
                       infoBadge: InfoBadge(source: Text("$num")),
                       title:
                           const Text("Kardex", style: TextStyle(fontSize: 16))),
+                  PaneItem(
+                      icon: const Icon(FluentIcons.list),
+                      body: const PurchaseScreen(),
+                      infoBadge: InfoBadge(source: Text("$num")),
+                      title: const Text("Compras",
+                          style: TextStyle(fontSize: 16))),
                 ],
                 selected: _countPage,
                 onChanged: (i) {

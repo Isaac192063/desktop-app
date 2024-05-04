@@ -3,7 +3,8 @@ import 'dart:ui';
 import 'package:fluent_ui/fluent_ui.dart';
 
 class Searchbar extends StatefulWidget {
-  const Searchbar({super.key});
+
+  const Searchbar({super.key} );
 
   @override
   State<Searchbar> createState() => _SearchbarState();
@@ -26,14 +27,14 @@ class _SearchbarState extends State<Searchbar> {
     Cat(5, 'American Ringtail', false),
     Cat(6, 'American Shorthair', true),
   ];
-
+  
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 40),
       child: AutoSuggestBox(
           selectionWidthStyle: BoxWidthStyle.max,
-          placeholder: "Buscar en inventario",
+          placeholder: "Buscar en Registro",
           leadingIcon: const Padding(
             padding: EdgeInsets.all(10.0),
             child: Icon(FluentIcons.search),

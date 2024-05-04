@@ -3,20 +3,21 @@ import 'package:desktop_app/components/table.dart';
 import 'package:desktop_app/components/search_bar.dart';
 import 'package:desktop_app/utils/myColors.dart';
 import 'package:fluent_ui/fluent_ui.dart';
+// import 'package:flutter/material.dart';
 
-class PrimeraScreen extends StatefulWidget {
-  const PrimeraScreen({super.key});
+class RegisterOrder extends StatefulWidget {
+  const RegisterOrder({super.key});
 
   @override
-  State<PrimeraScreen> createState() => _nameState();
+  State<RegisterOrder> createState() => _nameState();
 }
 
 
 
-class _nameState extends State<PrimeraScreen> {
+class _nameState extends State<RegisterOrder> {
   Cat? selectedObjectCat;
-  String option = "";
-  List<String> cat = ["Nequi", "Daviplata", "tarjetas de credito"];
+  String? selectedPaymentMethod = "Nequi";
+  List<String> paymentMethods = ["Nequi", "Daviplata", "tarjetas de credito"];
   int numberBoxValueMinMax = 0;
   bool checkedPrice = false;
   bool checkedType = false;
@@ -195,17 +196,17 @@ class _nameState extends State<PrimeraScreen> {
             ),
             Container(
               width: double.infinity,
-              padding: const EdgeInsets.symmetric(horizontal: 8),
               child: ComboBox<String>(
-                value: option,
-                items: cat.map<ComboBoxItem<String>>((String e) {
+                value: selectedPaymentMethod,
+                items: paymentMethods.map<ComboBoxItem<String>>((String e) {
                   return ComboBoxItem<String>(
-                    child: Text(e),
+                    child:Text(e),
+                    value: e,
                   );
                 }).toList(),
-                onChanged: (value) {},
+                onChanged: (paymentMethod) => setState(() => selectedPaymentMethod = paymentMethod),
                 placeholder: const Text(
-                  'Seleccione el metodo de pago',
+                  'Shola',
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
                 ),
               ),
@@ -260,7 +261,7 @@ class _nameState extends State<PrimeraScreen> {
           children: [
             const Searchbar(),
             table(context, 8, headTale, content),
-            detailProduct()
+            // detailProduct()
           ],
         ),
       ),

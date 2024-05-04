@@ -84,7 +84,7 @@ class _NavigationPageState extends State<NavigationPage> {
                 items: [
                   PaneItem(
                     icon: const Icon(FluentIcons.home),
-                    body: const PrimeraScreen(),
+                    body: const RegisterOrder(),
                     title: const Text("Inicio", style: TextStyle(fontSize: 16)),
                   ),
                   PaneItemSeparator(),
