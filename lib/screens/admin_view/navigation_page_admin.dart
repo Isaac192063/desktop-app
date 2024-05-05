@@ -6,7 +6,6 @@ import 'package:desktop_app/screens/admin_view/kardex/kardex_screen.dart';
 // import 'package:desktop_app/screens/admin_view/purchase/purchase_screen.dart';
 import 'package:desktop_app/screens/admin_view/registerEmployee/managedEmployee.dart';
 import 'package:desktop_app/screens/registerOrder/indexOrder.dart';
-import 'package:desktop_app/screens/registerOrder/order_template.dart';
 import 'package:desktop_app/screens/registerOrder/registerOrder.dart';
 import 'package:desktop_app/utils/myColors.dart';
 import 'package:fluent_ui/fluent_ui.dart';

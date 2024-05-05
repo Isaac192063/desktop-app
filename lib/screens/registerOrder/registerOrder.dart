@@ -1,9 +1,7 @@
-import 'dart:ui';
 import 'package:desktop_app/components/table.dart';
 import 'package:desktop_app/components/search_bar.dart';
 import 'package:desktop_app/utils/myColors.dart';
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:flutter/material.dart' as material;
 
 class RegisterOrder extends StatefulWidget {
   const RegisterOrder({super.key});
@@ -16,6 +14,8 @@ class _nameState extends State<RegisterOrder> {
   Cat? selectedObjectCat;
   String? selectedPaymentMethod = "Nequi";
   List<String> paymentMethods = ["Nequi", "Daviplata", "tarjetas de credito"];
+  String? selectedProcess = "Remision";
+  List<String> tipeOfProcesses = ["Remision", "Recepcion"];
   int numberBoxValueMinMax = 0;
   bool checkedPrice = false;
   bool checkedType = false;
@@ -141,12 +141,10 @@ class _nameState extends State<RegisterOrder> {
       width: MediaQuery.of(context).size.width / 3,
       height: MediaQuery.of(context).size.height * 0.8,
       child: Column(
+
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            IconButton(
-                icon: Icon(FluentIcons.arrow_tall_up_left, size: 15),
-                onPressed: () => Navigator.pop(context)),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -193,23 +191,49 @@ class _nameState extends State<RegisterOrder> {
               padding: EdgeInsets.all(10),
               placeholder: 'Direccion',
             ),
-            Container(
-              width: double.infinity,
-              child: ComboBox<String>(
-                value: selectedPaymentMethod,
-                items: paymentMethods.map<ComboBoxItem<String>>((String e) {
-                  return ComboBoxItem<String>(
-                    child: Text(e),
-                    value: e,
-                  );
-                }).toList(),
-                onChanged: (paymentMethod) =>
-                    setState(() => selectedPaymentMethod = paymentMethod),
-                placeholder: const Text(
-                  'Shola',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+            Row(
+              children: [
+                SizedBox(
+                  child: ComboBox<String>(
+                    value: selectedProcess,
+                    items:
+                        tipeOfProcesses.map<ComboBoxItem<String>>((String e) {
+                      return ComboBoxItem<String>(
+                        value: e,
+                        child: Text(e),
+                      );
+                    }).toList(),
+                    onChanged: (process) =>
+                        setState(() => selectedProcess = process),
+                    placeholder: const Text(
+                      'hola',
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                    ),
+                  ),
                 ),
-              ),
+                SizedBox(
+                  width: 2,
+                ),
+                SizedBox(
+                  child: ComboBox<String>(
+                    value: selectedPaymentMethod,
+                    items: paymentMethods.map<ComboBoxItem<String>>((String e) {
+                      return ComboBoxItem<String>(
+                        value: e,
+                        child: Text(e),
+                      );
+                    }).toList(),
+                    onChanged: (paymentMethod) =>
+                        setState(() => selectedPaymentMethod = paymentMethod),
+                    placeholder: const Text(
+                      'hola',
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                    ),
+                  ),
+                ),
+              ],
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
