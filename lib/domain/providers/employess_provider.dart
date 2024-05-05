@@ -24,7 +24,7 @@ class EmployeesProvider extends ChangeNotifier {
       notifyListeners();
     } catch (e) {
       debugPrint(e.toString());
-      throw "Ocurrio un error al traer la lista de los empleaods";
+      // throw "Ocurrio un error al traer la lista de los empleaods";
     }
   }
 }

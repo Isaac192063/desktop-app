@@ -36,12 +36,21 @@ class LogeoController {
       User user = User.fromJson(api2.data);
 
       if (decodeToken["rol"] == "user") {
-        Navigator.push(context,
+        if(!user.enabled){
+          return notification(context, "Usuario no habilitado", "Error", InfoBarSeverity.warning);
+
+        }
+        Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) => NavigationPage(user)));
       } else if (decodeToken["rol"] == "admin") {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => NavigationPageAdmin(user)));
+        Navigator.push(
+            context,
+            PageRouteBuilder(
+              pageBuilder: (context, animation, secondaryAnimation) =>
+                  NavigationPageAdmin(user),
+            ));
       }
     }
   }
 }
+// fernandogmail.com

@@ -21,28 +21,29 @@ class User {
   String email;
   String password;
   String image;
+  bool enabled;
 
-  User({
-    required this.idEmployee,
-    required this.name,
-    required this.lastName,
-    required this.phoneNumber,
-    required this.initialData,
-    required this.email,
-    required this.password,
-    required this.image,
-  });
+  User(
+      {required this.idEmployee,
+      required this.name,
+      required this.lastName,
+      required this.phoneNumber,
+      required this.initialData,
+      required this.email,
+      required this.password,
+      required this.image,
+      required this.enabled});
 
   factory User.fromJson(Map<String, dynamic> json) => User(
-        idEmployee: json["id_user"],
-        name: json["name"],
-        lastName: json["last_name"],
-        phoneNumber: json["phone_number"],
-        initialData: DateTime.parse(json["initial_data"]),
-        email: json["email"],
-        password: json["password"],
-        image: json["image"],
-      );
+      idEmployee: json["id_user"],
+      name: json["name"],
+      lastName: json["last_name"],
+      phoneNumber: json["phone_number"],
+      initialData: DateTime.parse(json["initial_data"]),
+      email: json["email"],
+      password: json["password"],
+      image: json["image"],
+      enabled: json["enabled"]);
 
   Map<String, dynamic> toJson() => {
         "id_employee": idEmployee,
@@ -53,5 +54,6 @@ class User {
         "email": email,
         "password": password,
         "image": image,
+        "enabled": enabled
       };
 }

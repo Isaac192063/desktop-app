@@ -70,4 +70,21 @@ class UserService {
 
     return user;
   }
+
+  Future<ResponseApi> toggleEmploye(String id) async {
+    try {
+      final response = await http.delete(
+        Uri.parse("${Environment.API_RDQ}$_api/$id"),
+        headers: {'Content-type': 'application/json'},
+      );
+
+      final res = jsonDecode(response.body);
+
+      ResponseApi api = ResponseApi.fromJson(res);
+      return api;
+    } catch (e) {
+      return ResponseApi.fromJson(
+          {'success': false, 'message': "ocurrio un error"});
+    }
+  }
 }

@@ -1,6 +1,4 @@
 import 'package:desktop_app/domain/models/User.dart';
-import 'package:desktop_app/config/response_api.dart';
-import 'package:desktop_app/domain/service/user_service.dart';
 import 'package:desktop_app/gui/screens/config%20gui/config_page.dart';
 import 'package:desktop_app/gui/widgets/options.dart';
 import 'package:desktop_app/gui/widgets/setImgae.dart';
@@ -22,31 +20,21 @@ class NavigationPageAdmin extends StatefulWidget {
 
 class _NavigationPageAdminState extends State<NavigationPageAdmin> {
   int _countPage = 0;
-  int _numEmp = 0;
-  int _numOrd = 0;
+  final int _numOrd = 0;
 
   bool loading = true;
   User? userData;
 
   @override
   void initState() {
-    // TODO: implement initState
+    Future.delayed(const Duration(milliseconds: 1200), () {
+      // WidgetsBinding.instance.addPostFrameCallback((timeStamp) {});
+      setState(() {
+        userData = widget.user;
+        loading = false;
+      });
+    });
     super.initState();
-    // Future.delayed(const Duration(milliseconds: 1200), () {
-    setState(() {
-      userData = widget.user;
-      loading = false;
-      count();
-    });
-    // });
-  }
-
-  void count() async {
-    ResponseApi res = await UserService().getAllEmployes();
-    List<User> list = convertToUserList(res.data);
-    setState(() {
-      _numEmp = list.length;
-    });
   }
 
   @override
@@ -128,7 +116,6 @@ class _NavigationPageAdminState extends State<NavigationPageAdmin> {
                   PaneItem(
                       icon: const Icon(FluentIcons.employee_self_service),
                       body: const ManageEmployee(),
-                      infoBadge: InfoBadge(source: Text("$_numEmp")),
                       title: const Text("Empleados",
                           style: TextStyle(fontSize: 16))),
                 ],

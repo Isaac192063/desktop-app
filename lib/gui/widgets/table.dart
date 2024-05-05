@@ -75,8 +75,11 @@ Widget employessTbale(List<User> _users, context) {
       rows: _users
           .map(
             (user) => DataRow(
-              color: MaterialStateColor.resolveWith(
-                  (states) => Color.fromARGB(255, 218, 255, 227)),
+              color: user.enabled
+                  ? MaterialStateColor.resolveWith(
+                      (states) => Color.fromARGB(255, 218, 255, 227))
+                  : MaterialStateColor.resolveWith(
+                      (states) => Color.fromARGB(255, 255, 230, 218)),
               cells: [
                 DataCell(
                   Row(

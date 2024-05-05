@@ -147,7 +147,7 @@ class _MyAppState extends State<ResgisterEmployee> {
     });
     _con!.imagen = result;
     if (result != null) {
-      print(result.path);
+      debugPrint(result.path);
     } else {
       setState(() {
         images = file2;

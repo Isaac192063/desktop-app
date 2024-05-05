@@ -2,10 +2,12 @@ import 'dart:io';
 import 'package:desktop_app/config/environment.dart';
 import 'package:desktop_app/domain/models/User.dart';
 import 'package:desktop_app/config/response_api.dart';
+import 'package:desktop_app/domain/providers/employess_provider.dart';
 import 'package:desktop_app/gui/widgets/notification.dart';
 import 'package:desktop_app/config/dio.dart';
 import 'package:dio/dio.dart';
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:provider/provider.dart';
 
 class RegisterEmployeeController {
   BuildContext? context;
@@ -27,7 +29,7 @@ class RegisterEmployeeController {
       lastNameController.text = user!.lastName;
       emailController.text = user!.email;
       numberPhoneController.text = user!.phoneNumber;
-      passwordController.text = user!.password;
+      passwordController.text = "123456";
     }
   }
 
@@ -84,8 +86,13 @@ class RegisterEmployeeController {
             context!, responseApi.message!, "alerta", InfoBarSeverity.warning);
       }
 
-      // context.
+      context!.read<EmployeesProvider>().setEmployees();
+      Navigator.pop(context!);
+      if (user != null) {
+        return Navigator.pop(context!);
+      }
     } catch (e) {
+      print(e.toString());
       notification(context!, "Error al registrar al empleado", "error",
           InfoBarSeverity.error);
     }

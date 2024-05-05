@@ -24,7 +24,8 @@ User user = User(
     initialData: DateTime.now(),
     email: "gerardo@gmail.com",
     password: "martin",
-    image: "1714011214692.jpg");
+    image: "1714954495197.jpg",
+    enabled: true);
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -32,11 +33,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FluentApp(
-        title: 'Material',
-        debugShowCheckedModeBanner: false,
-        theme: context.watch<ModeContrastProvider>().getMode
-            ? FluentThemeData.dark()
-            : FluentThemeData.light(),
-        home: NavigationPageAdmin(user));
+      title: 'Material',
+      debugShowCheckedModeBanner: false,
+      theme: context.watch<ModeContrastProvider>().getMode
+          ? FluentThemeData.dark()
+          : FluentThemeData.light(),
+      // home: NavigationPageAdmin(user)
+      home: const Logeo(),
+    );
   }
 }

@@ -4,7 +4,6 @@ import 'package:desktop_app/domain/service/user_service.dart';
 import 'package:desktop_app/gui/screens/admin_view/gestion%20empleados/edit_detail_Employee.dart';
 import 'package:desktop_app/gui/widgets/searchEmployee.dart';
 import 'package:desktop_app/gui/widgets/table.dart';
-import 'package:desktop_app/gui/screens/admin_view/gestion%20empleados/registerEmploye/registerEmployee.dart';
 import 'package:desktop_app/gui/screens/admin_view/gestion%20empleados/registerEmploye/registeremployeeController.dart';
 import 'package:desktop_app/gui/widgets/textModified.dart';
 import 'package:fluent_ui/fluent_ui.dart';
@@ -87,7 +86,7 @@ class _ManageEmployeeState extends State<ManageEmployee> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     textModified("Lista de Empleados", 25),
-                    SearchEmployee(),
+                    const SearchEmployee(),
                     SizedBox(
                       width: MediaQuery.of(context).size.width,
                       child: SingleChildScrollView(child: dataInProcess()),
@@ -97,42 +96,13 @@ class _ManageEmployeeState extends State<ManageEmployee> {
                       child: FilledButton(
                           child: const Text("Agregar nuevo empleado"),
                           onPressed: () {
-                            showContentDialogEdit(
+                            EditRegisterEmp(
                                 context, _con, "Registrar nuevo empleado");
                           }),
                     )
                   ]),
             ),
           )),
-    );
-  }
-
-  void showContentDialogEdit(
-      context, RegisterEmployeeController _con, String description) async {
-    await showDialog<String>(
-      context: context,
-      builder: (context) => ContentDialog(
-        constraints: const BoxConstraints(maxHeight: 700, maxWidth: 500),
-        title: Text(description),
-        content: ResgisterEmployee(_con),
-        actions: [
-          Button(
-            child: const Text('Agregar'),
-            onPressed: () {
-              _con.register();
-              // Future.delayed(const Duration(milliseconds: 2000), () {
-              // dataInit();
-              Navigator.pop(context, 'User deleted file');
-              Navigator.pop(context, 'User deleted file');
-              // });
-            },
-          ),
-          FilledButton(
-            child: const Text('Cancelar'),
-            onPressed: () => Navigator.pop(context, 'User canceled dialog'),
-          ),
-        ],
-      ),
     );
   }
 }
