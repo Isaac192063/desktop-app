@@ -1,7 +1,7 @@
 import 'package:desktop_app/api/models/User.dart';
 import 'package:desktop_app/screens/admin_view/navigation_page_admin.dart';
 import 'package:desktop_app/screens/login/logeo.dart';
-import 'package:desktop_app/screens/registerOrder/registerOrder.dart';
+import 'package:desktop_app/screens/orders/registerOrder.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
 void main() => runApp(const MyApp());

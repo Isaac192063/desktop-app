@@ -1,14 +1,17 @@
+import 'package:desktop_app/api/models/Order_model.dart';
 import 'package:desktop_app/api/models/User.dart';
 import 'package:desktop_app/components/popap.dart';
-import 'package:desktop_app/components/productView.dart';
+// import 'package:desktop_app/components/productView.dart';
 import 'package:desktop_app/components/setImgae.dart';
+import 'package:desktop_app/screens/admin_view/kardex/indexkardex.dart';
+// import 'package:desktop_app/screens/registerOrder/showOrder.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-void _navigateToNewScreen(BuildContext context) {
-  Navigator.push(
-      context, MaterialPageRoute(builder: (context) => const ProductView()));
-}
+// void _navigateToNewScreen(BuildContext context) {
+//   Navigator.push(
+//       context, MaterialPageRoute(builder: (context) => const ShowOrder()));
+// }
 
 dynamic rowModified(
     List<String> product, bool styleTitle, BuildContext context) {
@@ -26,8 +29,7 @@ dynamic rowModified(
         child: Material(
           child: InkWell(
             onTap: () {
-              print(product[index]);
-              _navigateToNewScreen(context);
+              
             },
             child: Padding(
               padding: const EdgeInsets.all(8),
@@ -46,18 +48,29 @@ dynamic rowModified(
   );
 }
 
-Widget table(BuildContext context, int numberRows, List<String> header,
-    List<String> content) {
+Widget table(BuildContext context, List<String> header,
+    List<Order> listItems){
   return Center(
       child: Table(
     defaultVerticalAlignment: TableCellVerticalAlignment.middle,
     children: [
       rowModified(header, true, context),
       ...List.generate(
-          numberRows, (index) => rowModified(content, false, context))
+          listItems.length,
+          (index) {
+            final listItem = listItems[index];
+            return TableRow();
+          })
     ],
   ));
 }
+
+
+
+
+
+
+
 
 Widget textModified(String text, double size) {
   return Text(

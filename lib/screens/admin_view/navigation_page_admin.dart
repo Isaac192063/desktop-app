@@ -2,11 +2,11 @@ import 'package:desktop_app/api/models/User.dart';
 import 'package:desktop_app/components/options.dart';
 import 'package:desktop_app/components/setImgae.dart';
 import 'package:desktop_app/screens/admin_view/dashboard.dart';
-import 'package:desktop_app/screens/admin_view/kardex/kardex_screen.dart';
+import 'package:desktop_app/screens/admin_view/kardex/indexkardex.dart';
 // import 'package:desktop_app/screens/admin_view/purchase/purchase_screen.dart';
 import 'package:desktop_app/screens/admin_view/registerEmployee/managedEmployee.dart';
-import 'package:desktop_app/screens/registerOrder/indexOrder.dart';
-import 'package:desktop_app/screens/registerOrder/registerOrder.dart';
+import 'package:desktop_app/screens/orders/indexOrder.dart';
+import 'package:desktop_app/screens/orders/registerOrder.dart';
 import 'package:desktop_app/utils/myColors.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
@@ -130,7 +130,7 @@ class _NavigationPageAdminState extends State<NavigationPageAdmin> {
                           style: TextStyle(fontSize: 16))),
                   PaneItem(
                       icon: const Icon(FluentIcons.list),
-                      body: const Kardex(),
+                      body: const IndexKardex(),
                       infoBadge: InfoBadge(source: Text("$num")),
                       title:
                           const Text("Kardex", style: TextStyle(fontSize: 16))),

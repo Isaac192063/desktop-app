@@ -104,63 +104,7 @@ const orderListItems = <Order>[
     factura: '34454B5',
     total: 70000,
   ),
-  Order(
-    nombreCliente: "Pedro perez",
-    fechaRemision: '1/12/2002',
-    cantidadEnvases: 10 ,
-    factura: '34454B5',
-    total: 70000,
-  ),
-  Order(
-    nombreCliente: "Pedro perez",
-    fechaRemision: '1/12/2002',
-    cantidadEnvases: 10 ,
-    factura: '34454B5',
-    total: 70000,
-  ),
-  Order(
-    nombreCliente: "Pedro perez",
-    fechaRemision: '1/12/2002',
-    cantidadEnvases: 10 ,
-    factura: '34454B5',
-    total: 70000,
-  ),
-  Order(
-    nombreCliente: "Pedro perez",
-    fechaRemision: '1/12/2002',
-    cantidadEnvases: 10 ,
-    factura: '34454B5',
-    total: 70000,
-  ),
-  Order(
-    nombreCliente: "Pedro perez",
-    fechaRemision: '1/12/2002',
-    cantidadEnvases: 10 ,
-    factura: '34454B5',
-    total: 70000,
-  ),
-  Order(
-    nombreCliente: "Pedro perez",
-    fechaRemision: '1/12/2002',
-    cantidadEnvases: 10 ,
-    factura: '34454B5',
-    total: 70000,
-  ),
-  Order(
-    nombreCliente: "Pedro perez",
-    fechaRemision: '1/12/2002',
-    cantidadEnvases: 10 ,
-    factura: '34454B5',
-    total: 70000,
-  ),
-  Order(
-    nombreCliente: "Pedro perez",
-    fechaRemision: '1/12/2002',
-    cantidadEnvases: 10 ,
-    factura: '34454B5',
-    total: 70000,
-  ),
-
+  
   
  
 ];
