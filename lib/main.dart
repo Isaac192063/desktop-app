@@ -13,7 +13,7 @@ User user = User(
     phoneNumber: "31226234631",
     initialData: DateTime.now(),
     email: "gerardo@gmail.com",
-    password: "martin",
+    password: "martin2",
     image: "paisaje-e1549600034372.jpg");
 
 class MyApp extends StatelessWidget {
