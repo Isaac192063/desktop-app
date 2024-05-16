@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget setImage(image, double tam) {
+Widget setImage(String? image, double tam) {
   String img = "";
   if (image == null) {
     img =
@@ -28,4 +28,6 @@ Widget _imageUser(image, double tam) {
   );
 }
 
-String directionImage(String name) => "http://localhost:3000/imgs/$name";
+String directionImage(String? name) => name != null
+    ? "http://localhost:3000/imgs/$name"
+    : "https://i.pinimg.com/474x/0a/08/88/0a0888d8773cdecef58cc33d089ac5df.jpg";

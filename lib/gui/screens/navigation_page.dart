@@ -1,6 +1,8 @@
 import 'package:desktop_app/domain/models/User.dart';
+import 'package:desktop_app/gui/screens/config%20gui/config_page.dart';
+import 'package:desktop_app/gui/screens/orders/registerOrder.dart';
+import 'package:desktop_app/gui/screens/product/Product_page.dart';
 import 'package:desktop_app/gui/widgets/options.dart';
-import 'package:desktop_app/gui/screens/registerOrder/registerOrder.dart';
 import 'package:desktop_app/gui/screens/segunda_screen.dart';
 import 'package:desktop_app/gui/utils/myColors.dart';
 import 'package:fluent_ui/fluent_ui.dart';
@@ -84,7 +86,7 @@ class _NavigationPageState extends State<NavigationPage> {
                 items: [
                   PaneItem(
                     icon: const Icon(FluentIcons.home),
-                    body: const PrimeraScreen(),
+                    body: const RegisterOrder(),
                     title: const Text("Inicio", style: TextStyle(fontSize: 16)),
                   ),
                   PaneItemSeparator(),
@@ -93,14 +95,26 @@ class _NavigationPageState extends State<NavigationPage> {
                       body: const SegundaScreen(),
                       infoBadge: InfoBadge(source: Text("$num")),
                       title: const Text("Compras registradas",
-                          style: TextStyle(fontSize: 16)))
+                          style: TextStyle(fontSize: 16))),
+                  PaneItem(
+                      icon: const Icon(FluentIcons.product),
+                      title: const Text("Productos",
+                          style: TextStyle(fontSize: 16)),
+                      body: const ProductPage())
                 ],
                 selected: _countPage,
                 onChanged: (i) {
                   setState(() {
                     _countPage = i;
                   });
-                }),
+                },
+                footerItems: [
+                  PaneItem(
+                    icon: const Icon(FluentIcons.settings),
+                    title: const Text('Settings'),
+                    body: const ModeContrast(),
+                  ),
+                ]),
           );
   }
 }

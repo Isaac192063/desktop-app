@@ -20,6 +20,12 @@ class _ManageEmployeeState extends State<ManageEmployee> {
   final UserService _prov = UserService();
   List<User>? employess = [];
   final RegisterEmployeeController _con = RegisterEmployeeController();
+  List<String> headersEmployee = [
+    "Nombre Empleado",
+    "fecha inicial",
+    "correo",
+    "telefono"
+  ];
 
   @override
   void initState() {
@@ -68,8 +74,8 @@ class _ManageEmployeeState extends State<ManageEmployee> {
         ? const Center(
             child: ProgressRing(),
           )
-        : employessTbale(
-            context.watch<EmployeesProvider>().getEmployees, context);
+        : employessTbale(context.watch<EmployeesProvider>().getEmployees,
+            headersEmployee, context);
   }
 
   @override

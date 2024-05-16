@@ -13,29 +13,29 @@ List<User> convertToUserList(List<dynamic> userList) {
 }
 
 class User {
-  int idEmployee;
+  int id;
   String name;
   String lastName;
   String phoneNumber;
   DateTime initialData;
   String email;
   String password;
-  String image;
+  String? image;
   bool enabled;
 
   User(
-      {required this.idEmployee,
+      {required this.id,
       required this.name,
       required this.lastName,
       required this.phoneNumber,
       required this.initialData,
       required this.email,
       required this.password,
-      required this.image,
+      this.image,
       required this.enabled});
 
   factory User.fromJson(Map<String, dynamic> json) => User(
-      idEmployee: json["id_user"],
+      id: json["id"],
       name: json["name"],
       lastName: json["last_name"],
       phoneNumber: json["phone_number"],
@@ -46,7 +46,7 @@ class User {
       enabled: json["enabled"]);
 
   Map<String, dynamic> toJson() => {
-        "id_employee": idEmployee,
+        "id": id,
         "name": name,
         "last_name": lastName,
         "phone_number": phoneNumber,

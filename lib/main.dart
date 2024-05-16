@@ -17,14 +17,14 @@ void main() {
 
 // usuario de ejemplo
 User user = User(
-    idEmployee: 1,
+    id: 1,
     name: "gerardo",
     lastName: "duarte",
     phoneNumber: "31226234631",
     initialData: DateTime.now(),
     email: "gerardo@gmail.com",
     password: "martin",
-    image: "1714954495197.jpg",
+    image: "1716681658040.jpg",
     enabled: true);
 
 class MyApp extends StatelessWidget {
@@ -33,13 +33,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FluentApp(
-      title: 'Material',
-      debugShowCheckedModeBanner: false,
-      theme: context.watch<ModeContrastProvider>().getMode
-          ? FluentThemeData.dark()
-          : FluentThemeData.light(),
-      // home: NavigationPageAdmin(user)
-      home: const Logeo(),
-    );
+        title: 'Material',
+        debugShowCheckedModeBanner: false,
+        theme: context.watch<ModeContrastProvider>().getMode
+            ? FluentThemeData.dark()
+            : FluentThemeData.light(),
+        home: NavigationPageAdmin(user)
+        // home: const Logeo(),
+        );
   }
 }

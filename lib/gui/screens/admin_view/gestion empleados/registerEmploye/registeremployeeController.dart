@@ -67,7 +67,7 @@ class RegisterEmployeeController {
       if (user == null) {
         res = await dio.post("${Environment.API_RDQ}/user", data: formData);
       } else {
-        res = await dio.put("${Environment.API_RDQ}/user/${user?.idEmployee}",
+        res = await dio.put("${Environment.API_RDQ}/user/${user?.id}",
             data: formData);
       }
 

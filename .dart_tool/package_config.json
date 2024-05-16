@@ -44,6 +44,12 @@
       "languageVersion": "2.15"
     },
     {
+      "name": "equatable",
+      "rootUri": "file:///C:/Users/Asus/AppData/Local/Pub/Cache/hosted/pub.dev/equatable-2.0.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "fake_async",
       "rootUri": "file:///C:/Users/Asus/AppData/Local/Pub/Cache/hosted/pub.dev/fake_async-1.3.1",
       "packageUri": "lib/",
@@ -60,6 +66,12 @@
       "rootUri": "file:///C:/Users/Asus/AppData/Local/Pub/Cache/hosted/pub.dev/filepicker_windows-2.0.11",
       "packageUri": "lib/",
       "languageVersion": "3.1"
+    },
+    {
+      "name": "fl_chart",
+      "rootUri": "file:///C:/Users/Asus/AppData/Local/Pub/Cache/hosted/pub.dev/fl_chart-0.68.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
     },
     {
       "name": "fluent_ui",
@@ -266,7 +278,7 @@
       "languageVersion": "3.1"
     }
   ],
-  "generated": "2024-05-06T03:05:12.353126Z",
+  "generated": "2024-05-25T23:56:08.894481Z",
   "generator": "pub",
   "generatorVersion": "3.3.4"
 }

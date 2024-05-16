@@ -1,4 +1,8 @@
+import 'dart:async';
 import 'dart:ui';
+import 'package:desktop_app/domain/models/Product.dart';
+import 'package:desktop_app/domain/service/Product_service.dart';
+import 'package:desktop_app/gui/screens/product/ProductController.dart';
 import 'package:desktop_app/gui/widgets/table.dart';
 import 'package:desktop_app/gui/utils/myColors.dart';
 import 'package:fluent_ui/fluent_ui.dart';
@@ -19,19 +23,20 @@ class Cat {
 }
 
 class _nameState extends State<PrimeraScreen> {
-  Cat? selectedObjectCat;
   String option = "";
   List<String> cat = ["Nequi", "Daviplata", "tarjetas de credito"];
   int numberBoxValueMinMax = 0;
   bool checkedPrice = false;
   bool checkedType = false;
   List<String> headTale = ["Serial", "tipo de producto", "Precio"];
-  List<String> content = ["text", "text", "text"];
   List<String> serial = [
     "Serial",
     "tipo ",
   ];
   List<String> tipoproduct = ["text", "text"];
+
+  late Future<List<Product>> content;
+  List<Product> productSelected = [];
 
   List<Cat> objectCats = [
     Cat(1, 'Abyssinian', true),
@@ -43,16 +48,28 @@ class _nameState extends State<PrimeraScreen> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    content = ProductController().getAllProducts();
+  }
+
+  void updateListProduct(Product prod) {
+    if (productSelected.contains(prod)) {
+      productSelected.remove(prod);
+    } else {
+      productSelected.add(prod);
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return ScaffoldPage(
         padding: EdgeInsets.zero,
         content: Container(
           color: MyColor.primaryKey,
-          child: SingleChildScrollView(
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [registroCompra(), inventario()]),
-          ),
+          child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [registroCompra(), inventario()]),
         ));
   }
 
@@ -105,8 +122,13 @@ class _nameState extends State<PrimeraScreen> {
               Container(
                   margin: const EdgeInsets.only(bottom: 10, top: 20),
                   child: textModified("productos Seleccionados", 16)),
-              Container(
-                  width: 200, child: table(context, 2, serial, tipoproduct)),
+              // ListView.builder(
+              //   itemCount: productSelected.length,
+              //   prototypeItem: ListTile(title: Text("producto")),
+              //   itemBuilder: (context, index) {
+              //     return Text(productSelected[index].content!.name!);
+              //   },
+              // ),
               Container(
                 margin: const EdgeInsets.all(15.0),
                 child: button("modificar peiddos", () {}),
@@ -294,8 +316,28 @@ class _nameState extends State<PrimeraScreen> {
                       .toList(),
                   onSelected: null),
             ),
-            table(context, 8, headTale, content),
-            detailProduct()
+            SizedBox(
+                width: MediaQuery.of(context).size.width,
+                height: 400,
+                child: FutureBuilder(
+                  future: content,
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      List<Product>? p = snapshot.data;
+                      return TableProduct(
+                          updateListProduct, p!, productSelected);
+                    } else if (snapshot.hasError) {
+                      return Text('${snapshot.error}');
+                    }
+
+                    return const ProgressBar();
+                  },
+                )),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: button("Agregar Envases", () {}),
+            ),
+            detailProduct(),
           ],
         ),
       ),

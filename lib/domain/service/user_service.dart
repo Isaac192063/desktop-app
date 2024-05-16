@@ -3,12 +3,10 @@ import 'dart:convert';
 import 'package:desktop_app/config/environment.dart';
 import 'package:desktop_app/domain/models/User.dart';
 import 'package:desktop_app/config/response_api.dart';
-import 'package:fluent_ui/fluent_ui.dart';
 import 'package:http/http.dart' as http;
 
 class UserService {
   final String _api = "/user";
-  BuildContext? context;
 
   Future<ResponseApi> login(String email, String password) async {
     try {
@@ -50,7 +48,7 @@ class UserService {
         Uri.parse("${Environment.API_RDQ}$_api/emp"),
         headers: {'Content-type': 'application/json'},
       );
-      final data = jsonDecode(res.body);
+      final data = json.decode(res.body);
       ResponseApi responseApi = ResponseApi.fromJson(data);
       return responseApi;
     } catch (e) {

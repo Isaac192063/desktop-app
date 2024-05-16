@@ -1,10 +1,16 @@
 import 'package:desktop_app/domain/models/User.dart';
+import 'package:desktop_app/gui/screens/admin_view/dashboard.dart';
+import 'package:desktop_app/gui/screens/admin_view/dashboard/main_screen.dart';
+import 'package:desktop_app/gui/screens/admin_view/dashboard/widgets/dashboard_widget.dart';
+import 'package:desktop_app/gui/screens/admin_view/kardex/indexkardex.dart';
 import 'package:desktop_app/gui/screens/config%20gui/config_page.dart';
+import 'package:desktop_app/gui/screens/orders/indexOrder.dart';
+import 'package:desktop_app/gui/screens/orders/registerOrder.dart';
+import 'package:desktop_app/gui/screens/product/Product_page.dart';
+import 'package:desktop_app/gui/screens/registerOrder/registerOrder.dart';
 import 'package:desktop_app/gui/widgets/options.dart';
 import 'package:desktop_app/gui/widgets/setImgae.dart';
-import 'package:desktop_app/gui/screens/admin_view/dashboard/kardex.dart';
 import 'package:desktop_app/gui/screens/admin_view/gestion%20empleados/managedEmployee.dart';
-import 'package:desktop_app/gui/screens/registerOrder/registerOrder.dart';
 import 'package:desktop_app/gui/screens/segunda_screen.dart';
 import 'package:desktop_app/gui/utils/myColors.dart';
 import 'package:fluent_ui/fluent_ui.dart';
@@ -44,7 +50,7 @@ class _NavigationPageAdminState extends State<NavigationPageAdmin> {
             color: Colors.white,
             width: double.infinity,
             height: double.infinity,
-            child: Center(child: const ProgressRing()))
+            child: const Center(child: ProgressRing()))
         : NavigationView(
             appBar: NavigationAppBar(
                 height: 50,
@@ -66,7 +72,8 @@ class _NavigationPageAdminState extends State<NavigationPageAdmin> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Image(image: AssetImage("assets/imgs/icon_rdq.png")),
+                      const Image(
+                          image: AssetImage("assets/imgs/icon_rdq.png")),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 20.0, vertical: 8),
@@ -97,16 +104,23 @@ class _NavigationPageAdminState extends State<NavigationPageAdmin> {
                 items: [
                   PaneItem(
                       icon: const Icon(FluentIcons.b_i_dashboard),
-                      body: const kardex(),
+                      body: const MainScreen(),
                       title:
                           const Text("Inicio", style: TextStyle(fontSize: 16))),
                   PaneItemSeparator(),
-                  PaneItem(
-                    icon: const Icon(FluentIcons.business_card),
-                    body: const PrimeraScreen(),
-                    title: const Text("Registrar compra",
-                        style: TextStyle(fontSize: 16)),
-                  ),
+                  PaneItemExpander(
+                      icon: const Icon(FluentIcons.business_card),
+                      body: const IndexOrder(),
+                      title: const Text("Ventas registradas",
+                          style: TextStyle(fontSize: 16)),
+                      items: [
+                        PaneItem(
+                            icon: const Icon(FluentIcons.user_window),
+                            body: const PrimeraScreen(),
+                            // infoBadge: InfoBadge(source: Text("$")),
+                            title: const Text("Registrar venta",
+                                style: TextStyle(fontSize: 16))),
+                      ]),
                   PaneItem(
                       icon: const Icon(FluentIcons.user_window),
                       body: const SegundaScreen(),
@@ -118,6 +132,16 @@ class _NavigationPageAdminState extends State<NavigationPageAdmin> {
                       body: const ManageEmployee(),
                       title: const Text("Empleados",
                           style: TextStyle(fontSize: 16))),
+                  PaneItem(
+                      icon: const Icon(FluentIcons.list),
+                      body: const IndexKardex(),
+                      title:
+                          const Text("Kardex", style: TextStyle(fontSize: 16))),
+                  PaneItem(
+                      icon: const Icon(FluentIcons.product),
+                      title: const Text("Productos",
+                          style: TextStyle(fontSize: 16)),
+                      body: const ProductPage())
                 ],
                 selected: _countPage,
                 onChanged: (i) {

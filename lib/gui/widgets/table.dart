@@ -1,3 +1,7 @@
+import 'dart:async';
+
+import 'package:desktop_app/domain/models/Product.dart';
+import 'package:desktop_app/domain/models/Product_model.dart';
 import 'package:desktop_app/domain/models/User.dart';
 import 'package:desktop_app/gui/widgets/textModified.dart';
 import 'package:desktop_app/gui/widgets/productView.dart';
@@ -12,7 +16,7 @@ void _navigateToNewScreen(BuildContext context) {
 }
 
 dynamic rowModified(
-    List<String> product, bool styleTitle, BuildContext context) {
+    List<Product> product, bool styleTitle, BuildContext context) {
   return TableRow(
     decoration: const BoxDecoration(
       color: Colors.white,
@@ -33,7 +37,7 @@ dynamic rowModified(
             child: Padding(
               padding: const EdgeInsets.all(8),
               child: Text(
-                product[index],
+                product[index].supplier!,
                 style: TextStyle(
                   fontWeight: styleTitle ? FontWeight.bold : null,
                   fontSize: 16,
@@ -48,31 +52,29 @@ dynamic rowModified(
 }
 
 Widget table(BuildContext context, int numberRows, List<String> header,
-    List<String> content) {
+    List<Product> content) {
   return Center(
       child: Table(
     defaultVerticalAlignment: TableCellVerticalAlignment.middle,
     children: [
-      rowModified(header, true, context),
+      rowModified(content, true, context),
       ...List.generate(
-          numberRows, (index) => rowModified(content, false, context))
+          content.length, (index) => rowModified(content, false, context))
     ],
   ));
 }
 
-Widget employessTbale(List<User> _users, context) {
+Widget employessTbale(List<User> users, List<String> headers, context) {
   return Material(
     borderRadius: BorderRadius.circular(10),
     child: DataTable(
       checkboxHorizontalMargin: 40,
       dataRowHeight: 80,
       columns: [
-        DataColumn(label: textModified('Nombre Empleado', 20)),
-        DataColumn(label: textModified('Fecha inical', 20)),
-        DataColumn(label: textModified('correo', 20)),
-        DataColumn(label: textModified('telefono', 20)),
+        ...List.generate(headers.length,
+            (index) => DataColumn(label: textModified(headers[index], 20)))
       ],
-      rows: _users
+      rows: users
           .map(
             (user) => DataRow(
               color: user.enabled
@@ -113,4 +115,124 @@ Widget employessTbale(List<User> _users, context) {
           .toList(),
     ),
   );
+}
+
+DataColumn tableHeaderColumn(String text, double size) {
+  return DataColumn(
+      label: Flexible(
+          child: Wrap(
+    children: [
+      Text(
+        text,
+        softWrap: true,
+        style: TextStyle(fontSize: size, fontWeight: FontWeight.w600),
+      )
+    ],
+  )));
+}
+
+Widget productTable(List<Product> product, List<String> headers, context) {
+  return Material(
+    borderRadius: BorderRadius.circular(10),
+    child: DataTable(
+      checkboxHorizontalMargin: 40,
+      dataRowHeight: 80,
+      columns: [
+        ...List.generate(headers.length,
+            (index) => DataColumn(label: textModified(headers[index], 20)))
+      ],
+      rows: product
+          .map(
+            (user) => DataRow(
+              cells: [
+                DataCell(Text(user.idPackaging!)),
+                DataCell(Text(user.typePackaging!.color!)),
+                DataCell(Text(user.typePackaging!.price!.toString())),
+              ],
+            ),
+          )
+          .toList(),
+    ),
+  );
+}
+
+class TableProduct extends StatefulWidget {
+  final List<Product> prods;
+  final List<Product> prodsSelected;
+  final Function(Product) notifyParent;
+
+  const TableProduct(this.notifyParent, this.prods, this.prodsSelected,
+      {super.key});
+
+  @override
+  State<TableProduct> createState() => _nameState();
+}
+
+class _nameState extends State<TableProduct> {
+  late List<bool> selected;
+
+  late List<Product> listProducts;
+
+  @override
+  void initState() {
+    super.initState();
+    listProducts = widget.prods;
+    selected = List<bool>.generate(listProducts.length, (int index) => false);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width,
+          child: DataTable(
+            columns: const <DataColumn>[
+              DataColumn(
+                label: Text('Serial'),
+              ),
+              DataColumn(
+                label: Text('Tipo de envase'),
+              ),
+              DataColumn(
+                label: Text('Precio'),
+              ),
+            ],
+            rows: List<DataRow>.generate(
+              listProducts.length,
+              (int index) => DataRow(
+                color: MaterialStateProperty.resolveWith<Color?>(
+                    (Set<MaterialState> states) {
+                  if (states.contains(MaterialState.selected)) {
+                    return Theme.of(context)
+                        .colorScheme
+                        .primary
+                        .withOpacity(0.08);
+                  }
+                  if (index.isEven) {
+                    return Colors.grey.withOpacity(0.3);
+                  }
+                  return null;
+                }),
+                cells: <DataCell>[
+                  DataCell(Text(listProducts[index].idPackaging!)),
+                  DataCell(Text(listProducts[index].content!.name!)),
+                  DataCell(Text((listProducts[index].typePackaging!.price! +
+                          listProducts[index].content!.price!)
+                      .toString()))
+                ],
+                selected: selected[index],
+                onSelectChanged: (bool? value) {
+                  setState(() {
+                    widget.notifyParent(listProducts[index]);
+                    selected[index] = value!;
+                  });
+                },
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 }

@@ -30,15 +30,16 @@ class LogeoController {
       Map<String, dynamic> decodeToken = Jwt.parseJwt(api.token!);
 
       notification(context, api.message!, "Success", InfoBarSeverity.success);
+
       int id = decodeToken["id"];
 
       ResponseApi api2 = await UserService().userById(id.toString());
       User user = User.fromJson(api2.data);
 
       if (decodeToken["rol"] == "user") {
-        if(!user.enabled){
-          return notification(context, "Usuario no habilitado", "Error", InfoBarSeverity.warning);
-
+        if (!user.enabled) {
+          return notification(context, "Usuario no habilitado", "Error",
+              InfoBarSeverity.warning);
         }
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) => NavigationPage(user)));

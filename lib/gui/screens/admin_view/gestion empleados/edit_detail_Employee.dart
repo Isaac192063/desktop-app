@@ -2,6 +2,7 @@ import 'package:desktop_app/config/response_api.dart';
 import 'package:desktop_app/domain/models/User.dart';
 import 'package:desktop_app/domain/providers/employess_provider.dart';
 import 'package:desktop_app/domain/service/user_service.dart';
+import 'package:desktop_app/gui/utils/myColors.dart';
 import 'package:desktop_app/gui/widgets/notification.dart';
 import 'package:desktop_app/gui/widgets/setImgae.dart';
 import 'package:desktop_app/gui/screens/admin_view/gestion%20empleados/registerEmploye/registerEmployee.dart';
@@ -30,7 +31,7 @@ void detalleEmployee(context, User user) async {
   await showDialog<String>(
     context: context,
     builder: (context) => ContentDialog(
-      constraints: const BoxConstraints(maxHeight: 500, maxWidth: 500),
+      constraints: const BoxConstraints(maxHeight: 550, maxWidth: 500),
       title: const Text('Detalles del empleado'),
       content: viewInformation(context, user),
       actions: [
@@ -38,73 +39,87 @@ void detalleEmployee(context, User user) async {
             context,
             "Editar",
             () => EditRegisterEmp(context, con, "Editar empleado"),
-            Color.fromARGB(255, 63, 89, 194)),
+            MyColor.btnAcep),
         button(
             context,
             "Cancelar",
             () => Navigator.pop(context, 'User canceled dialog'),
-            Color.fromARGB(255, 218, 20, 20))
+            MyColor.btnCancel)
       ],
     ),
   );
 }
 
-Widget viewInformation(BuildContext context, User user) {
-  return Column(
-    children: [
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          CircleAvatar(
-            backgroundImage: NetworkImage(directionImage(user.image)),
-            radius: 80,
-          ),
-          Column(
+setEstateEmployee(BuildContext context, String id) async {
+  ResponseApi res = await UserService().toggleEmploye(id);
+
+  context.read<EmployeesProvider>().setEmployees();
+
+  if (res.success == true) {
+    notification(
+        context, "Empleado inhabilitado", "success", InfoBarSeverity.success);
+  } else {
+    notification(context, "Error al registrar al empleado", "error",
+        InfoBarSeverity.error);
+  }
+  Navigator.pop(context);
+}
+
+Widget viewInformation(context, User user) {
+  return SingleChildScrollView(
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          color: MyColor.primaryKey,
+          padding: const EdgeInsetsDirectional.all(10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              textModified("${user.name} ${user.lastName}", 24),
-              textModified(user.email, 20),
-              FilledButton(
-                  child: user.enabled
-                      ? textModified("inhabilitar", 16)
-                      : textModified("habilitar", 16),
-                  onPressed: () async {
-                    ResponseApi res = await UserService()
-                        .toggleEmploye(user.idEmployee.toString());
-
-                    context.read<EmployeesProvider>().setEmployees();
-
-                    if (res.success == true) {
-                      notification(context, "Empleado inhabilitado", "success",
-                          InfoBarSeverity.success);
-                    } else {
-                      notification(context, "Error al registrar al empleado",
-                          "error", InfoBarSeverity.error);
-                    }
-                    Navigator.pop(context);
-                  })
+              CircleAvatar(
+                radius: 82,
+                backgroundColor: Colors.green,
+                child: CircleAvatar(
+                  backgroundImage: NetworkImage(directionImage(user.image)),
+                  radius: 80,
+                ),
+              ),
+              Row(
+                children: [
+                  FilledButton(
+                      child: user.enabled
+                          ? textModified("inhabilitar", 16)
+                          : textModified("habilitar", 16),
+                      onPressed: () {
+                        setEstateEmployee(context, user.id.toString());
+                      }),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Icon(
+                      FluentIcons.create_mail_rule,
+                      size: 30,
+                    ),
+                  )
+                ],
+              ),
             ],
           ),
-        ],
-      ),
-      Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 35.0, vertical: 20),
-        child: Row(
-          children: [
-            textModified("telefono: ", 15),
-            textModified(user.phoneNumber, 15),
-          ],
         ),
-      ),
-      Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 35.0, vertical: 10),
-        child: Row(
-          children: [
-            textModified("fecha de ingreso: ", 15),
-            textModified(DateFormat("yyyy-MM-dd").format(user.initialData), 15),
-          ],
+        textModified("${user.name} ${user.lastName}", 28),
+        textModified(user.email, 16,
+            color: const Color.fromARGB(255, 123, 123, 123)),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20),
+          child: textModified("cel: 📞+57 ${user.phoneNumber}", 18),
         ),
-      ),
-    ],
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          child: textModified(
+              "Fecha: 📅 ${DateFormat("yyyy-MM-dd").format(user.initialData)}",
+              18),
+        ),
+      ],
+    ),
   );
 }
 
@@ -117,20 +132,12 @@ void EditRegisterEmp(
       title: Text(description),
       content: ResgisterEmployee(con),
       actions: [
-        Button(
-          child: const Text('Agregar'),
-          onPressed: () {
-            con.register();
-            // Future.delayed(const Duration(milliseconds: 2000), () {
-            // dataInit();
-
-            // });
-          },
-        ),
-        FilledButton(
-          child: const Text('Cancelar'),
-          onPressed: () => Navigator.pop(context, 'User canceled dialog'),
-        ),
+        button(context, description, () => con.register(), MyColor.btnAcep),
+        button(
+            context,
+            "cancelar",
+            () => Navigator.pop(context, 'User canceled dialog'),
+            MyColor.btnCancel),
       ],
     ),
   );
