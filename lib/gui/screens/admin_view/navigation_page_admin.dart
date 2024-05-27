@@ -1,19 +1,17 @@
 import 'package:desktop_app/domain/models/User.dart';
-import 'package:desktop_app/gui/screens/admin_view/dashboard.dart';
+import 'package:desktop_app/domain/providers/mode_contrast_provider.dart';
 import 'package:desktop_app/gui/screens/admin_view/dashboard/main_screen.dart';
-import 'package:desktop_app/gui/screens/admin_view/dashboard/widgets/dashboard_widget.dart';
 import 'package:desktop_app/gui/screens/admin_view/kardex/indexkardex.dart';
 import 'package:desktop_app/gui/screens/config%20gui/config_page.dart';
 import 'package:desktop_app/gui/screens/orders/indexOrder.dart';
-import 'package:desktop_app/gui/screens/orders/registerOrder.dart';
 import 'package:desktop_app/gui/screens/product/Product_page.dart';
 import 'package:desktop_app/gui/screens/registerOrder/registerOrder.dart';
 import 'package:desktop_app/gui/widgets/options.dart';
 import 'package:desktop_app/gui/widgets/setImgae.dart';
 import 'package:desktop_app/gui/screens/admin_view/gestion%20empleados/managedEmployee.dart';
-import 'package:desktop_app/gui/screens/segunda_screen.dart';
 import 'package:desktop_app/gui/utils/myColors.dart';
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:provider/provider.dart';
 
 class NavigationPageAdmin extends StatefulWidget {
   final User user;
@@ -62,11 +60,17 @@ class _NavigationPageAdminState extends State<NavigationPageAdmin> {
                     gradient: LinearGradient(
                       begin: Alignment.centerLeft,
                       end: Alignment.centerRight,
-                      colors: [
-                        Colors.white,
-                        MyColor.btnClaroColor,
-                        MyColor.btnClaroColor,
-                      ],
+                      colors: context.watch<ModeContrastProvider>().getMode
+                          ? [
+                              Colors.black,
+                              MyColor.btnOscuroColor,
+                              MyColor.btnOscuroColor,
+                            ]
+                          : [
+                              Colors.white,
+                              MyColor.btnClaroColor,
+                              MyColor.btnClaroColor,
+                            ],
                     ),
                   ),
                   child: Row(
@@ -117,16 +121,15 @@ class _NavigationPageAdminState extends State<NavigationPageAdmin> {
                         PaneItem(
                             icon: const Icon(FluentIcons.user_window),
                             body: const PrimeraScreen(),
-                            // infoBadge: InfoBadge(source: Text("$")),
                             title: const Text("Registrar venta",
                                 style: TextStyle(fontSize: 16))),
                       ]),
-                  PaneItem(
-                      icon: const Icon(FluentIcons.user_window),
-                      body: const SegundaScreen(),
-                      infoBadge: InfoBadge(source: Text("$_numOrd")),
-                      title: const Text("Compras registradas",
-                          style: TextStyle(fontSize: 16))),
+                  // PaneItem(
+                  //     icon: const Icon(FluentIcons.user_window),
+                  //     body: const SegundaScreen(),
+                  //     infoBadge: InfoBadge(source: Text("$_numOrd")),
+                  //     title: const Text("Compras registradas",
+                  //         style: TextStyle(fontSize: 16))),
                   PaneItem(
                       icon: const Icon(FluentIcons.employee_self_service),
                       body: const ManageEmployee(),

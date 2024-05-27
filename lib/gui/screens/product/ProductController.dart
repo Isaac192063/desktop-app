@@ -1,20 +1,46 @@
 import 'package:desktop_app/config/response_api.dart';
 import 'package:desktop_app/domain/models/Product.dart';
 import 'package:desktop_app/domain/service/Product_service.dart';
+import 'package:flutter/material.dart';
 
 class ProductController {
   final Productservice _producService = Productservice();
+  TextEditingController cod = TextEditingController();
+  TextEditingController owner = TextEditingController();
+  TypePackaging? typePackaging;
+  Content? content;
+  DateTime? time;
 
-  Future<List<Product>> getAllProducts() async {
+  Future<List<Packaging>> getAllProduct() async {
     try {
       ResponseApi api = await _producService.getAllProducts();
-      List prods = api.data;
-      List<Product> listProducts =
-          prods.map((e) => Product.fromJson(e)).toList();
-
-      return listProducts;
+      List data = api.data;
+      List<Packaging> listPackagings =
+          data.map((e) => Packaging.fromJson(e)).toList();
+      return listPackagings;
     } catch (e) {
       return [];
+    }
+  }
+
+  void registerPackaging() async {
+    print(cod.text);
+    print(owner.text);
+    print(typePackaging);
+    print(content);
+    print(time);
+
+    try {
+      Packaging packaging = Packaging(
+          id: cod.text,
+          hydrostaticDate: time!.toIso8601String(),
+          owner: owner.text,
+          content: content,
+          typePackaging: typePackaging);
+      ResponseApi api = await _producService.newPackgagin(packaging);
+      print(api.success);
+    } catch (e) {
+      print(e);
     }
   }
 }

@@ -1,5 +1,6 @@
 import 'package:desktop_app/domain/models/User.dart';
 import 'package:desktop_app/domain/providers/employess_provider.dart';
+import 'package:desktop_app/domain/service/excel_user_service.dart';
 import 'package:desktop_app/domain/service/user_service.dart';
 import 'package:desktop_app/gui/screens/admin_view/gestion%20empleados/edit_detail_Employee.dart';
 import 'package:desktop_app/gui/widgets/searchEmployee.dart';
@@ -18,6 +19,8 @@ class ManageEmployee extends StatefulWidget {
 
 class _ManageEmployeeState extends State<ManageEmployee> {
   final UserService _prov = UserService();
+  final ExceluserService _exceluserService = ExceluserService();
+
   List<User>? employess = [];
   final RegisterEmployeeController _con = RegisterEmployeeController();
   List<String> headersEmployee = [
@@ -33,6 +36,7 @@ class _ManageEmployeeState extends State<ManageEmployee> {
     _con.init(context);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       context.read<EmployeesProvider>().setEmployees();
+      _exceluserService.context = context;
     });
   }
 
@@ -104,6 +108,14 @@ class _ManageEmployeeState extends State<ManageEmployee> {
                           onPressed: () {
                             EditRegisterEmp(
                                 context, _con, "Registrar nuevo empleado");
+                          }),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: FilledButton(
+                          child: const Text("Descargar excel"),
+                          onPressed: () {
+                            _exceluserService.dowloadUsers();
                           }),
                     )
                   ]),

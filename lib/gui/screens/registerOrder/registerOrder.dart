@@ -35,8 +35,8 @@ class _nameState extends State<PrimeraScreen> {
   ];
   List<String> tipoproduct = ["text", "text"];
 
-  late Future<List<Product>> content;
-  List<Product> productSelected = [];
+  // late Future<List<Product>> content;
+  // List<Product> productSelected = [];
 
   List<Cat> objectCats = [
     Cat(1, 'Abyssinian', true),
@@ -50,16 +50,16 @@ class _nameState extends State<PrimeraScreen> {
   @override
   void initState() {
     super.initState();
-    content = ProductController().getAllProducts();
+    // content = ProductController().getAllProducts();
   }
 
-  void updateListProduct(Product prod) {
-    if (productSelected.contains(prod)) {
-      productSelected.remove(prod);
-    } else {
-      productSelected.add(prod);
-    }
-  }
+  // void updateListProduct(Product prod) {
+  //   if (productSelected.contains(prod)) {
+  //     productSelected.remove(prod);
+  //   } else {
+  //     productSelected.add(prod);
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -316,23 +316,23 @@ class _nameState extends State<PrimeraScreen> {
                       .toList(),
                   onSelected: null),
             ),
-            SizedBox(
-                width: MediaQuery.of(context).size.width,
-                height: 400,
-                child: FutureBuilder(
-                  future: content,
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      List<Product>? p = snapshot.data;
-                      return TableProduct(
-                          updateListProduct, p!, productSelected);
-                    } else if (snapshot.hasError) {
-                      return Text('${snapshot.error}');
-                    }
+            // SizedBox(
+            //     width: MediaQuery.of(context).size.width,
+            //     height: 400,
+            //     child: FutureBuilder(
+            //       future: content,
+            //       builder: (context, snapshot) {
+            //         if (snapshot.hasData) {
+            //           List<Product>? p = snapshot.data;
+            //           return TableProduct(
+            //               updateListProduct, p!, productSelected);
+            //         } else if (snapshot.hasError) {
+            //           return Text('${snapshot.error}');
+            //         }
 
-                    return const ProgressBar();
-                  },
-                )),
+            //         return const ProgressBar();
+            //       },
+            //     )),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: button("Agregar Envases", () {}),

@@ -17,7 +17,7 @@ class LineChartCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Steps Overview",
+            "Reporte del historial de ventas",
             style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
           ),
           const SizedBox(height: 20),
@@ -83,7 +83,7 @@ class LineChartCard extends StatelessWidget {
                       ),
                       show: true,
                     ),
-                    dotData: FlDotData(show: false),
+                    dotData: const FlDotData(show: false),
                     spots: data.spots,
                   )
                 ],

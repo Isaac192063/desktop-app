@@ -38,11 +38,13 @@ dependencies:
   fluent_ui: ^4.8.6
   dio: ^5.4.2+1
   http: ^1.1.0
+  path_provider: ^2.0.7
   jwt_decode: ^0.3.1
   filepicker_windows: ^2.0.11
   intl: ^0.18.1
   provider: ^6.1.2
   fl_chart: ^0.68.0
+  path_provider_windows: ^2.2.1
 
 dev_dependencies:
   flutter_test:

@@ -1,32 +1,27 @@
-import 'dart:ffi';
-
-class Product {
-  String? idPackaging;
+class Packaging {
+  String? id;
   String? hydrostaticDate;
-  int? stock;
-  String? supplier;
-  int? idContent;
-  int? idTypePackaging;
+  String? owner;
+  int? cttId;
+  int? tpgCod;
   Content? content;
   TypePackaging? typePackaging;
 
-  Product(
-      {this.idPackaging,
+  Packaging(
+      {this.id,
       this.hydrostaticDate,
-      this.stock,
-      this.supplier,
-      this.idContent,
-      this.idTypePackaging,
+      this.owner,
+      this.cttId,
+      this.tpgCod,
       this.content,
       this.typePackaging});
 
-  Product.fromJson(Map<String, dynamic> json) {
-    idPackaging = json['id_packaging'];
+  Packaging.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
     hydrostaticDate = json['hydrostatic_date'];
-    stock = json['stock'];
-    supplier = json['supplier'];
-    idContent = json['idContent'];
-    idTypePackaging = json['idTypePackaging'];
+    owner = json['owner'];
+    cttId = json['ctt_id'];
+    tpgCod = json['tpg_cod'];
     content =
         json['content'] != null ? new Content.fromJson(json['content']) : null;
     typePackaging = json['typePackaging'] != null
@@ -36,12 +31,11 @@ class Product {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id_packaging'] = this.idPackaging;
+    data['id'] = this.id;
     data['hydrostatic_date'] = this.hydrostaticDate;
-    data['stock'] = this.stock;
-    data['supplier'] = this.supplier;
-    data['idContent'] = this.idContent;
-    data['idTypePackaging'] = this.idTypePackaging;
+    data['owner'] = this.owner;
+    data['ctt_id'] = this.cttId;
+    data['tpg_cod'] = this.tpgCod;
     if (this.content != null) {
       data['content'] = this.content!.toJson();
     }
@@ -53,59 +47,45 @@ class Product {
 }
 
 class Content {
-  int? idContent;
+  int? id;
   String? name;
-  String? unitMeasurement;
-  double? price;
-
-  Content({this.idContent, this.name, this.unitMeasurement, this.price});
-
-  Content.fromJson(Map<String, dynamic> json) {
-    idContent = json['id_content'];
-    name = json['name'];
-    unitMeasurement = json['unit_measurement'];
-    price = json['price'].toDouble();
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id_content'] = this.idContent;
-    data['name'] = this.name;
-    data['unit_measurement'] = this.unitMeasurement;
-    data['price'] = this.price;
-    return data;
-  }
-}
-
-class TypePackaging {
-  int? idTypePackaging;
-  double? pressureAmount;
-  double? size;
-  double? price;
   String? color;
 
-  TypePackaging(
-      {this.idTypePackaging,
-      this.pressureAmount,
-      this.size,
-      this.price,
-      this.color});
+  Content({this.id, this.name, this.color});
 
-  TypePackaging.fromJson(Map<String, dynamic> json) {
-    idTypePackaging = json['id_type_packaging'];
-    pressureAmount = json['pressure_amount'].toDouble();
-    size = json['size'].toDouble();
-    price = json['price'].toDouble();
+  Content.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    name = json['name'];
     color = json['color'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id_type_packaging'] = this.idTypePackaging;
-    data['pressure_amount'] = this.pressureAmount;
-    data['size'] = this.size;
-    data['price'] = this.price;
+    data['id'] = this.id;
+    data['name'] = this.name;
     data['color'] = this.color;
+    return data;
+  }
+}
+
+class TypePackaging {
+  int? cod;
+  double? size;
+  String? pressureAmount;
+
+  TypePackaging({this.cod, this.size, this.pressureAmount});
+
+  TypePackaging.fromJson(Map<String, dynamic> json) {
+    cod = json['cod'];
+    size = json['size'].toDouble();
+    pressureAmount = json['pressure_amount'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['cod'] = this.cod;
+    data['size'] = this.size;
+    data['pressure_amount'] = this.pressureAmount;
     return data;
   }
 }

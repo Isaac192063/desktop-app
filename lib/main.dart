@@ -33,13 +33,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FluentApp(
-        title: 'Material',
-        debugShowCheckedModeBanner: false,
-        theme: context.watch<ModeContrastProvider>().getMode
-            ? FluentThemeData.dark()
-            : FluentThemeData.light(),
-        home: NavigationPageAdmin(user)
-        // home: const Logeo(),
-        );
+      title: 'Material',
+      debugShowCheckedModeBanner: false,
+      theme: context.watch<ModeContrastProvider>().getMode
+          ? FluentThemeData.dark()
+          : FluentThemeData.light(),
+      // home: NavigationPageAdmin(user)
+      home: const Logeo(),
+    );
   }
 }
+// 1234568
+// 1234568

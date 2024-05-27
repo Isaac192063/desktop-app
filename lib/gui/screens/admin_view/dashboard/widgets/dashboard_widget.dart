@@ -1,5 +1,4 @@
 import 'package:desktop_app/gui/screens/admin_view/dashboard/util/responsive.dart';
-import 'package:desktop_app/gui/screens/admin_view/dashboard/widgets/activity_details_card.dart';
 import 'package:desktop_app/gui/screens/admin_view/dashboard/widgets/bar_graph_widget.dart';
 import 'package:desktop_app/gui/screens/admin_view/dashboard/widgets/header_widget.dart';
 import 'package:desktop_app/gui/screens/admin_view/dashboard/widgets/line_chart_card.dart';
@@ -18,8 +17,6 @@ class DashboardWidget extends StatelessWidget {
           children: [
             const SizedBox(height: 18),
             const HeaderWidget(),
-            const SizedBox(height: 18),
-            // const ActivityDetailsCard(),
             const SizedBox(height: 18),
             const LineChartCard(),
             const SizedBox(height: 18),
