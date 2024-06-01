@@ -23,7 +23,6 @@ class _IndexOrderState extends State<IndexOrder> {
           children: [
             const Searchbar(),
             Container(
-              color: MyColor.btnColor,
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
               alignment: Alignment.centerLeft,
               child: const Text(

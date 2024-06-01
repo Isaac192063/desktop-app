@@ -83,4 +83,26 @@ class Productservice {
           {'success': false, 'message': "ocurrio un error"});
     }
   }
+
+  Future<List<Packaging>> findPackagingByCod(String code) async {
+    try {
+      final sol = await http.get(
+        Uri.parse("${Environment.API_RDQ}$_api?cod=$code"),
+        headers: {'Content-type': 'application/json'},
+      );
+
+      final res = jsonDecode(sol.body);
+
+      List data = res;
+
+      List<Packaging> listPackaging =
+          data.map((e) => Packaging.fromJson(e)).toList();
+
+      return listPackaging;
+    } catch (e) {
+      print("object");
+      print(e);
+      return [];
+    }
+  }
 }

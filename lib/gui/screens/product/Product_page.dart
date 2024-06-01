@@ -2,7 +2,10 @@ import 'package:desktop_app/domain/models/Product.dart';
 import 'package:desktop_app/gui/screens/admin_view/gestion%20empleados/edit_detail_Employee.dart';
 import 'package:desktop_app/gui/screens/product/ProductController.dart';
 import 'package:desktop_app/gui/screens/product/register_product.dart';
+import 'package:desktop_app/gui/screens/product/search_product.dart';
+import 'package:desktop_app/gui/widgets/textModified.dart';
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:intl/intl.dart';
 
 class ProductPage extends StatefulWidget {
   const ProductPage({super.key});
@@ -12,7 +15,7 @@ class ProductPage extends StatefulWidget {
 }
 
 class _ProductPageState extends State<ProductPage> {
-  ProductController _con = ProductController();
+  final ProductController _con = ProductController();
   late Future<List<Packaging>> listPackaging;
 
   @override
@@ -22,22 +25,29 @@ class _ProductPageState extends State<ProductPage> {
   }
 
 // Ventana mergenete
-  void showContentDialog(BuildContext context) async {
-    ProductController con = ProductController();
-    final result = await showDialog<String>(
+  void showContentDialog(BuildContext context,
+      {edit = false, Packaging? pkg}) async {
+    if (pkg != null) {
+      _con.init(packaging: pkg);
+    } else {
+      _con.delete();
+    }
+    await showDialog<String>(
       context: context,
       builder: (context) => ContentDialog(
         constraints: const BoxConstraints(maxHeight: 500, maxWidth: 500),
-        title: Text('Agregar envase'),
-        content: Register_edit_packaging(con),
+        title:
+            edit ? const Text('Editar envase') : const Text('Agregar envase'),
+        content: Register_edit_packaging(_con),
         actions: [
           Button(
             child: const Text('Agregar'),
-            onPressed: () {
-              con.registerPackaging();
+            onPressed: () async {
+              await _con.registerPackaging();
               Navigator.pop(context, 'User deleted file');
               setState(() {
                 listPackaging = _con.getAllProduct();
+                print("object hola munedo");
               });
             },
           ),
@@ -48,39 +58,162 @@ class _ProductPageState extends State<ProductPage> {
         ],
       ),
     );
-    setState(() {});
   }
 
   void showPackaging(BuildContext context, Packaging packaging) async {
-    ProductController con = ProductController();
-    final result = await showDialog<String>(
+    Widget setText(String text, double size, bool negrilla) {
+      return Text(
+        text,
+        style: TextStyle(
+            fontSize: size,
+            fontWeight: negrilla ? FontWeight.w600 : FontWeight.normal),
+      );
+    }
+
+    await showDialog<String>(
       context: context,
       builder: (context) => ContentDialog(
-        constraints: const BoxConstraints(maxHeight: 500, maxWidth: 500),
-        title: Text('Agregar envase'),
+        constraints: const BoxConstraints(maxHeight: 500, maxWidth: 600),
+        title: const Text('Visualizar envase'),
         content: Container(
-          child: Column(
-            children: [Text(packaging.owner!)],
+          alignment: Alignment.center,
+          child: Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 30),
+                child: Stack(
+                  alignment: Alignment.center,
+                  clipBehavior: Clip.hardEdge,
+                  children: [
+                    Transform(
+                      transform: Matrix4.rotationZ(-0.2),
+                      origin: Offset.fromDirection(15),
+                      alignment: Alignment.topLeft,
+                      child: Column(
+                        children: [
+                          Container(
+                            width: 70,
+                            height: 50,
+                            decoration: BoxDecoration(
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Colors.black,
+                                  offset: Offset(0.0, 40.0),
+                                  blurRadius: 20.0,
+                                ),
+                              ],
+                              color: editColor(packaging.content!.color!),
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(5)),
+                            ),
+                          ),
+                          Container(
+                            width: 200,
+                            height: 300,
+                            decoration: BoxDecoration(
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Colors.black,
+                                  offset: Offset(0.0, 20.0),
+                                  blurRadius: 20.0,
+                                ),
+                              ],
+                              color: editColor(packaging.content!.color!),
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(30)),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Text(
+                      packaging.content!.name!,
+                      style: const TextStyle(
+                          fontSize: 35,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600),
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(left: 80),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        setText("Codigo", 25, true),
+                        setText(packaging.id!, 20, false),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                          width: 190,
+                          color: Colors.black,
+                          height: 0.3,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        setText("prueba hisdrostatica", 22, true),
+                        setText(
+                            DateFormat("yyyy-MM-dd").format(
+                                DateTime.tryParse(packaging.hydrostaticDate!)!),
+                            19,
+                            false),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        setText("Dueño del cilindro", 22, true),
+                        setText(packaging.owner!, 19, false),
+                        const SizedBox(
+                          height: 35,
+                        ),
+                        setText("Tamaño del cilindro", 22, true),
+                        setText(
+                            "${packaging.typePackaging!.size} ${packaging.typePackaging!.pressureAmount}",
+                            19,
+                            false),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Button(
+                            onPressed: () {
+                              showContentDialog(context,
+                                  edit: true, pkg: packaging);
+                            },
+                            style: ButtonStyle(
+                                padding: ButtonState.all(
+                                    const EdgeInsets.symmetric(
+                                        vertical: 10, horizontal: 30))),
+                            child: const Text('Editar')),
+                        const SizedBox(
+                          width: 20,
+                        ),
+                        FilledButton(
+                            onPressed: () =>
+                                Navigator.pop(context, 'User canceled dialog'),
+                            style: ButtonStyle(
+                                padding: ButtonState.all(
+                                    const EdgeInsets.symmetric(
+                                        vertical: 10, horizontal: 30))),
+                            child: const Text('Cancelar')),
+                      ],
+                    ),
+                  ],
+                ),
+              )
+            ],
           ),
         ),
-        actions: [
-          Button(
-            child: const Text('Editar'),
-            onPressed: () {
-              Navigator.pop(context, 'User deleted file');
-            },
-          ),
-          FilledButton(
-            child: const Text('Cancelar'),
-            onPressed: () => Navigator.pop(context, 'User canceled dialog'),
-          ),
-        ],
       ),
     );
-    setState(() {});
   }
-
-  String selectedContact = '';
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +221,7 @@ class _ProductPageState extends State<ProductPage> {
       content: SingleChildScrollView(
         child: Column(
           children: [
-            searchEmployee(context),
+            SearchPackaging(showPackaging),
             FutureBuilder(
               future: listPackaging,
               builder: (context, snapshot) {
@@ -108,7 +241,11 @@ class _ProductPageState extends State<ProductPage> {
                                 aspectRatio: 16 / 9,
                                 child: ColoredBox(
                                   color: editColor(pkg.content!.color!),
-                                  child: const Placeholder(),
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    child: textModified(pkg.id!, 20,
+                                        color: Colors.white),
+                                  ),
                                 ),
                               ),
                             ),
@@ -134,40 +271,14 @@ class _ProductPageState extends State<ProductPage> {
     );
   }
 
-  Widget searchEmployee(context) {
-    List<String> pdts = ["hfhrfgh", "fgrfgh"];
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 12),
-      width: MediaQuery.of(context).size.width / 2,
-      child: AutoSuggestBox<String>(
-        onChanged: (text, reason) {
-          // searchEmpServer(text);
-        },
-        placeholder: "Buscar Envase",
-        leadingIcon: const Padding(
-          padding: EdgeInsets.all(10.0),
-          child: Icon(FluentIcons.search),
-        ),
-        decoration:
-            const BoxDecoration(color: Color.fromARGB(255, 252, 255, 254)),
-        items: pdts.map((employee) {
-          return AutoSuggestBoxItem<String>(value: employee, label: employee);
-        }).toList(),
-        onSelected: (value) {
-          // detalleEmployee(context, value.label);
-        },
-      ),
-    );
-  }
-
   Color editColor(String color) {
     Map<String, Color> colorEdit = {
       "gris os": const Color.fromARGB(255, 32, 32, 32),
-      "azul verdoso": Color.fromARGB(255, 28, 124, 94),
-      "dorado": Color.fromARGB(255, 86, 82, 57),
+      "azul verdoso": const Color.fromARGB(255, 28, 124, 94),
+      "dorado": const Color.fromARGB(255, 86, 82, 57),
       "negro": Colors.black,
       "gris": const Color.fromARGB(255, 76, 76, 76),
-      "Verde": Color.fromARGB(255, 38, 93, 21)
+      "Verde": const Color.fromARGB(255, 38, 93, 21)
     };
 
     return colorEdit[color]!;

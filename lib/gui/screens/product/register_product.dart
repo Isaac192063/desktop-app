@@ -30,6 +30,9 @@ class _nameState extends State<Register_edit_packaging> {
     listProductsType = productService.getAllTypeContent();
     listContent = productService.getAllContent();
     _con = widget._con;
+    content = _con!.content;
+    typePackagaging = _con!.typePackaging;
+    selected = _con!.time;
   }
 
   @override
@@ -106,7 +109,10 @@ class _nameState extends State<Register_edit_packaging> {
                       typePackagaging = color;
                     });
                   },
-            placeholder: Text(title),
+            placeholder: typePackagaging == null
+                ? Text(title)
+                : Text(
+                    "${typePackagaging!.size.toString()} ${typePackagaging!.pressureAmount}"),
           );
         }
 
@@ -135,7 +141,7 @@ class _nameState extends State<Register_edit_packaging> {
                     _con!.content = color!;
                     setState(() => content = color);
                   },
-            placeholder: Text(title),
+            placeholder: content == null ? Text(title) : Text(content!.name!),
           );
         }
 

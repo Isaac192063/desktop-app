@@ -11,6 +11,23 @@ class ProductController {
   Content? content;
   DateTime? time;
 
+  void init({Packaging? packaging}) {
+    cod.text = packaging!.id!;
+    owner.text = packaging.owner!;
+    typePackaging = packaging.typePackaging;
+    content = packaging.content;
+    time = DateTime.tryParse(packaging.hydrostaticDate!);
+    print(packaging.owner);
+  }
+
+  void delete() {
+    cod = TextEditingController();
+    owner = TextEditingController();
+    typePackaging = null;
+    content = null;
+    time = null;
+  }
+
   Future<List<Packaging>> getAllProduct() async {
     try {
       ResponseApi api = await _producService.getAllProducts();
@@ -23,7 +40,7 @@ class ProductController {
     }
   }
 
-  void registerPackaging() async {
+  Future<void> registerPackaging() async {
     print(cod.text);
     print(owner.text);
     print(typePackaging);

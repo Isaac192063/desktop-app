@@ -1,5 +1,4 @@
 import 'package:desktop_app/domain/models/Kardex_model.dart';
-import 'package:desktop_app/gui/screens/orders/showOrder.dart';
 import 'package:desktop_app/gui/utils/myColors.dart';
 import 'package:desktop_app/gui/widgets/search_bar.dart';
 import 'package:desktop_app/gui/widgets/table.dart';
@@ -116,23 +115,23 @@ class _MyWidgetState extends State<IndexKardex> {
       DataCell(
         fluent_ui.Row(
           children: [
-            IconButton(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-                    (Set<MaterialState> states) {
-                      if (states.contains(MaterialState.pressed)) {
-                        return Colors.green;
-                      }
-                      return Colors.white;
-                    },
-                  ),
-                ),
-                icon: const Icon(fluent_ui.FluentIcons.red_eye, size: 15),
-                onPressed: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ShowOrder()),
-                    )),
+            // IconButton(
+            //     style: ButtonStyle(
+            //       backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+            //         (Set<MaterialState> states) {
+            //           if (states.contains(MaterialState.pressed)) {
+            //             return Colors.green;
+            //           }
+            //           return Colors.white;
+            //         },
+            //       ),
+            //     ),
+            //     icon: const Icon(fluent_ui.FluentIcons.red_eye, size: 15),
+            //     onPressed: () => Navigator.push(
+            //           context,
+            //           MaterialPageRoute(
+            //               builder: (context) => const ShowOrder()),
+            //         )),
           ],
         ),
       ),

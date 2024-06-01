@@ -22,7 +22,6 @@ class _MyAppState extends State<ResgisterEmployee> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     setState(() {
       _con = widget.con;

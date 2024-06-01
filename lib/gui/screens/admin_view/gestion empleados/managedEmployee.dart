@@ -1,9 +1,7 @@
-import 'package:desktop_app/domain/models/User.dart';
 import 'package:desktop_app/domain/providers/employess_provider.dart';
 import 'package:desktop_app/domain/service/excel_user_service.dart';
-import 'package:desktop_app/domain/service/user_service.dart';
 import 'package:desktop_app/gui/screens/admin_view/gestion%20empleados/edit_detail_Employee.dart';
-import 'package:desktop_app/gui/widgets/searchEmployee.dart';
+import 'package:desktop_app/gui/screens/admin_view/gestion%20empleados/search_employee.dart';
 import 'package:desktop_app/gui/widgets/table.dart';
 import 'package:desktop_app/gui/screens/admin_view/gestion%20empleados/registerEmploye/registeremployeeController.dart';
 import 'package:desktop_app/gui/widgets/textModified.dart';
@@ -18,10 +16,8 @@ class ManageEmployee extends StatefulWidget {
 }
 
 class _ManageEmployeeState extends State<ManageEmployee> {
-  final UserService _prov = UserService();
   final ExceluserService _exceluserService = ExceluserService();
 
-  List<User>? employess = [];
   final RegisterEmployeeController _con = RegisterEmployeeController();
   List<String> headersEmployee = [
     "Nombre Empleado",
@@ -40,39 +36,6 @@ class _ManageEmployeeState extends State<ManageEmployee> {
     });
   }
 
-  void searchEmpServer(String name) async {
-    List<User> usrsFind = await _prov.findByUserName(name);
-    setState(() {
-      employess = usrsFind;
-    });
-  }
-
-  Widget searchEmployee(context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 12),
-      width: MediaQuery.of(context).size.width / 2,
-      child: AutoSuggestBox<User>(
-        onChanged: (text, reason) {
-          searchEmpServer(text);
-        },
-        placeholder: "Buscar empleado",
-        leadingIcon: const Padding(
-          padding: EdgeInsets.all(10.0),
-          child: Icon(FluentIcons.search),
-        ),
-        decoration:
-            const BoxDecoration(color: Color.fromARGB(255, 252, 255, 254)),
-        items: employess!.map((employee) {
-          return AutoSuggestBoxItem<User>(
-              value: employee, label: employee.name);
-        }).toList(),
-        onSelected: (value) {
-          detalleEmployee(context, value.value!);
-        },
-      ),
-    );
-  }
-
   Widget dataInProcess() {
     return context.watch<EmployeesProvider>().cargando
         ? const Center(
@@ -87,40 +50,46 @@ class _ManageEmployeeState extends State<ManageEmployee> {
     return ScaffoldPage(
       padding: EdgeInsets.zero,
       content: SizedBox(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    textModified("Lista de Empleados", 25),
-                    const SearchEmployee(),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width,
-                      child: SingleChildScrollView(child: dataInProcess()),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: FilledButton(
-                          child: const Text("Agregar nuevo empleado"),
-                          onPressed: () {
-                            EditRegisterEmp(
-                                context, _con, "Registrar nuevo empleado");
-                          }),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: FilledButton(
-                          child: const Text("Descargar excel"),
-                          onPressed: () {
-                            _exceluserService.dowloadUsers();
-                          }),
-                    )
-                  ]),
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                textModified("Lista de Empleados", 25),
+                SearchEmployee(),
+                const SizedBox(
+                  height: 40,
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: SingleChildScrollView(child: dataInProcess()),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: FilledButton(
+                      child: const Text("Agregar nuevo empleado"),
+                      onPressed: () {
+                        EditRegisterEmp(
+                            context, _con, "Registrar nuevo empleado");
+                        _con.reset();
+                      }),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: FilledButton(
+                      child: const Text("Descargar excel"),
+                      onPressed: () {
+                        _exceluserService.dowloadUsers();
+                      }),
+                )
+              ],
             ),
-          )),
+          ),
+        ),
+      ),
     );
   }
 }

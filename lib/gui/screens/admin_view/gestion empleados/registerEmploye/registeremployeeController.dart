@@ -18,7 +18,6 @@ class RegisterEmployeeController {
   TextEditingController passwordController = TextEditingController();
   File? imagen;
   User? user;
-  String? description;
 
   RegisterEmployeeController({this.user});
 
@@ -31,6 +30,15 @@ class RegisterEmployeeController {
       numberPhoneController.text = user!.phoneNumber;
       passwordController.text = "123456";
     }
+  }
+
+  void reset() {
+    emailController = TextEditingController();
+    nameController = TextEditingController();
+    lastNameController = TextEditingController();
+    numberPhoneController = TextEditingController();
+    passwordController = TextEditingController();
+    imagen = null;
   }
 
   Future<void> register() async {

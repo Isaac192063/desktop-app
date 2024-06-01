@@ -1,5 +1,6 @@
 import 'package:desktop_app/domain/models/User.dart';
 import 'package:desktop_app/gui/screens/config%20gui/config_page.dart';
+import 'package:desktop_app/gui/screens/customer/customer_page.dart';
 import 'package:desktop_app/gui/screens/product/Product_page.dart';
 import 'package:desktop_app/gui/screens/registerOrder/registerOrder.dart';
 import 'package:desktop_app/gui/widgets/options.dart';
@@ -99,7 +100,12 @@ class _NavigationPageState extends State<NavigationPage> {
                       icon: const Icon(FluentIcons.product),
                       title: const Text("Productos",
                           style: TextStyle(fontSize: 16)),
-                      body: const ProductPage())
+                      body: const ProductPage()),
+                  PaneItem(
+                      icon: const Icon(FluentIcons.product),
+                      title: const Text("Productos",
+                          style: TextStyle(fontSize: 16)),
+                      body: const CustomerPage()),
                 ],
                 selected: _countPage,
                 onChanged: (i) {

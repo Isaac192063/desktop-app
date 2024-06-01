@@ -3,7 +3,9 @@ import 'package:desktop_app/domain/providers/mode_contrast_provider.dart';
 import 'package:desktop_app/gui/screens/admin_view/dashboard/main_screen.dart';
 import 'package:desktop_app/gui/screens/admin_view/kardex/indexkardex.dart';
 import 'package:desktop_app/gui/screens/config%20gui/config_page.dart';
+import 'package:desktop_app/gui/screens/customer/customer_page.dart';
 import 'package:desktop_app/gui/screens/orders/indexOrder.dart';
+import 'package:desktop_app/gui/screens/orders/order2/registerOrder.dart';
 import 'package:desktop_app/gui/screens/product/Product_page.dart';
 import 'package:desktop_app/gui/screens/registerOrder/registerOrder.dart';
 import 'package:desktop_app/gui/widgets/options.dart';
@@ -120,7 +122,7 @@ class _NavigationPageAdminState extends State<NavigationPageAdmin> {
                       items: [
                         PaneItem(
                             icon: const Icon(FluentIcons.user_window),
-                            body: const PrimeraScreen(),
+                            body: const RegisterOrder(),
                             title: const Text("Registrar venta",
                                 style: TextStyle(fontSize: 16))),
                       ]),
@@ -144,7 +146,12 @@ class _NavigationPageAdminState extends State<NavigationPageAdmin> {
                       icon: const Icon(FluentIcons.product),
                       title: const Text("Productos",
                           style: TextStyle(fontSize: 16)),
-                      body: const ProductPage())
+                      body: const ProductPage()),
+                  PaneItem(
+                      icon: const Icon(FluentIcons.user_clapper),
+                      title: const Text("clientes",
+                          style: TextStyle(fontSize: 16)),
+                      body: const CustomerPage()),
                 ],
                 selected: _countPage,
                 onChanged: (i) {
