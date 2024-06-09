@@ -1,4 +1,6 @@
 import 'package:desktop_app/domain/providers/mode_contrast_provider.dart';
+import 'package:desktop_app/gui/utils/myColors.dart';
+import 'package:desktop_app/gui/widgets/button_customize.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:provider/provider.dart';
 
@@ -13,12 +15,11 @@ class _ModeContrastState extends State<ModeContrast> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: FilledButton(
-        child: const Text("cambiar tema"),
-        onPressed: () {
-          context.read<ModeContrastProvider>().setMode();
-        },
-      ),
-    );
+        child: buttonCustomize(
+            text: "Cambiar Tema 2",
+            execute: () {
+              context.read<ModeContrastProvider>().setMode();
+            },
+            color: MyColor.btnOscuroColor));
   }
 }

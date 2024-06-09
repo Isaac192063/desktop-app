@@ -1,0 +1,1 @@
+ C:\\Users\\Asus\\Desktop\\archivos\\ingeneria\ de\ software\\proyect\ rdq\\desktop_app\\.dart_tool\\flutter_build\\be999e294ff58b93f41dc596def94a59\\native_assets.yaml: 

@@ -8,6 +8,8 @@ class SummaryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: MediaQuery.of(context).size.height - 50,
+      alignment: Alignment.topRight,
       decoration: const BoxDecoration(
         color: cardBackgroundColor,
       ),

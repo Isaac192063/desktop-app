@@ -4,6 +4,8 @@ class Packaging {
   String? owner;
   int? cttId;
   int? tpgCod;
+  bool? empty;
+  bool? inStorage;
   Content? content;
   TypePackaging? typePackaging;
 
@@ -13,6 +15,8 @@ class Packaging {
       this.owner,
       this.cttId,
       this.tpgCod,
+      this.inStorage,
+      this.empty,
       this.content,
       this.typePackaging});
 
@@ -22,6 +26,8 @@ class Packaging {
     owner = json['owner'];
     cttId = json['ctt_id'];
     tpgCod = json['tpg_cod'];
+    empty = json['empty'];
+    inStorage = json['inStorage'];
     content =
         json['content'] != null ? new Content.fromJson(json['content']) : null;
     typePackaging = json['typePackaging'] != null
@@ -36,6 +42,8 @@ class Packaging {
     data['owner'] = this.owner;
     data['ctt_id'] = this.cttId;
     data['tpg_cod'] = this.tpgCod;
+    data['inStorage'] = this.inStorage;
+    data['empty'] = this.empty;
     if (this.content != null) {
       data['content'] = this.content!.toJson();
     }

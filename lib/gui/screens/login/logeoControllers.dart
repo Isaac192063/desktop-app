@@ -2,7 +2,6 @@ import 'package:desktop_app/domain/models/User.dart';
 import 'package:desktop_app/config/response_api.dart';
 import 'package:desktop_app/domain/service/user_service.dart';
 import 'package:desktop_app/gui/widgets/notification.dart';
-import 'package:desktop_app/gui/screens/admin_view/navigation_page_admin.dart';
 import 'package:desktop_app/gui/screens/navigation_page.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/material.dart';
@@ -36,21 +35,14 @@ class LogeoController {
       ResponseApi api2 = await UserService().userById(id.toString());
       User user = User.fromJson(api2.data);
 
-      if (decodeToken["rol"] == "user") {
-        if (!user.enabled) {
-          return notification(context, "Usuario no habilitado", "Error",
-              InfoBarSeverity.warning);
-        }
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => NavigationPage(user)));
-      } else if (decodeToken["rol"] == "admin") {
-        Navigator.push(
-            context,
-            PageRouteBuilder(
-              pageBuilder: (context, animation, secondaryAnimation) =>
-                  NavigationPageAdmin(user),
-            ));
+      if (!user.enabled) {
+        return notification(
+            context, "Usuario no habilitado", "Error", InfoBarSeverity.warning);
       }
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+              builder: (context) => NavigationPage(user, decodeToken["rol"])));
     }
   }
 }

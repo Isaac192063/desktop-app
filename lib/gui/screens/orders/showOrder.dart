@@ -65,7 +65,7 @@ class _nameState extends State<ShowOrder> {
       padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 10),
       decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(Radius.circular(10)),
-          color: MyColor.btnColor),
+          color: MyColor.primaryKey),
       child: Text(description,
           style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
     );

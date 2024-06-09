@@ -11,6 +11,7 @@ class Logeo extends StatefulWidget {
 
 class _LogeoState extends State<Logeo> {
   final LogeoController _con = LogeoController();
+  bool hover = false;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,27 @@ class _LogeoState extends State<Logeo> {
       padding: EdgeInsets.zero,
       content: Center(
           child: Container(
-        color: Colors.white,
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+          begin: Alignment.topRight,
+          end: Alignment.bottomLeft,
+          stops: [
+            0.1,
+            0.4,
+            0.6,
+            0.9,
+          ],
+          colors: [
+            // Colors.yellow,
+            // Colors.red,
+            // const Color.fromARGB(80, 0, 0, 0),
+            // Colors.teal,
+            MyColor.btnOscuroColor,
+            MyColor.btnClaroColor,
+            MyColor.medio,
+            MyColor.claro,
+          ],
+        )),
         width: double.infinity,
         height: double.infinity,
         child: Center(
@@ -44,8 +65,11 @@ class _LogeoState extends State<Logeo> {
                   children: [
                     const Center(
                         child: Text(
-                      "Inicio",
-                      style: TextStyle(color: Colors.black, fontSize: 50),
+                      "Iniciar secion",
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 82, 82, 82),
+                          fontSize: 45,
+                          fontWeight: FontWeight.w600),
                     )),
                     Column(children: [
                       Padding(
@@ -56,9 +80,16 @@ class _LogeoState extends State<Logeo> {
                               fontSize: 20),
                           label: "Ingrese el usuario",
                           child: TextBox(
+                            enableSuggestions: true,
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    width: 0.7,
+                                    color: Colors.black,
+                                    strokeAlign: BorderSide.strokeAlignInside,
+                                    style: BorderStyle.solid)),
                             placeholder: "Usuario",
-                            style: const TextStyle(fontSize: 20),
-                            padding: const EdgeInsets.all(15),
+                            style: const TextStyle(fontSize: 23),
+                            padding: const EdgeInsets.all(10),
                             expands: false,
                             controller: _con.userCOntroller,
                           ),
@@ -74,30 +105,38 @@ class _LogeoState extends State<Logeo> {
                             child: PasswordBox(
                               revealMode: PasswordRevealMode.peekAlways,
                               placeholder: "Contraseña",
-                              padding: const EdgeInsets.all(15),
+                              padding: const EdgeInsets.all(10),
                               style: const TextStyle(
-                                  fontSize: 20,
+                                  fontSize: 23,
                                   decorationStyle: TextDecorationStyle.wavy),
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      width: 0.7,
+                                      color: Colors.black,
+                                      strokeAlign: BorderSide.strokeAlignInside,
+                                      style: BorderStyle.solid)),
                               controller: _con.passwordController,
                             )),
                       ),
                     ]),
                     Container(
                       margin: const EdgeInsets.only(top: 20),
-                      child: FilledButton(
-                        style: ButtonStyle(
-                          backgroundColor: ButtonState.all(MyColor.btnColor),
-                          padding: ButtonState.all(const EdgeInsets.symmetric(
-                              vertical: 12, horizontal: 40)),
-                          textStyle:
-                              ButtonState.all(const TextStyle(fontSize: 25)),
-                        ),
-                        child: const Text('Ingresar'),
-                        onPressed: () {
-                          _con.enviar(context);
-                        },
-                      ),
-                    )
+                      child: MouseRegion(
+                          cursor: SystemMouseCursors.click,
+                          onEnter: (event) {
+                            setState(() {
+                              hover = true;
+                            });
+                          },
+                          onExit: (event) {
+                            setState(() {
+                              hover = false;
+                            });
+                          },
+                          child: hover
+                              ? btn2(MyColor.btnAcepHover)
+                              : btn2(MyColor.btnAcep)),
+                    ),
                   ],
                 ),
               ),
@@ -105,6 +144,21 @@ class _LogeoState extends State<Logeo> {
           ),
         ),
       )),
+    );
+  }
+
+  Widget btn2(Color color) {
+    return FilledButton(
+      style: ButtonStyle(
+        backgroundColor: ButtonState.all(color),
+        padding: ButtonState.all(
+            const EdgeInsets.symmetric(vertical: 12, horizontal: 40)),
+        textStyle: ButtonState.all(const TextStyle(fontSize: 25)),
+      ),
+      child: const Text('Ingresar'),
+      onPressed: () {
+        _con.enviar(context);
+      },
     );
   }
 }

@@ -2,6 +2,8 @@ import 'package:desktop_app/domain/providers/employess_provider.dart';
 import 'package:desktop_app/domain/service/excel_user_service.dart';
 import 'package:desktop_app/gui/screens/admin_view/gestion%20empleados/edit_detail_Employee.dart';
 import 'package:desktop_app/gui/screens/admin_view/gestion%20empleados/search_employee.dart';
+import 'package:desktop_app/gui/utils/myColors.dart';
+import 'package:desktop_app/gui/widgets/button_customize.dart';
 import 'package:desktop_app/gui/widgets/table.dart';
 import 'package:desktop_app/gui/screens/admin_view/gestion%20empleados/registerEmploye/registeremployeeController.dart';
 import 'package:desktop_app/gui/widgets/textModified.dart';
@@ -60,31 +62,33 @@ class _ManageEmployeeState extends State<ManageEmployee> {
               children: [
                 textModified("Lista de Empleados", 25),
                 SearchEmployee(),
-                const SizedBox(
-                  height: 40,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: buttonCustomize(
+                            context: context,
+                            text: "Agregar Empleado",
+                            execute: () {
+                              EditRegisterEmp(
+                                  context, _con, "Registrar nuevo empleado");
+                              _con.reset();
+                            },
+                            color: MyColor.btnOscuroColor)),
+                    Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: buttonCustomize(
+                            context: context,
+                            text: "Descargar excel",
+                            execute: _exceluserService.dowloadUsers,
+                            color: MyColor.btnOscuroColor)),
+                  ],
                 ),
                 SizedBox(
                   width: MediaQuery.of(context).size.width,
                   child: SingleChildScrollView(child: dataInProcess()),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: FilledButton(
-                      child: const Text("Agregar nuevo empleado"),
-                      onPressed: () {
-                        EditRegisterEmp(
-                            context, _con, "Registrar nuevo empleado");
-                        _con.reset();
-                      }),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: FilledButton(
-                      child: const Text("Descargar excel"),
-                      onPressed: () {
-                        _exceluserService.dowloadUsers();
-                      }),
-                )
               ],
             ),
           ),

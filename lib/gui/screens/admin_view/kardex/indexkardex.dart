@@ -41,7 +41,7 @@ class _MyWidgetState extends State<IndexKardex> {
           children: [
             const Searchbar(),
             Container(
-              color: MyColor.btnColor,
+              color: MyColor.primaryKey,
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
               alignment: Alignment.centerLeft,
               child: const Text(

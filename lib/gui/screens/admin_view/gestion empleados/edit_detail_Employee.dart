@@ -3,6 +3,7 @@ import 'package:desktop_app/domain/models/User.dart';
 import 'package:desktop_app/domain/providers/employess_provider.dart';
 import 'package:desktop_app/domain/service/user_service.dart';
 import 'package:desktop_app/gui/utils/myColors.dart';
+import 'package:desktop_app/gui/widgets/button_customize.dart';
 import 'package:desktop_app/gui/widgets/notification.dart';
 import 'package:desktop_app/gui/widgets/setImgae.dart';
 import 'package:desktop_app/gui/screens/admin_view/gestion%20empleados/registerEmploye/registerEmployee.dart';
@@ -11,19 +12,6 @@ import 'package:desktop_app/gui/widgets/textModified.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-
-Widget button(context, String text, Function execute, Color color) {
-  return FilledButton(
-      child: Text(text),
-      onPressed: () {
-        execute();
-      },
-      style: ButtonStyle(
-          backgroundColor: ButtonState.all(color),
-          padding: ButtonState.all(EdgeInsets.all(8)),
-          textStyle: ButtonState.all(
-              const TextStyle(fontSize: 16, fontWeight: FontWeight.w500))));
-}
 
 void detalleEmployee(context, User user) async {
   RegisterEmployeeController con = RegisterEmployeeController(user: user);
@@ -35,16 +23,16 @@ void detalleEmployee(context, User user) async {
       title: const Text('Detalles del empleado'),
       content: viewInformation(context, user),
       actions: [
-        button(
-            context,
-            "Editar",
-            () => EditRegisterEmp(context, con, "Editar empleado"),
-            MyColor.btnAcep),
-        button(
-            context,
-            "Cancelar",
-            () => Navigator.pop(context, 'User canceled dialog'),
-            MyColor.btnCancel)
+        buttonCustomize(
+            context: context,
+            text: "Editar",
+            execute: () => EditRegisterEmp(context, con, "Editar empleado"),
+            color: MyColor.btnAcep),
+        buttonCustomize(
+            context: context,
+            text: "Cancelar",
+            execute: () => Navigator.pop(context, 'User canceled dialog'),
+            color: MyColor.btnCancel)
       ],
     ),
   );
@@ -132,12 +120,16 @@ void EditRegisterEmp(
       title: Text(description),
       content: ResgisterEmployee(con),
       actions: [
-        button(context, description, () => con.register(), MyColor.btnAcep),
-        button(
-            context,
-            "cancelar",
-            () => Navigator.pop(context, 'User canceled dialog'),
-            MyColor.btnCancel),
+        buttonCustomize(
+            context: context,
+            text: description,
+            execute: con.register,
+            color: MyColor.btnAcep),
+        buttonCustomize(
+            context: context,
+            text: "cancelar",
+            execute: () => Navigator.pop(context, 'User canceled dialog'),
+            color: MyColor.btnCancel),
       ],
     ),
   );

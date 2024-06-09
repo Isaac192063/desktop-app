@@ -13,21 +13,32 @@ class MainScreen extends StatelessWidget {
     return Scaffold(
       endDrawer: Responsive.isMobile(context)
           ? SizedBox(
-              width: MediaQuery.of(context).size.width * 0.8,
+              width: MediaQuery.of(context).size.width * 0.9,
               child: const SummaryWidget(),
             )
           : null,
-      body: SafeArea(
+      body: SingleChildScrollView(
         child: Row(
           children: [
             const Expanded(
               flex: 7,
-              child: DashboardWidget(),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  DashboardWidget(),
+                ],
+              ),
             ),
             if (isDesktop)
               const Expanded(
                 flex: 3,
-                child: SummaryWidget(),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SummaryWidget(),
+                  ],
+                ),
               ),
           ],
         ),

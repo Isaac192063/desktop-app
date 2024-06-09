@@ -21,6 +21,7 @@ class Productservice {
 
       return responseApi;
     } catch (e) {
+      print(e);
       return ResponseApi.fromJson(
           {'success': false, 'message': "ocurrio un error"});
     }
@@ -103,6 +104,27 @@ class Productservice {
       print("object");
       print(e);
       return [];
+    }
+  }
+
+  Future<ResponseApi> updateProduct(String id, Packaging packaging) async {
+    try {
+      final data = jsonEncode(packaging.toJson());
+
+      final response = await http.put(
+        Uri.parse("${Environment.API_RDQ}$_api/$id"),
+        body: data,
+        headers: {'Content-type': 'application/json'},
+      );
+
+      final res = jsonDecode(response.body);
+
+      ResponseApi api = ResponseApi.fromJson(res);
+
+      return api;
+    } catch (e) {
+      return ResponseApi.fromJson(
+          {'success': false, 'message': "ocurrio un error"});
     }
   }
 }

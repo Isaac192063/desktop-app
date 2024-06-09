@@ -33,6 +33,7 @@ class _nameState extends State<Register_edit_packaging> {
     content = _con!.content;
     typePackagaging = _con!.typePackaging;
     selected = _con!.time;
+    _con?.context = context;
   }
 
   @override
@@ -92,7 +93,16 @@ class _nameState extends State<Register_edit_packaging> {
       future: list,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          List<TypePackaging> listPackaging = snapshot.data!;
+          Iterable<TypePackaging> typePackaging = snapshot.data!.where(
+            (element) {
+              final isCO2 = content?.name == "CO2";
+              final isKG = element.pressureAmount == "KG";
+              return isCO2 ? isKG : !isKG;
+            },
+          );
+
+          List<TypePackaging> listPackaging = typePackaging.toList();
+
           return ComboBox<TypePackaging>(
             value: typePackagaging,
             items: listPackaging.map<ComboBoxItem<TypePackaging>>((e) {
@@ -104,7 +114,7 @@ class _nameState extends State<Register_edit_packaging> {
             onChanged: disabled
                 ? null
                 : (color) {
-                    _con!.typePackaging = color!;
+                    _con?.typePackaging = color;
                     setState(() {
                       typePackagaging = color;
                     });

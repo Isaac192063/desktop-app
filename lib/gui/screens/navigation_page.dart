@@ -1,35 +1,96 @@
 import 'package:desktop_app/domain/models/User.dart';
+import 'package:desktop_app/domain/providers/mode_contrast_provider.dart';
+import 'package:desktop_app/gui/screens/admin_view/dashboard/main_screen.dart';
+import 'package:desktop_app/gui/screens/admin_view/kardex/indexkardex.dart';
 import 'package:desktop_app/gui/screens/config%20gui/config_page.dart';
 import 'package:desktop_app/gui/screens/customer/customer_page.dart';
+import 'package:desktop_app/gui/screens/orders/indexOrder.dart';
+import 'package:desktop_app/gui/screens/orders/order2/registerOrder.dart';
 import 'package:desktop_app/gui/screens/product/Product_page.dart';
-import 'package:desktop_app/gui/screens/registerOrder/registerOrder.dart';
 import 'package:desktop_app/gui/widgets/options.dart';
+import 'package:desktop_app/gui/widgets/setImgae.dart';
+import 'package:desktop_app/gui/screens/admin_view/gestion%20empleados/managedEmployee.dart';
 import 'package:desktop_app/gui/utils/myColors.dart';
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:provider/provider.dart';
 
 class NavigationPage extends StatefulWidget {
   final User user;
-  const NavigationPage(this.user, {super.key});
+  final String rol;
+
+  const NavigationPage(this.user, this.rol, {super.key});
+
   @override
-  State<NavigationPage> createState() => _NavigationPageState();
+  State<NavigationPage> createState() => _NavigationPageAdminState();
 }
 
-class _NavigationPageState extends State<NavigationPage> {
+class _NavigationPageAdminState extends State<NavigationPage> {
   int _countPage = 0;
-  int num = 1;
+
   bool loading = true;
   User? userData;
+  String? rol;
 
   @override
   void initState() {
-    super.initState();
     Future.delayed(const Duration(milliseconds: 1200), () {
+      // WidgetsBinding.instance.addPostFrameCallback((timeStamp) {});
       setState(() {
         userData = widget.user;
+        rol = widget.rol;
         loading = false;
       });
+
+      if (rol == "admin") {
+        items.insert(
+            0,
+            PaneItem(
+              icon: const Icon(FluentIcons.employee_self_service),
+              body: const MainScreen(),
+              title: const Text("Inicio", style: TextStyle(fontSize: 16)),
+            ));
+
+        items.insert(
+          1,
+          PaneItemSeparator(),
+        );
+
+        items.addAll([
+          PaneItem(
+              icon: const Icon(FluentIcons.employee_self_service),
+              body: const ManageEmployee(),
+              title: const Text("Empleados", style: TextStyle(fontSize: 16))),
+          PaneItem(
+              icon: const Icon(FluentIcons.product),
+              title: const Text("Productos", style: TextStyle(fontSize: 16)),
+              body: const ProductPage()),
+        ]);
+      }
     });
+    super.initState();
   }
+
+  List<NavigationPaneItem> items = [
+    PaneItemExpander(
+        icon: const Icon(FluentIcons.business_card),
+        body: const IndexOrder(),
+        title: const Text("Ventas registradas", style: TextStyle(fontSize: 16)),
+        items: [
+          PaneItem(
+              icon: const Icon(FluentIcons.user_window),
+              body: const RegisterOrder(),
+              title: const Text("Registrar venta",
+                  style: TextStyle(fontSize: 16))),
+        ]),
+    PaneItem(
+        icon: const Icon(FluentIcons.list),
+        body: const IndexKardex(),
+        title: const Text("Kardex", style: TextStyle(fontSize: 16))),
+    PaneItem(
+        icon: const Icon(FluentIcons.user_clapper),
+        title: const Text("clientes", style: TextStyle(fontSize: 16)),
+        body: const CustomerPage()),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +99,7 @@ class _NavigationPageState extends State<NavigationPage> {
             color: Colors.white,
             width: double.infinity,
             height: double.infinity,
-            child: Center(child: const ProgressRing()))
+            child: const Center(child: ProgressRing()))
         : NavigationView(
             appBar: NavigationAppBar(
                 height: 50,
@@ -50,21 +111,29 @@ class _NavigationPageState extends State<NavigationPage> {
                     gradient: LinearGradient(
                       begin: Alignment.centerLeft,
                       end: Alignment.centerRight,
-                      colors: [
-                        MyColor.btnClaroColor,
-                        MyColor.btnClaroColor,
-                        Colors.white
-                      ],
+                      colors: context.watch<ModeContrastProvider>().getMode
+                          ? [
+                              Colors.black,
+                              MyColor.btnOscuroColor,
+                              MyColor.btnOscuroColor,
+                            ]
+                          : [
+                              Colors.white,
+                              MyColor.btnClaroColor,
+                              MyColor.btnClaroColor,
+                            ],
                     ),
                   ),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      const Image(
+                          image: AssetImage("assets/imgs/icon_rdq.png")),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 20.0, vertical: 8),
                         child: option(context),
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -77,36 +146,13 @@ class _NavigationPageState extends State<NavigationPage> {
                     style: FluentTheme.of(context).typography.title!,
                     child: Column(
                       children: [
-                        const Text("RDQ Desktop"),
+                        setImage(userData!.image, 90),
                         Text(userData!.name),
                       ],
                     ),
                   ),
                 ),
-                items: [
-                  PaneItem(
-                    icon: const Icon(FluentIcons.home),
-                    body: const PrimeraScreen(),
-                    title: const Text("Inicio", style: TextStyle(fontSize: 16)),
-                  ),
-                  PaneItemSeparator(),
-                  // PaneItem(
-                  //     icon: const Icon(FluentIcons.user_window),
-                  //     body: const SegundaScreen(),
-                  //     infoBadge: InfoBadge(source: Text("$num")),
-                  //     title: const Text("Compras registradas",
-                  //         style: TextStyle(fontSize: 16))),
-                  PaneItem(
-                      icon: const Icon(FluentIcons.product),
-                      title: const Text("Productos",
-                          style: TextStyle(fontSize: 16)),
-                      body: const ProductPage()),
-                  PaneItem(
-                      icon: const Icon(FluentIcons.product),
-                      title: const Text("Productos",
-                          style: TextStyle(fontSize: 16)),
-                      body: const CustomerPage()),
-                ],
+                items: items,
                 selected: _countPage,
                 onChanged: (i) {
                   setState(() {

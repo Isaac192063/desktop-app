@@ -37,7 +37,7 @@ class _nameState extends State<RegisterOrder> {
   Widget build(BuildContext context) {
     return fluent_ui.ScaffoldPage(
         header: Container(
-          color: MyColor.btnColor,
+          color: MyColor.primaryKey,
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
           alignment: Alignment.centerLeft,
           child: const Text(

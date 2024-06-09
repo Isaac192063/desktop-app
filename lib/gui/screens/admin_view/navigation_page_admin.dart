@@ -7,7 +7,6 @@ import 'package:desktop_app/gui/screens/customer/customer_page.dart';
 import 'package:desktop_app/gui/screens/orders/indexOrder.dart';
 import 'package:desktop_app/gui/screens/orders/order2/registerOrder.dart';
 import 'package:desktop_app/gui/screens/product/Product_page.dart';
-import 'package:desktop_app/gui/screens/registerOrder/registerOrder.dart';
 import 'package:desktop_app/gui/widgets/options.dart';
 import 'package:desktop_app/gui/widgets/setImgae.dart';
 import 'package:desktop_app/gui/screens/admin_view/gestion%20empleados/managedEmployee.dart';
@@ -26,7 +25,6 @@ class NavigationPageAdmin extends StatefulWidget {
 
 class _NavigationPageAdminState extends State<NavigationPageAdmin> {
   int _countPage = 0;
-  final int _numOrd = 0;
 
   bool loading = true;
   User? userData;
@@ -98,10 +96,6 @@ class _NavigationPageAdminState extends State<NavigationPageAdmin> {
                     child: Column(
                       children: [
                         setImage(userData!.image, 90),
-                        Text(
-                          "admin",
-                          style: TextStyle(fontSize: 20, color: Colors.blue),
-                        ),
                         Text(userData!.name),
                       ],
                     ),

@@ -6,7 +6,7 @@ class BarGraphData {
   final data = [
     const BarGraphModel(
         label: "Actividad de remisiones",
-        color: Color(0xFFFEB95A),
+        color: Color.fromARGB(255, 0, 88, 6),
         graph: [
           GraphModel(x: 0, y: 8),
           GraphModel(x: 1, y: 10),
@@ -17,7 +17,7 @@ class BarGraphData {
         ]),
     const BarGraphModel(
         label: "Actividad re recepciones",
-        color: Color(0xFFF2C8ED),
+        color: Color.fromARGB(255, 0, 48, 67),
         graph: [
           GraphModel(x: 0, y: 8),
           GraphModel(x: 1, y: 10),

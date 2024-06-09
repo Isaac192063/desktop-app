@@ -76,57 +76,55 @@ class _MyAppState extends State<ResgisterEmployee> {
   @override
   Widget build(BuildContext context) {
     return ScaffoldPage(
-      content: Center(
+      content: SingleChildScrollView(
         child: Container(
-          height: MediaQuery.of(context).size.width / 2,
-          width: MediaQuery.of(context).size.width / 3,
-          child: SingleChildScrollView(
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  TextBox(
-                    placeholder: "nombre",
-                    controller: _con!.nameController,
-                    padding: EdgeInsets.all(10),
-                    style: TextStyle(fontSize: 16),
+          height: MediaQuery.of(context).size.height / 2,
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                TextBox(
+                  placeholder: "nombre",
+                  controller: _con!.nameController,
+                  padding: EdgeInsets.all(10),
+                  style: TextStyle(fontSize: 16),
+                ),
+                TextBox(
+                  placeholder: "apellido",
+                  controller: _con!.lastNameController,
+                  padding: EdgeInsets.all(10),
+                  style: TextStyle(fontSize: 16),
+                ),
+                TextBox(
+                  placeholder: "email",
+                  controller: _con!.emailController,
+                  padding: EdgeInsets.all(10),
+                  style: TextStyle(fontSize: 16),
+                ),
+                PasswordBox(
+                  placeholder: "contraseña",
+                  controller: _con!.passwordController,
+                  padding: EdgeInsets.all(10),
+                  style: TextStyle(fontSize: 16),
+                ),
+                TextBox(
+                  placeholder: "telefono",
+                  controller: _con!.numberPhoneController,
+                  padding: EdgeInsets.all(10),
+                  style: TextStyle(fontSize: 16),
+                ),
+
+                Material(
+                  child: InkWell(
+                    child: imageLocal(),
+                    onTap: () {
+                      debugPrint("seleccionando imagen");
+                      selectImg();
+                    },
                   ),
-                  TextBox(
-                    placeholder: "apellido",
-                    controller: _con!.lastNameController,
-                    padding: EdgeInsets.all(10),
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  TextBox(
-                    placeholder: "email",
-                    controller: _con!.emailController,
-                    padding: EdgeInsets.all(10),
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  PasswordBox(
-                    placeholder: "contraseña",
-                    controller: _con!.passwordController,
-                    padding: EdgeInsets.all(10),
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  TextBox(
-                    placeholder: "telefono",
-                    controller: _con!.numberPhoneController,
-                    padding: EdgeInsets.all(10),
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  Material(
-                    child: InkWell(
-                      child: imageLocal(),
-                      onTap: () {
-                        debugPrint("seleccionando imagen");
-                        selectImg();
-                      },
-                    ),
-                  ),
-                  // FilledButton(
-                  //     child: Text("seleccionar imagen"), onPressed: main),
-                ]),
-          ),
+                ),
+                // FilledButton(
+                //     child: Text("seleccionar imagen"), onPressed: main),
+              ]),
         ),
       ),
     );

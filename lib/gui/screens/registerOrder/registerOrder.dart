@@ -1,9 +1,6 @@
-import 'dart:async';
+// ignore: file_names
 import 'dart:ui';
-import 'package:desktop_app/domain/models/Product.dart';
-import 'package:desktop_app/domain/service/Product_service.dart';
-import 'package:desktop_app/gui/screens/product/ProductController.dart';
-import 'package:desktop_app/gui/widgets/table.dart';
+
 import 'package:desktop_app/gui/utils/myColors.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
@@ -98,7 +95,7 @@ class _nameState extends State<PrimeraScreen> {
       padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 10),
       decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(Radius.circular(10)),
-          color: MyColor.btnColor),
+          color: MyColor.primaryKey),
       child: Text(description,
           style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
     );
