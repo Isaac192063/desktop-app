@@ -1,12 +1,17 @@
 import 'package:desktop_app/domain/models/Product.dart';
 import 'package:desktop_app/domain/service/Product_service.dart';
 import 'package:desktop_app/gui/screens/product/ProductController.dart';
+import 'package:desktop_app/gui/widgets/input.dart';
+import 'package:desktop_app/gui/widgets/textModified.dart';
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:flutter/material.dart';
 
 class Register_edit_packaging extends StatefulWidget {
   final ProductController _con;
-
-  const Register_edit_packaging(this._con, {super.key});
+  final GlobalKey<FormState> formKey;
+  final bool update;
+  const Register_edit_packaging(this._con, this.formKey, this.update,
+      {super.key});
 
   @override
   State<Register_edit_packaging> createState() => _nameState();
@@ -17,11 +22,13 @@ class _nameState extends State<Register_edit_packaging> {
   late Future<List<Content>> listContent;
   final Productservice productService = Productservice();
   DateTime? selected;
+  GlobalKey<FormState>? formKey;
 
   ProductController? _con;
 
   TypePackaging? typePackagaging;
   Content? content;
+  bool? update;
   bool disabled = false;
 
   @override
@@ -34,55 +41,71 @@ class _nameState extends State<Register_edit_packaging> {
     typePackagaging = _con!.typePackaging;
     selected = _con!.time;
     _con?.context = context;
+    formKey = widget.formKey;
+    update = widget.update;
   }
 
   @override
   Widget build(BuildContext context) {
     return ScaffoldPage(
       content: SingleChildScrollView(
-        child: Column(
-          children: [
-            TextBox(
-              placeholderStyle:
-                  TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-              padding: EdgeInsets.all(10),
-              placeholder: 'Codigo del cilindro',
-              controller: _con!.cod,
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            TextBox(
-              placeholderStyle:
-                  TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-              padding: EdgeInsets.all(10),
-              placeholder: 'dueño',
-              controller: _con!.owner,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            checkBoxContent(listContent, "seleccione el contenido"),
-            const SizedBox(
-              height: 10,
-            ),
-            checkBoxType(listProductsType, "seleccione el tamaño"),
-            const SizedBox(
-              height: 20,
-            ),
-            DatePicker(
-              header: 'Prueba hidrostatica',
-              selected: selected,
-              headerStyle: const TextStyle(fontSize: 18),
-              contentPadding: const EdgeInsets.all(5),
-              onChanged: (time) => setState(() {
-                _con!.time = time;
-                selected = time;
-              }),
-            ),
-          ],
+        child: Form(
+          key: formKey,
+          child: Column(
+            children: [
+              !update!
+                  ? Material(
+                      child: CustomInput(
+                          label: 'Codigo del cilindro',
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Por favor ingrese el codigo de cilindro';
+                            }
+
+                            return null;
+                          },
+                          icon: Icon(Icons.code),
+                          controller: _con!.cod),
+                    )
+                  : const SizedBox(),
+              const SizedBox(
+                height: 10,
+              ),
+              Material(
+                child: CustomInput(
+                    label: 'Dueño del cilindro',
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Por favor ingrese el dueño del cilindro';
+                      }
+                      return null;
+                    },
+                    icon: Icon(Icons.person_4_rounded),
+                    controller: _con!.owner),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              checkBoxContent(listContent, "seleccione el contenido"),
+              const SizedBox(
+                height: 10,
+              ),
+              checkBoxType(listProductsType, "seleccione el tamaño"),
+              const SizedBox(
+                height: 20,
+              ),
+              DatePicker(
+                header: 'Prueba hidrostatica',
+                selected: selected,
+                headerStyle: const TextStyle(fontSize: 18),
+                contentPadding: const EdgeInsets.all(5),
+                onChanged: (time) => setState(() {
+                  _con!.time = time;
+                  selected = time;
+                }),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -120,7 +143,7 @@ class _nameState extends State<Register_edit_packaging> {
                     });
                   },
             placeholder: typePackagaging == null
-                ? Text(title)
+                ? textModified(title, 16)
                 : Text(
                     "${typePackagaging!.size.toString()} ${typePackagaging!.pressureAmount}"),
           );
@@ -151,7 +174,9 @@ class _nameState extends State<Register_edit_packaging> {
                     _con!.content = color!;
                     setState(() => content = color);
                   },
-            placeholder: content == null ? Text(title) : Text(content!.name!),
+            placeholder: content == null
+                ? textModified(title, 16)
+                : Text(content!.name!),
           );
         }
 

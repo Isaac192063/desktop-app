@@ -7,6 +7,7 @@ import 'package:desktop_app/gui/widgets/button_customize.dart';
 import 'package:desktop_app/gui/widgets/textModified.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter/material.dart' as m;
 
 class ProductPage extends StatefulWidget {
   const ProductPage({super.key});
@@ -28,27 +29,31 @@ class _ProductPageState extends State<ProductPage> {
 // Ventana mergenete
   void showContentDialog(BuildContext context,
       {edit = false, Packaging? pkg}) async {
+    GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
     if (pkg != null) {
       _con.init(context, packaging: pkg);
     } else {
-      _con.delete();
+      _con.clean();
     }
-    await showDialog<String>(
+    await m.showDialog<String>(
       context: context,
       builder: (context) => ContentDialog(
-        constraints: const BoxConstraints(maxHeight: 500, maxWidth: 500),
+        constraints: const BoxConstraints(maxHeight: 550, maxWidth: 500),
         title:
             edit ? const Text('Editar envase') : const Text('Agregar envase'),
-        content: Register_edit_packaging(_con),
+        content: Register_edit_packaging(_con, _formKey, edit),
         actions: [
           buttonCustomize(
               text: "Agregar",
               execute: () async {
-                await _con.registerPackaging();
-                Navigator.pop(context, 'User deleted file');
-                setState(() {
-                  listPackaging = _con.getAllProduct();
-                });
+                if (_formKey.currentState!.validate()) {
+                  await _con.registerPackaging();
+
+                  setState(() {
+                    listPackaging = _con.getAllProduct();
+                  });
+                }
               },
               color: MyColor.btnAcep),
           buttonCustomize(
@@ -62,7 +67,36 @@ class _ProductPageState extends State<ProductPage> {
     );
   }
 
-  void showPackaging(BuildContext context, Packaging packaging) async {
+  void confirmationDelete(BuildContext context, Packaging packaging) async {
+    await m.showDialog<String>(
+      context: context,
+      builder: (context) => ContentDialog(
+        title: const Text('Eliminar envase permanente?'),
+        content: const Text(
+          'Si eliminas este envase, no podras recuperarlo. ¿Quieres eliminarlo?',
+        ),
+        actions: [
+          Button(
+            child: const Text('Eliminar'),
+            onPressed: () async {
+              await _con.deleteproduct(packaging.id!, context);
+              setState(() {
+                listPackaging = _con.getAllProduct();
+              });
+              Navigator.pop(context, 'User deleted file');
+            },
+          ),
+          FilledButton(
+            child: const Text('Cancelar'),
+            onPressed: () => Navigator.pop(context, 'User canceled dialog'),
+          ),
+        ],
+      ),
+    );
+    setState(() {});
+  }
+
+  dynamic showPackaging(BuildContext context, Packaging packaging) async {
     Widget setText(String text, double size, bool negrilla) {
       return Text(
         text,
@@ -72,7 +106,8 @@ class _ProductPageState extends State<ProductPage> {
       );
     }
 
-    await showDialog<String>(
+    // ignore: unused_local_variable
+    final result = await m.showDialog<String>(
       context: context,
       builder: (context) => ContentDialog(
         constraints: const BoxConstraints(maxHeight: 550, maxWidth: 600),
@@ -131,11 +166,13 @@ class _ProductPageState extends State<ProductPage> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 100, top: 30),
+                        margin: const EdgeInsets.only(left: 100, top: 30),
                         child: buttonCustomize(
                             context: context,
                             text: "Eliminar producto",
-                            execute: () {},
+                            execute: () {
+                              confirmationDelete(context, packaging);
+                            },
                             color: MyColor.btnCancel),
                       ),
                     ],
@@ -207,29 +244,17 @@ class _ProductPageState extends State<ProductPage> {
                     height: 30,
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Button(
-                          onPressed: () {
+                      buttonCustomize(
+                          text: "Editar",
+                          execute: () {
                             showContentDialog(context,
                                 edit: true, pkg: packaging);
                           },
-                          style: ButtonStyle(
-                              padding: ButtonState.all(
-                                  const EdgeInsets.symmetric(
-                                      vertical: 10, horizontal: 30))),
-                          child: const Text('Editar')),
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      FilledButton(
-                          onPressed: () =>
-                              Navigator.pop(context, 'User canceled dialog'),
-                          style: ButtonStyle(
-                              padding: ButtonState.all(
-                                  const EdgeInsets.symmetric(
-                                      vertical: 10, horizontal: 30))),
-                          child: const Text('Cancelar')),
+                          color: MyColor.btnAcep,
+                          pad: 30),
                     ],
                   ),
                 ],
@@ -249,7 +274,7 @@ class _ProductPageState extends State<ProductPage> {
           children: [
             SearchPackaging(showPackaging),
             const SizedBox(
-              height: 25,
+              height: 10,
             ),
             Container(
               width: MediaQuery.of(context).size.width / 1.5,

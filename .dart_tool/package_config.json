@@ -86,6 +86,12 @@
       "languageVersion": "3.2"
     },
     {
+      "name": "flutter_email_validator",
+      "rootUri": "file:///C:/Users/Asus/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_email_validator-2.1.24",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_lints",
       "rootUri": "file:///C:/Users/Asus/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_lints-2.0.3",
       "packageUri": "lib/",
@@ -332,7 +338,7 @@
       "languageVersion": "3.1"
     }
   ],
-  "generated": "2024-05-27T02:58:13.053358Z",
+  "generated": "2024-06-19T18:41:16.136008Z",
   "generator": "pub",
   "generatorVersion": "3.3.4"
 }

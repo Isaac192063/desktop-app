@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e40526c-f303-4ad4-b178-998a11996296" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop_app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/desktop_app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/domain/models/Product.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/domain/models/Product.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/gui/screens/config gui/config_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/gui/screens/config gui/config_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/gui/screens/product/Product_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/gui/screens/product/Product_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +48,10 @@
     &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Asus/Desktop/archivos/ingeneria de software/proyect rdq/desktop_app&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
@@ -71,6 +69,8 @@
       <workItem from="1717901597262" duration="276000" />
       <workItem from="1717901892632" duration="250000" />
       <workItem from="1717902166934" duration="192000" />
+      <workItem from="1718408394201" duration="600000" />
+      <workItem from="1718497366299" duration="298000" />
     </task>
     <servers />
   </component>

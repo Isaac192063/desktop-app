@@ -3,7 +3,8 @@ import 'package:desktop_app/gui/utils/myColors.dart';
 import 'package:desktop_app/gui/widgets/textModified.dart';
 import 'package:desktop_app/gui/widgets/productView.dart';
 import 'package:desktop_app/gui/widgets/setImgae.dart';
-import 'package:desktop_app/gui/screens/admin_view/gestion%20empleados/edit_detail_Employee.dart';
+import 'package:desktop_app/gui/screens/admin_view/employees/edit_detail_Employee.dart';
+import 'package:fluent_ui/fluent_ui.dart' as fluent_ui;
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -17,17 +18,38 @@ Widget employessTbale(List<User> users, List<String> headers, context) {
     borderRadius: BorderRadius.circular(10),
     child: DataTable(
       checkboxHorizontalMargin: 40,
-      dataRowHeight: 80,
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        border: Border(
+          bottom: fluent_ui.BorderSide(width: 1, color: Colors.grey),
+        ),
+      ),
+      sortAscending: true,
+      showCheckboxColumn: false,
+      headingRowColor:
+          MaterialStateColor.resolveWith((states) => MyColor.medio),
+      border: const fluent_ui.TableBorder(
+        horizontalInside: fluent_ui.BorderSide(
+          color: fluent_ui.Color.fromARGB(255, 0, 0, 0),
+          width: 0.1,
+        ),
+      ),
+      dataRowHeight: 75,
       columns: [
-        ...List.generate(headers.length,
-            (index) => DataColumn(label: textModified(headers[index], 20)))
+        ...List.generate(
+            headers.length,
+            (index) =>
+                DataColumn(label: textModified(headers[index], 20, bold: true)))
       ],
       rows: users
           .map(
             (user) => DataRow(
               color: user.enabled
-                  ? MaterialStateColor.resolveWith((states) => MyColor.medio)
+                  ? MaterialStateColor.resolveWith((states) => MyColor.white)
                   : MaterialStateColor.resolveWith((states) => MyColor.claro),
+              onSelectChanged: (value) {
+                detalleEmployee(context, user);
+              },
               cells: [
                 DataCell(
                   Row(
@@ -39,21 +61,12 @@ Widget employessTbale(List<User> users, List<String> headers, context) {
                       )
                     ],
                   ),
-                  onTap: () {
-                    detalleEmployee(context, user);
-                  },
                 ),
-                DataCell(onTap: () {
-                  detalleEmployee(context, user);
-                }, Text(DateFormat("yyyy-MM-dd").format(user.initialData))),
-                DataCell(Text(user.email), onTap: () {
-                  detalleEmployee(context, user);
-                }, showEditIcon: true),
+                DataCell(textModified(
+                    DateFormat("yyyy-MM-dd").format(user.initialData), 17)),
+                DataCell(textModified(user.email, 18)),
                 DataCell(
-                  Text(user.phoneNumber),
-                  onTap: () {
-                    detalleEmployee(context, user);
-                  },
+                  textModified(user.phoneNumber, 18),
                 ),
               ],
             ),

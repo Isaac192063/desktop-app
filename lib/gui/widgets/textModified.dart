@@ -1,8 +1,12 @@
 import 'package:fluent_ui/fluent_ui.dart';
 
-Widget textModified(String text, double size, {Color? color}) {
+Widget textModified(String text, double size,
+    {Color? color, bool? bold = false}) {
   return Text(
     text,
-    style: TextStyle(fontSize: size, fontWeight: FontWeight.w600, color: color),
+    style: TextStyle(
+        fontSize: size,
+        fontWeight: bold! ? FontWeight.bold : FontWeight.w400,
+        color: color),
   );
 }

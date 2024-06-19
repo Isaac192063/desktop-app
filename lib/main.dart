@@ -1,7 +1,7 @@
 import 'package:desktop_app/domain/models/User.dart';
+import 'package:desktop_app/domain/providers/customers_provider.dart';
 import 'package:desktop_app/domain/providers/employess_provider.dart';
 import 'package:desktop_app/domain/providers/mode_contrast_provider.dart';
-import 'package:desktop_app/gui/screens/admin_view/navigation_page_admin.dart';
 import 'package:desktop_app/gui/screens/login/logeo.dart';
 import 'package:desktop_app/gui/screens/navigation_page.dart';
 import 'package:fluent_ui/fluent_ui.dart';
@@ -12,7 +12,10 @@ void main() {
     ChangeNotifierProvider(
       create: (_) => ModeContrastProvider(),
     ),
-    ChangeNotifierProvider(create: (_) => EmployeesProvider())
+    ChangeNotifierProvider(create: (_) => EmployeesProvider()),
+    ChangeNotifierProvider(
+      create: (_) => CustomersProvider(),
+    )
   ], child: const MyApp()));
 }
 
@@ -25,8 +28,8 @@ User user = User(
     initialData: DateTime.now(),
     email: "gerardo@gmail.com",
     password: "martin",
-    image: "1716681658040.jpg",
-  enabled: true);
+    image: "1717969665541.jpg",
+    enabled: true);
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -34,12 +37,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FluentApp(
-      title: 'Material',
+      title: 'RDQ Desktop',
       debugShowCheckedModeBanner: false,
       theme: context.watch<ModeContrastProvider>().getMode
           ? FluentThemeData.dark()
           : FluentThemeData.light(),
-      // home: NavigationPage(user)
+      // home: NavigationPage(user, "user")
       home: const Logeo(),
     );
   }

@@ -23,17 +23,13 @@ class _LogeoState extends State<Logeo> {
             gradient: LinearGradient(
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
-          stops: [
+          stops: const [
             0.1,
             0.4,
             0.6,
             0.9,
           ],
           colors: [
-            // Colors.yellow,
-            // Colors.red,
-            // const Color.fromARGB(80, 0, 0, 0),
-            // Colors.teal,
             MyColor.btnOscuroColor,
             MyColor.btnClaroColor,
             MyColor.medio,
@@ -44,7 +40,6 @@ class _LogeoState extends State<Logeo> {
         height: double.infinity,
         child: Center(
           child: FractionallySizedBox(
-            // heightFactor: 0.5,
             widthFactor: .5,
             child: SingleChildScrollView(
               child: Container(
@@ -65,7 +60,7 @@ class _LogeoState extends State<Logeo> {
                   children: [
                     const Center(
                         child: Text(
-                      "Iniciar secion",
+                      "Iniciar sesion",
                       style: TextStyle(
                           color: Color.fromARGB(255, 82, 82, 82),
                           fontSize: 45,

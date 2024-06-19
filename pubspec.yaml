@@ -45,6 +45,7 @@ dependencies:
   provider: ^6.1.2
   fl_chart: ^0.68.0
   path_provider_windows: ^2.2.1
+  flutter_email_validator: ^2.1.24
 
 dev_dependencies:
   flutter_test:

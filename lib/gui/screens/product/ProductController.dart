@@ -26,7 +26,7 @@ class ProductController {
     print(packaging.owner);
   }
 
-  void delete() {
+  void clean() {
     cod = TextEditingController();
     owner = TextEditingController();
     typePackaging = null;
@@ -57,6 +57,14 @@ class ProductController {
 
   Future<void> registerProduct() async {
     try {
+      if (time == null || content == null || typePackaging == null) {
+        return notification(
+            context!,
+            "Todos los campos deben ser diligenciados",
+            "error",
+            InfoBarSeverity.warning);
+      }
+
       Packaging packaging = Packaging(
           id: cod.text,
           hydrostaticDate: time!.toIso8601String(),
@@ -64,7 +72,13 @@ class ProductController {
           content: content,
           typePackaging: typePackaging);
       ResponseApi api = await _producService.newPackgagin(packaging);
+      if (api.success == false) {
+        return notification(
+            context!, api.message!, "error", InfoBarSeverity.error);
+      }
+
       notification(context!, api.message!, "Success", InfoBarSeverity.success);
+      Navigator.pop(context!);
     } catch (e) {
       print(e);
     }
@@ -79,8 +93,30 @@ class ProductController {
           typePackaging: typePackaging);
       ResponseApi api =
           await _producService.updateProduct(cod.text, packagingUpdate);
+      if (api.success == false) {
+        return notification(
+            context!, api.message!, "error", InfoBarSeverity.error);
+      }
       notification(context!, api.message!, "Success", InfoBarSeverity.success);
       Navigator.pop(context!);
+      Navigator.pop(context!);
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future<void> deleteproduct(String id, BuildContext context) async {
+    try {
+      ResponseApi api = await _producService.deleteProduct(id);
+
+      if (api.success == false) {
+        notification(context, api.message!, "error", InfoBarSeverity.error);
+        return Navigator.pop(context);
+      }
+
+      notification(context, api.message!, "Success", InfoBarSeverity.success);
+
+      Navigator.pop(context);
     } catch (e) {
       print(e);
     }

@@ -74,8 +74,6 @@ class Productservice {
 
       final res = jsonDecode(sol.body);
 
-      print(res);
-
       ResponseApi api = ResponseApi.fromJson(res);
 
       return api;
@@ -114,6 +112,24 @@ class Productservice {
       final response = await http.put(
         Uri.parse("${Environment.API_RDQ}$_api/$id"),
         body: data,
+        headers: {'Content-type': 'application/json'},
+      );
+
+      final res = jsonDecode(response.body);
+
+      ResponseApi api = ResponseApi.fromJson(res);
+
+      return api;
+    } catch (e) {
+      return ResponseApi.fromJson(
+          {'success': false, 'message': "ocurrio un error"});
+    }
+  }
+
+  Future<ResponseApi> deleteProduct(String id) async {
+    try {
+      final response = await http.delete(
+        Uri.parse("${Environment.API_RDQ}$_api/$id"),
         headers: {'Content-type': 'application/json'},
       );
 

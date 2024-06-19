@@ -19,26 +19,16 @@ class MainScreen extends StatelessWidget {
           : null,
       body: SingleChildScrollView(
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Expanded(
               flex: 7,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  DashboardWidget(),
-                ],
-              ),
+              child: DashboardWidget(),
             ),
             if (isDesktop)
               const Expanded(
                 flex: 3,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SummaryWidget(),
-                  ],
-                ),
+                child: SummaryWidget(),
               ),
           ],
         ),

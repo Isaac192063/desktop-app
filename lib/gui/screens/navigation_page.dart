@@ -3,13 +3,14 @@ import 'package:desktop_app/domain/providers/mode_contrast_provider.dart';
 import 'package:desktop_app/gui/screens/admin_view/dashboard/main_screen.dart';
 import 'package:desktop_app/gui/screens/admin_view/kardex/indexkardex.dart';
 import 'package:desktop_app/gui/screens/config%20gui/config_page.dart';
-import 'package:desktop_app/gui/screens/customer/customer_page.dart';
-import 'package:desktop_app/gui/screens/orders/indexOrder.dart';
-import 'package:desktop_app/gui/screens/orders/order2/registerOrder.dart';
+import 'package:desktop_app/gui/screens/customer/index_customer.dart';
+import 'package:desktop_app/gui/screens/history/index_order_recepcion.dart';
+import 'package:desktop_app/gui/screens/history/index_order_remision.dart';
+import 'package:desktop_app/gui/screens/order/registerOrder.dart';
 import 'package:desktop_app/gui/screens/product/Product_page.dart';
 import 'package:desktop_app/gui/widgets/options.dart';
 import 'package:desktop_app/gui/widgets/setImgae.dart';
-import 'package:desktop_app/gui/screens/admin_view/gestion%20empleados/managedEmployee.dart';
+import 'package:desktop_app/gui/screens/admin_view/employees/managedEmployee.dart';
 import 'package:desktop_app/gui/utils/myColors.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:provider/provider.dart';
@@ -34,7 +35,6 @@ class _NavigationPageAdminState extends State<NavigationPage> {
   @override
   void initState() {
     Future.delayed(const Duration(milliseconds: 1200), () {
-      // WidgetsBinding.instance.addPostFrameCallback((timeStamp) {});
       setState(() {
         userData = widget.user;
         rol = widget.rol;
@@ -54,7 +54,6 @@ class _NavigationPageAdminState extends State<NavigationPage> {
           1,
           PaneItemSeparator(),
         );
-
         items.addAll([
           PaneItem(
               icon: const Icon(FluentIcons.employee_self_service),
@@ -73,14 +72,19 @@ class _NavigationPageAdminState extends State<NavigationPage> {
   List<NavigationPaneItem> items = [
     PaneItemExpander(
         icon: const Icon(FluentIcons.business_card),
-        body: const IndexOrder(),
-        title: const Text("Ventas registradas", style: TextStyle(fontSize: 16)),
+        body: const RegisterOrder(),
+        title: const Text("Registrar venta", style: TextStyle(fontSize: 16)),
         items: [
           PaneItem(
               icon: const Icon(FluentIcons.user_window),
-              body: const RegisterOrder(),
-              title: const Text("Registrar venta",
-                  style: TextStyle(fontSize: 16))),
+              body: const IndexOrderRemision(),
+              infoBadge: InfoBadge(source: Text("0")),
+              title: const Text("Remisiones", style: TextStyle(fontSize: 16))),
+          PaneItem(
+              icon: const Icon(FluentIcons.user_window),
+              body: const IndexOrderRecepcion(),
+              infoBadge: InfoBadge(source: Text("0")),
+              title: const Text("Recepciones", style: TextStyle(fontSize: 16))),
         ]),
     PaneItem(
         icon: const Icon(FluentIcons.list),
@@ -89,7 +93,7 @@ class _NavigationPageAdminState extends State<NavigationPage> {
     PaneItem(
         icon: const Icon(FluentIcons.user_clapper),
         title: const Text("clientes", style: TextStyle(fontSize: 16)),
-        body: const CustomerPage()),
+        body: const IndexCustomer()),
   ];
 
   @override

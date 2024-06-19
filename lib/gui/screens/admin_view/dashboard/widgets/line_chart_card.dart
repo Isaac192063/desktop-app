@@ -46,7 +46,8 @@ class LineChartCard extends StatelessWidget {
                                 child: Text(
                                     data.bottomTitle[value.toInt()].toString(),
                                     style: TextStyle(
-                                        fontSize: 12, color: Colors.grey[400])),
+                                        fontSize: 12,
+                                        color: Color.fromARGB(255, 0, 0, 0))),
                               )
                             : const SizedBox();
                       },
@@ -58,7 +59,8 @@ class LineChartCard extends StatelessWidget {
                         return data.leftTitle[value.toInt()] != null
                             ? Text(data.leftTitle[value.toInt()].toString(),
                                 style: TextStyle(
-                                    fontSize: 12, color: Colors.grey[400]))
+                                    fontSize: 12,
+                                    color: Color.fromARGB(255, 0, 0, 0)))
                             : const SizedBox();
                       },
                       showTitles: true,

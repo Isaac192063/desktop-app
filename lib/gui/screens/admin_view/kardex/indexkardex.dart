@@ -1,7 +1,7 @@
 import 'package:desktop_app/domain/models/Kardex_model.dart';
-import 'package:desktop_app/gui/utils/myColors.dart';
 import 'package:desktop_app/gui/widgets/search_bar.dart';
 import 'package:desktop_app/gui/widgets/table.dart';
+import 'package:desktop_app/gui/widgets/textModified.dart';
 import 'package:fluent_ui/fluent_ui.dart' as fluent_ui;
 import 'package:flutter/material.dart';
 
@@ -41,13 +41,9 @@ class _MyWidgetState extends State<IndexKardex> {
           children: [
             const Searchbar(),
             Container(
-              color: MyColor.primaryKey,
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
               alignment: Alignment.centerLeft,
-              child: const Text(
-                "Registro del kardex",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
+              child: textModified("Registro del kardex", 22, bold: true),
             ),
           ],
         ),
@@ -57,7 +53,6 @@ class _MyWidgetState extends State<IndexKardex> {
             scrollDirection: Axis.horizontal,
             child: fluent_ui.SingleChildScrollView(
               child: fluent_ui.SizedBox(
-                width: 990,
                 child: DataTable(
                   columnSpacing: 10,
                   border: const fluent_ui.TableBorder(
@@ -65,11 +60,6 @@ class _MyWidgetState extends State<IndexKardex> {
                       color: Colors.grey,
                       width: 0.3,
                     ),
-                    // verticalInside: fluent_ui.BorderSide(
-                    //   color: Colors.grey,
-                    //   width: 0.3,
-
-                    // ),
                   ),
                   decoration: const BoxDecoration(
                     color: Colors.white,
