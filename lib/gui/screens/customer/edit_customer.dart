@@ -24,9 +24,12 @@ class _EditCustomerState extends fluent_ui.State<EditCustomer> {
   late final CustomerController _customerController;
   late final Customer customer;
   final CustomerService _customerService = CustomerService();
+  final _formKey = GlobalKey<FormState>();
   late Future<List<City>> _listCities;
   List<String> typePersonList = ["NATURAL", "JURIDICO"];
   String? selectedTypePerson = "NATURAL";
+  String? cityError;
+  String? dateError;
   City? city;
   DateTime? selectedDateTime;
   bool disabledCity = false;
@@ -49,6 +52,8 @@ class _EditCustomerState extends fluent_ui.State<EditCustomer> {
     _customerController.warrantyController.text = widget.customer.warranty!;
     _customerController.typePersonController.text = widget.customer.typePerson!;
     _customerController.ctyIdController.text = widget.customer.ctyId!;
+    _customerController.ctyTextController.text = widget.customer.city!.name!;
+
     _customerController.dptIdController.text = widget.customer.dptCtyId!;
     _customerController.birthDateController.text = widget.customer.birthDate!;
 
@@ -58,182 +63,286 @@ class _EditCustomerState extends fluent_ui.State<EditCustomer> {
 
   @override
   fluent_ui.Widget build(fluent_ui.BuildContext context) {
-    return fluent_ui.ScaffoldPage(
-      content: fluent_ui.SingleChildScrollView(
-        child: fluent_ui.Column(
-          crossAxisAlignment: fluent_ui.CrossAxisAlignment.start,
-          children: [
-            fluent_ui.Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: textModified("Informacion personal", 18),
-            ),
-            fluent_ui.ListTile(
-              title: const fluent_ui.Row(
-                children: [
-                  Icon(Icons.perm_identity),
-                  Text("Cedula"),
-                ],
+    return Scaffold(
+      body: fluent_ui.SingleChildScrollView(
+        child: fluent_ui.Form(
+          key: _formKey,
+          child: fluent_ui.Column(
+            crossAxisAlignment: fluent_ui.CrossAxisAlignment.start,
+            children: [
+              fluent_ui.Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: textModified("Informacion personal", 18),
               ),
-              subtitle: fluent_ui.TextBox(
-                enabled: false,
-                controller: _customerController.idController,
-              ),
-            ),
-            fluent_ui.ListTile(
-              title: const fluent_ui.Row(
-                children: [
-                  Icon(Icons.perm_identity),
-                  Text("Primer nombre"),
-                ],
-              ),
-              subtitle: fluent_ui.TextBox(
-                controller: _customerController.firstNameController,
-              ),
-            ),
-            fluent_ui.ListTile(
-              title: const fluent_ui.Row(
-                children: [
-                  Icon(Icons.perm_identity),
-                  Text("Segundo nombre(opcional)"),
-                ],
-              ),
-              subtitle: fluent_ui.TextBox(
-                controller: _customerController.middleNameController,
-              ),
-            ),
-            fluent_ui.ListTile(
-              title: const fluent_ui.Row(
-                children: [
-                  Icon(Icons.perm_identity),
-                  Text("Primer apellido"),
-                ],
-              ),
-              subtitle: fluent_ui.TextBox(
-                controller: _customerController.lastNameController,
-              ),
-            ),
-            fluent_ui.ListTile(
-              title: const fluent_ui.Row(
-                children: [
-                  Icon(Icons.perm_identity),
-                  Text("Segundo apellido(Opcional)"),
-                ],
-              ),
-              subtitle: fluent_ui.TextBox(
-                controller: _customerController.lastName2Controller,
-              ),
-            ),
-            fluent_ui.ListTile(
-              title: const fluent_ui.Row(
-                children: [
-                  Icon(Icons.date_range),
-                  Text("Fecha de nacimiento"),
-                ],
-              ),
-              subtitle: fluent_ui.DatePicker(
-                selected: selectedDateTime,
-                headerStyle: const TextStyle(fontSize: 18),
-                contentPadding: const EdgeInsets.all(5),
-                onChanged: (time) => setState(() {
-                  _customerController.birthDateController.text =
-                      time.toString();
-                  print(_customerController.birthDateController.text);
-                  selectedDateTime = time;
-                }),
-              ),
-            ),
-            fluent_ui.ListTile(
+              fluent_ui.ListTile(
                 title: const fluent_ui.Row(
                   children: [
-                    Icon(Icons.location_on),
-                    Text("Ciudad"),
+                    Icon(Icons.perm_identity),
+                    Text("Cedula"),
                   ],
                 ),
-                subtitle: searchCity(_listCities)),
-            fluent_ui.ListTile(
-              title: const fluent_ui.Row(
-                children: [
-                  Icon(Icons.my_location),
-                  Text("Direccion"),
-                ],
+                subtitle: fluent_ui.TextFormBox(
+                  enabled: false,
+                  controller: _customerController.idController,
+                  
+                ),
               ),
-              subtitle: fluent_ui.TextBox(
-                controller: _customerController.addressController,
-              ),
-            ),
-            fluent_ui.ListTile(
-              title: const fluent_ui.Row(
-                children: [
-                  Icon(Icons.my_location),
-                  Text("Barrio"),
-                ],
-              ),
-              subtitle: fluent_ui.TextBox(
-                controller: _customerController.neighborhoodController,
-              ),
-            ),
-            fluent_ui.Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: textModified("Informacion de empresa", 18),
-            ),
-            fluent_ui.ListTile(
-              title: const fluent_ui.Row(
-                children: [
-                  Icon(Icons.balance),
-                  Text("Tipo de persona"),
-                ],
-              ),
-              subtitle: fluent_ui.SizedBox(
-                width: 200,
-                child: fluent_ui.ComboBox<String>(
-                  value: selectedTypePerson,
-                  items: typePersonList.map((e) {
-                    return fluent_ui.ComboBoxItem(
-                      value: e,
-                      child: Text(e),
-                    );
-                  }).toList(),
-                  onChanged: (typePerson) {
-                    setState(() => selectedTypePerson = typePerson);
-                    print(typePerson);
-                    _customerController.typePersonController.text = typePerson!;
+              fluent_ui.ListTile(
+                title: const fluent_ui.Row(
+                  children: [
+                    Icon(Icons.perm_identity),
+                    Text("Primer nombre"),
+                  ],
+                ),
+                subtitle: fluent_ui.TextFormBox(
+                  controller: _customerController.firstNameController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'El primer nombre es requerido';
+                    }
+                    return null;
                   },
                 ),
               ),
-            ),
-            fluent_ui.ListTile(
-              title: const fluent_ui.Row(
-                children: [
-                  Icon(Icons.wallet),
-                  Text("Garantia"),
-                ],
+              fluent_ui.ListTile(
+                title: const fluent_ui.Row(
+                  children: [
+                    Icon(Icons.perm_identity),
+                    Text("Segundo nombre(opcional)"),
+                  ],
+                ),
+                subtitle: fluent_ui.TextBox(
+                  controller: _customerController.middleNameController,
+                ),
               ),
-              subtitle: fluent_ui.TextBox(
-                controller: _customerController.warrantyController,
+              fluent_ui.ListTile(
+                title: const fluent_ui.Row(
+                  children: [
+                    Icon(Icons.perm_identity),
+                    Text("Primer apellido"),
+                  ],
+                ),
+                subtitle: fluent_ui.TextFormBox(
+                  controller: _customerController.lastNameController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'El primer apellido es requerido';
+                    }
+                    return null;
+                  },
+                ),
               ),
-            ),
-            fluent_ui.Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: textModified("Contacto", 18),
-            ),
-            fluent_ui.ListTile(
-              title: const fluent_ui.Row(
-                children: [Icon(Icons.email), Text("Correo")],
+              fluent_ui.ListTile(
+                title: const fluent_ui.Row(
+                  children: [
+                    Icon(Icons.perm_identity),
+                    Text("Segundo apellido(Opcional)"),
+                  ],
+                ),
+                subtitle: fluent_ui.TextBox(
+                  controller: _customerController.lastName2Controller,
+                ),
               ),
-              subtitle: fluent_ui.TextBox(
-                controller: _customerController.emailController,
+              fluent_ui.ListTile(
+                title: const fluent_ui.Row(
+                  children: [
+                    Icon(Icons.date_range),
+                    Text("Fecha de nacimiento"),
+                  ],
+                ),
+                subtitle: fluent_ui.DatePicker(
+                  selected: selectedDateTime,
+                  headerStyle: const TextStyle(fontSize: 18),
+                  contentPadding: const EdgeInsets.all(5),
+                  onChanged: (time) => setState(() {
+                    // _customerController.birthDateController.text = '${time.day}/${time.month}/${time.year}';
+                    _customerController.birthDateController.text =
+                        time.toString();
+
+                    print(_customerController.birthDateController.text);
+                    selectedDateTime = time;
+                    dateError = null;
+                  }),
+                ),
               ),
-            ),
-            fluent_ui.ListTile(
-              title: const fluent_ui.Row(
-                children: [Icon(Icons.phone), Text("Telefono")],
+              if (dateError != null)
+                fluent_ui.Padding(
+                  padding: const EdgeInsets.only(left: 18),
+                  child: Text(
+                    dateError!,
+                    style: const TextStyle(
+                        color: fluent_ui.Color.fromARGB(255, 145, 17, 8),
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500),
+                  ),
+                ),
+              fluent_ui.ListTile(
+                  title: const fluent_ui.Row(
+                    children: [
+                      Icon(Icons.location_on),
+                      Text("Ciudad"),
+                    ],
+                  ),
+                  subtitle: searchCity(_listCities)),
+              if (cityError != null)
+                fluent_ui.Padding(
+                  padding: const EdgeInsets.only(left: 18),
+                  child: Text(
+                    cityError!,
+                    style: const TextStyle(
+                        color: fluent_ui.Color.fromARGB(255, 145, 17, 8),
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500),
+                  ),
+                ),
+              fluent_ui.ListTile(
+                title: const fluent_ui.Row(
+                  children: [
+                    Icon(Icons.my_location),
+                    Text("Direccion"),
+                  ],
+                ),
+                subtitle: fluent_ui.TextFormBox(
+                  controller: _customerController.addressController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'La direccion es requerida';
+                    }
+                    return null;
+                  },
+                ),
               ),
-              subtitle: fluent_ui.TextBox(
-                controller: _customerController.phoneController,
+              fluent_ui.ListTile(
+                title: const fluent_ui.Row(
+                  children: [
+                    Icon(Icons.my_location),
+                    Text("Barrio"),
+                  ],
+                ),
+                subtitle: fluent_ui.TextFormBox(
+                  controller: _customerController.neighborhoodController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'El barrio es requerido';
+                    }
+                    return null;
+                  },
+                ),
               ),
-            ),
-          ],
+              fluent_ui.Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: textModified("Informacion de empresa", 18),
+              ),
+              fluent_ui.ListTile(
+                title: const fluent_ui.Row(
+                  children: [
+                    Icon(Icons.balance),
+                    Text("Tipo de persona"),
+                  ],
+                ),
+                subtitle: fluent_ui.SizedBox(
+                  child: fluent_ui.ComboBox<String>(
+                    value: selectedTypePerson,
+                    items: typePersonList.map((e) {
+                      return fluent_ui.ComboBoxItem(
+                        value: e,
+                        child: Text(e),
+                      );
+                    }).toList(),
+                    onChanged: (typePerson) {
+                      setState(() => selectedTypePerson = typePerson);
+                      print(typePerson);
+                      _customerController.typePersonController.text =
+                          typePerson!;
+                    },
+                  ),
+                ),
+              ),
+              fluent_ui.ListTile(
+                title: const fluent_ui.Row(
+                  children: [
+                    Icon(Icons.wallet),
+                    Text("Garantia"),
+                  ],
+                ),
+                subtitle: fluent_ui.TextFormBox(
+                  controller: _customerController.warrantyController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'la garantia es requerida';
+                    }
+                    return null;
+                  },
+                ),
+              ),
+              fluent_ui.Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: textModified("Contacto", 18),
+              ),
+              fluent_ui.ListTile(
+                title: const fluent_ui.Row(
+                  children: [Icon(Icons.email), Text("Correo")],
+                ),
+                subtitle: fluent_ui.TextFormBox(
+                  controller: _customerController.emailController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'El correo es requerido';
+                    }
+                    return null;
+                  },
+                ),
+              ),
+              fluent_ui.ListTile(
+                title: const fluent_ui.Row(
+                  children: [Icon(Icons.phone), Text("Telefono")],
+                ),
+                subtitle: fluent_ui.TextFormBox(
+                  controller: _customerController.phoneController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'El numero de telefono es requerido';
+                    }
+                    return null;
+                  },
+                ),
+              ),
+              const fluent_ui.SizedBox(
+                height: 50,
+              )
+            ],
+          ),
         ),
+      ),
+      bottomSheet: fluent_ui.Row(
+        mainAxisAlignment: fluent_ui.MainAxisAlignment.center,
+        children: [
+          button(context, "Guardar", () async {
+            _validateCity();
+            _validateDate();
+            if (_formKey.currentState!.validate() &&
+                _validateCity() &&
+                _validateDate()) {
+              await _customerController.editCustomer();
+
+              Future.delayed(const Duration(milliseconds: 200), () {
+                context.read<CustomersProvider>().setCustomers();
+                Navigator.pop(context);
+                Navigator.pop(context);
+                notification(context, "Cliente editado con exito", "Success",
+                    fluent_ui.InfoBarSeverity.success);
+              });
+            }
+          }, MyColor.btnAcep),
+          const SizedBox(
+            width: 5,
+          ),
+          button(
+              context,
+              "Cancelar",
+              () => Navigator.pop(context, 'User canceled dialog'),
+              MyColor.btnCancel)
+        ],
       ),
     );
   }
@@ -245,6 +354,7 @@ class _EditCustomerState extends fluent_ui.State<EditCustomer> {
         if (snapshot.hasData) {
           List<City> listCity = snapshot.data!;
           return fluent_ui.AutoSuggestBox<String>(
+            controller: _customerController.ctyTextController,
             placeholder: 'Seleccione una ciudad',
             items: listCity.map((city) {
               return fluent_ui.AutoSuggestBoxItem<String>(
@@ -253,9 +363,9 @@ class _EditCustomerState extends fluent_ui.State<EditCustomer> {
                 onSelected: () {
                   _customerController.ctyIdController.text = city.id!;
                   _customerController.dptIdController.text = city.dptId!;
-                  print(city.id!);
-                  print(city.dptId!);
-                  setState(() {});
+                  setState(() {
+                    cityError = null;
+                  });
                 },
                 onFocusChange: (focused) {
                   if (focused) {
@@ -271,6 +381,24 @@ class _EditCustomerState extends fluent_ui.State<EditCustomer> {
       },
     );
   }
+
+  bool _validateCity() {
+    setState(() {
+      cityError = _customerController.ctyIdController.text.isEmpty
+          ? 'La ciudad es requerida'
+          : null;
+    });
+    return cityError == null;
+  }
+
+  bool _validateDate() {
+    setState(() {
+      dateError = _customerController.birthDateController.text.isEmpty
+          ? 'La fecha de nacimiento es requerida'
+          : null;
+    });
+    return dateError == null;
+  }
 }
 
 dynamic editCustomer(BuildContext context, Customer customerListItem,
@@ -283,24 +411,7 @@ dynamic editCustomer(BuildContext context, Customer customerListItem,
       title: const Text("Editar el cliente"),
       content: EditCustomer(
           controller: customerController, customer: customerListItem),
-      actions: [
-        button(context, "Guardar", () async {
-          await customerController.editCustomer();
-
-          Future.delayed(const Duration(milliseconds: 200), () {
-            context.read<CustomersProvider>().setCustomers();
-            Navigator.pop(context);
-            Navigator.pop(context);
-            notification(context, "Cliente editado con exito", "Success",
-                fluent_ui.InfoBarSeverity.success);
-          });
-        }, MyColor.btnAcep),
-        button(
-            context,
-            "Cancelar",
-            () => Navigator.pop(context, 'User canceled dialog'),
-            MyColor.btnCancel)
-      ],
+      
     ),
   );
 }

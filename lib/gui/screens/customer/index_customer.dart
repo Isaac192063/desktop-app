@@ -21,13 +21,6 @@ class IndexCustomer extends StatefulWidget {
 class _IndexOrderState extends State<IndexCustomer> {
   final CustomerController _customerController = CustomerController();
   late Future<List<Customer>> listCustomers;
-  String? idError;
-  String? firstNameError;
-  String? lastNameError;
-  String? addressError;
-  String? neighborhoodError;
-  String? emailError;
-  String? phoneError;
   bool isRowSelected = false;
   @override
   void initState() {
@@ -137,44 +130,6 @@ class _IndexOrderState extends State<IndexCustomer> {
   }
  
 
-  bool validateForm() {
-    bool isValid = true;
-    setState(() {
-      idError = _customerController.idController.text.isEmpty
-          ? 'La cedula es requerida'
-          : null;
-      firstNameError = _customerController.firstNameController.text.isEmpty
-          ? 'El primer nombre es requerido'
-          : null;
-      lastNameError = _customerController.lastNameController.text.isEmpty
-          ? 'El primer apellido es requerido'
-          : null;
-      addressError = _customerController.addressController.text.isEmpty
-          ? 'La direccion es requerida'
-          : null;
-      neighborhoodError =
-          _customerController.neighborhoodController.text.isEmpty
-              ? 'El barrio es requerido'
-              : null;
-      emailError = _customerController.emailController.text.isEmpty
-          ? 'El correo es requerido'
-          : null;
-      phoneError = _customerController.phoneController.text.isEmpty
-          ? 'El telefono es requerido'
-          : null;
-
-      if (idError != null ||
-          firstNameError != null ||
-          lastNameError != null ||
-          addressError != null ||
-          neighborhoodError != null ||
-          emailError != null ||
-          phoneError != null) {
-        isValid = false;
-      }
-    });
-    return isValid;
-  }
 
   DataRow _customListTile({
     required Customer customerListItem,
