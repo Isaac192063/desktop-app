@@ -11,7 +11,7 @@ class UserService {
   Future<ResponseApi> login(String email, String password) async {
     try {
       String params = jsonEncode({"email": email, "password": password});
-
+      print("Parametros de login: $params");
       final res = await http.post(
           Uri.parse("${Environment.API_RDQ}$_api/login"),
           headers: {'Content-type': 'application/json'},
