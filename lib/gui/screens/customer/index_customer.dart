@@ -21,6 +21,13 @@ class IndexCustomer extends StatefulWidget {
 class _IndexOrderState extends State<IndexCustomer> {
   final CustomerController _customerController = CustomerController();
   late Future<List<Customer>> listCustomers;
+  String? idError;
+  String? firstNameError;
+  String? lastNameError;
+  String? addressError;
+  String? neighborhoodError;
+  String? emailError;
+  String? phoneError;
   bool isRowSelected = false;
   @override
   void initState() {
@@ -41,6 +48,7 @@ class _IndexOrderState extends State<IndexCustomer> {
           bottom: AppBar(
             backgroundColor: MyColor.bgOrder,
             title: const Searchbar(),
+            
           ),
         ),
         body: fluent_ui.Padding(
@@ -51,8 +59,17 @@ class _IndexOrderState extends State<IndexCustomer> {
               scrollDirection: Axis.horizontal,
               child: fluent_ui.SingleChildScrollView(
                 child: fluent_ui.Column(
-                  mainAxisAlignment: fluent_ui.MainAxisAlignment.start,
+                  crossAxisAlignment: fluent_ui.CrossAxisAlignment.start,
                   children: [
+                    fluent_ui.FilledButton(
+                      child: const Text('Agregar nuevo cliente'),
+                      onPressed: () {
+                        createCustomerDialog(context, _customerController);
+                      },
+                    ),
+                    const fluent_ui.SizedBox(
+                      height: 8,
+                    ),
                     fluent_ui.SizedBox(
                         width:
                         fluent_ui.MediaQuery.of(context).size.width / 1.2,
@@ -74,6 +91,7 @@ class _IndexOrderState extends State<IndexCustomer> {
                             List<Customer> customers =
                                 context.watch<CustomersProvider>().getCustomers;
                             return DataTable(
+                              sortAscending: true,
                               showCheckboxColumn: false,
                               // ignore: deprecated_member_use
                               dataRowHeight: 40,
@@ -106,22 +124,56 @@ class _IndexOrderState extends State<IndexCustomer> {
                             );
                           },
                         )),
-                    const fluent_ui.SizedBox(
-                      height: 20,
-                    ),
-                    fluent_ui.FilledButton(
-                      child: const Text('Agregar nuevo cliente'),
-                      onPressed: () {
-                        createCustomerDialog(context, _customerController);
-                        context.read<CustomersProvider>().getCustomers;
-                      },
-                    )
+                    
+                    
                   ],
                 ),
               ),
             ),
           ),
         ));
+
+        
+  }
+ 
+
+  bool validateForm() {
+    bool isValid = true;
+    setState(() {
+      idError = _customerController.idController.text.isEmpty
+          ? 'La cedula es requerida'
+          : null;
+      firstNameError = _customerController.firstNameController.text.isEmpty
+          ? 'El primer nombre es requerido'
+          : null;
+      lastNameError = _customerController.lastNameController.text.isEmpty
+          ? 'El primer apellido es requerido'
+          : null;
+      addressError = _customerController.addressController.text.isEmpty
+          ? 'La direccion es requerida'
+          : null;
+      neighborhoodError =
+          _customerController.neighborhoodController.text.isEmpty
+              ? 'El barrio es requerido'
+              : null;
+      emailError = _customerController.emailController.text.isEmpty
+          ? 'El correo es requerido'
+          : null;
+      phoneError = _customerController.phoneController.text.isEmpty
+          ? 'El telefono es requerido'
+          : null;
+
+      if (idError != null ||
+          firstNameError != null ||
+          lastNameError != null ||
+          addressError != null ||
+          neighborhoodError != null ||
+          emailError != null ||
+          phoneError != null) {
+        isValid = false;
+      }
+    });
+    return isValid;
   }
 
   DataRow _customListTile({
@@ -143,7 +195,6 @@ class _IndexOrderState extends State<IndexCustomer> {
     );
   }
 
-// popup para vista del cliente
 
- 
 }
+

@@ -1,13 +1,13 @@
-D:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64/runner/Debug/data/icudtl.dat
-D:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64/runner/Debug/flutter_windows.dll
-D:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64/runner/Debug/data/flutter_assets/AssetManifest.bin
-D:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64/runner/Debug/data/flutter_assets/AssetManifest.json
-D:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64/runner/Debug/data/flutter_assets/assets/imgs/icon_rdq.png
-D:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64/runner/Debug/data/flutter_assets/FontManifest.json
-D:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64/runner/Debug/data/flutter_assets/fonts/MaterialIcons-Regular.otf
-D:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64/runner/Debug/data/flutter_assets/kernel_blob.bin
-D:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64/runner/Debug/data/flutter_assets/NOTICES.Z
-D:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64/runner/Debug/data/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf
-D:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64/runner/Debug/data/flutter_assets/packages/fluent_ui/assets/AcrylicNoise.png
-D:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64/runner/Debug/data/flutter_assets/packages/fluent_ui/fonts/FluentIcons.ttf
-D:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64/runner/Debug/data/flutter_assets/shaders/ink_sparkle.frag
+D:/Desktop/Proyectordq/cambios mios/desktop-app/build/windows/x64/runner/Debug/data/icudtl.dat
+D:/Desktop/Proyectordq/cambios mios/desktop-app/build/windows/x64/runner/Debug/flutter_windows.dll
+D:/Desktop/Proyectordq/cambios mios/desktop-app/build/windows/x64/runner/Debug/data/flutter_assets/AssetManifest.bin
+D:/Desktop/Proyectordq/cambios mios/desktop-app/build/windows/x64/runner/Debug/data/flutter_assets/AssetManifest.json
+D:/Desktop/Proyectordq/cambios mios/desktop-app/build/windows/x64/runner/Debug/data/flutter_assets/assets/imgs/icon_rdq.png
+D:/Desktop/Proyectordq/cambios mios/desktop-app/build/windows/x64/runner/Debug/data/flutter_assets/FontManifest.json
+D:/Desktop/Proyectordq/cambios mios/desktop-app/build/windows/x64/runner/Debug/data/flutter_assets/fonts/MaterialIcons-Regular.otf
+D:/Desktop/Proyectordq/cambios mios/desktop-app/build/windows/x64/runner/Debug/data/flutter_assets/kernel_blob.bin
+D:/Desktop/Proyectordq/cambios mios/desktop-app/build/windows/x64/runner/Debug/data/flutter_assets/NOTICES.Z
+D:/Desktop/Proyectordq/cambios mios/desktop-app/build/windows/x64/runner/Debug/data/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf
+D:/Desktop/Proyectordq/cambios mios/desktop-app/build/windows/x64/runner/Debug/data/flutter_assets/packages/fluent_ui/assets/AcrylicNoise.png
+D:/Desktop/Proyectordq/cambios mios/desktop-app/build/windows/x64/runner/Debug/data/flutter_assets/packages/fluent_ui/fonts/FluentIcons.ttf
+D:/Desktop/Proyectordq/cambios mios/desktop-app/build/windows/x64/runner/Debug/data/flutter_assets/shaders/ink_sparkle.frag

@@ -21,7 +21,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{00FB8DC0-7B6A-325D-822C-7B80A8A35D59}</ProjectGuid>
+    <ProjectGuid>{088B3DBC-4C88-34C7-9BCD-BECB0E3E84BF}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
     <Platform>x64</Platform>
@@ -88,11 +88,11 @@
     </Midl>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="D:\Desktop\Proyectordq\isaac\desktop_app\windows\runner\CMakeLists.txt">
+    <CustomBuild Include="D:\Desktop\Proyectordq\cambios mios\desktop-app\windows\runner\CMakeLists.txt">
       <UseUtf8Encoding>Always</UseUtf8Encoding>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/Desktop/Proyectordq/isaac/desktop_app/windows/runner/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/Desktop/Proyectordq/cambios mios/desktop-app/windows/runner/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SD:/Desktop/Proyectordq/isaac/desktop_app/windows -BD:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64 --check-stamp-file D:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64/runner/CMakeFiles/generate.stamp
+"C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" "-SD:/Desktop/Proyectordq/cambios mios/desktop-app/windows" "-BD:/Desktop/Proyectordq/cambios mios/desktop-app/build/windows/x64" --check-stamp-file "D:/Desktop/Proyectordq/cambios mios/desktop-app/build/windows/x64/runner/CMakeFiles/generate.stamp"
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -101,11 +101,11 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Desktop\Proyectordq\isaac\desktop_app\build\windows\x64\runner\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Desktop\Proyectordq\cambios mios\desktop-app\build\windows\x64\runner\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">Building Custom Rule D:/Desktop/Proyectordq/isaac/desktop_app/windows/runner/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">Building Custom Rule D:/Desktop/Proyectordq/cambios mios/desktop-app/windows/runner/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">setlocal
-"C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SD:/Desktop/Proyectordq/isaac/desktop_app/windows -BD:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64 --check-stamp-file D:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64/runner/CMakeFiles/generate.stamp
+"C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" "-SD:/Desktop/Proyectordq/cambios mios/desktop-app/windows" "-BD:/Desktop/Proyectordq/cambios mios/desktop-app/build/windows/x64" --check-stamp-file "D:/Desktop/Proyectordq/cambios mios/desktop-app/build/windows/x64/runner/CMakeFiles/generate.stamp"
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -114,11 +114,11 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">D:\Desktop\Proyectordq\isaac\desktop_app\build\windows\x64\runner\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">D:\Desktop\Proyectordq\cambios mios\desktop-app\build\windows\x64\runner\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/Desktop/Proyectordq/isaac/desktop_app/windows/runner/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/Desktop/Proyectordq/cambios mios/desktop-app/windows/runner/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-"C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SD:/Desktop/Proyectordq/isaac/desktop_app/windows -BD:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64 --check-stamp-file D:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64/runner/CMakeFiles/generate.stamp
+"C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" "-SD:/Desktop/Proyectordq/cambios mios/desktop-app/windows" "-BD:/Desktop/Proyectordq/cambios mios/desktop-app/build/windows/x64" --check-stamp-file "D:/Desktop/Proyectordq/cambios mios/desktop-app/build/windows/x64/runner/CMakeFiles/generate.stamp"
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -127,21 +127,21 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Desktop\Proyectordq\isaac\desktop_app\build\windows\x64\runner\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Desktop\Proyectordq\cambios mios\desktop-app\build\windows\x64\runner\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="D:\Desktop\Proyectordq\isaac\desktop_app\build\windows\x64\ZERO_CHECK.vcxproj">
-      <Project>{9C712BD2-3D7B-399E-B78E-5E2F702E0AA1}</Project>
+    <ProjectReference Include="D:\Desktop\Proyectordq\cambios mios\desktop-app\build\windows\x64\ZERO_CHECK.vcxproj">
+      <Project>{043FC0B8-587A-32D8-AB78-8D9DD61D5821}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="D:\Desktop\Proyectordq\isaac\desktop_app\build\windows\x64\runner\desktop_app.vcxproj">
-      <Project>{8615B690-AF6C-31B4-B3A2-0A9D3C5284F9}</Project>
+    <ProjectReference Include="D:\Desktop\Proyectordq\cambios mios\desktop-app\build\windows\x64\runner\desktop_app.vcxproj">
+      <Project>{A23EE361-A269-33B3-9E27-E119CD0116E6}</Project>
       <Name>desktop_app</Name>
     </ProjectReference>
   </ItemGroup>

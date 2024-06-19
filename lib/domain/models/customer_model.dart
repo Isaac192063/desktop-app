@@ -63,28 +63,28 @@ class Customer {
     typePerson = json['typePerson'];
     ctyId = json['cty_id'];
     dptCtyId = json['dpt_cty_id'];
-    city = json['city'] != null ? new City.fromJson(json['city']) : null;
+    city = json['city'] != null ? City.fromJson(json['city']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['identification'] = this.identification;
-    data['first_name'] = this.firstName;
-    data['middle_name'] = this.middleName;
-    data['last_name'] = this.lastName;
-    data['last_name_2'] = this.lastName2;
-    data['email'] = this.email;
-    data['birthDate'] = this.birthDate;
-    data['phone_number'] = this.phoneNumber;
-    data['address'] = this.address;
-    data['neighborhood'] = this.neighborhood;
-    data['state'] = this.state;
-    data['warranty'] = this.warranty;
-    data['typePerson'] = this.typePerson;
-    data['cty_id'] = this.ctyId;
-    data['dpt_cty_id'] = this.dptCtyId;
-    if (this.city != null) {
-      data['city'] = this.city!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['identification'] = identification;
+    data['first_name'] = firstName;
+    data['middle_name'] = middleName;
+    data['last_name'] = lastName;
+    data['last_name_2'] = lastName2;
+    data['email'] = email;
+    data['birthDate'] = birthDate;
+    data['phone_number'] = phoneNumber;
+    data['address'] = address;
+    data['neighborhood'] = neighborhood;
+    data['state'] = state;
+    data['warranty'] = warranty;
+    data['typePerson'] = typePerson;
+    data['cty_id'] = ctyId;
+    data['dpt_cty_id'] = dptCtyId;
+    if (city != null) {
+      data['city'] = city!.toJson();
     }
     return data;
   }
@@ -104,10 +104,10 @@ class City {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['dpt_id'] = this.dptId;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['dpt_id'] = dptId;
     return data;
   }
 }

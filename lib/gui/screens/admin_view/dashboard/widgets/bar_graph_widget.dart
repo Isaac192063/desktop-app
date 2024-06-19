@@ -46,7 +46,7 @@ class BarGraphCard extends StatelessWidget {
                       color: barGraphData.data[index].color,
                     ),
                     borderData: FlBorderData(border: const Border()),
-                    gridData: FlGridData(show: false),
+                    gridData: const FlGridData(show: false),
                     titlesData: FlTitlesData(
                       bottomTitles: AxisTitles(
                         sideTitles: SideTitles(

@@ -1,4 +1,5 @@
 import 'package:desktop_app/domain/models/customer_model.dart';
+import 'package:desktop_app/domain/providers/customers_provider.dart';
 import 'package:desktop_app/domain/service/customer_service.dart';
 import 'package:desktop_app/gui/screens/admin_view/gestion%20empleados/edit_detail_Employee.dart';
 import 'package:desktop_app/gui/screens/customer/customerController.dart';
@@ -7,12 +8,13 @@ import 'package:desktop_app/gui/widgets/notification.dart';
 import 'package:desktop_app/gui/widgets/textModified.dart';
 import 'package:fluent_ui/fluent_ui.dart' as fluent_ui;
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
 
 class EditCustomer extends fluent_ui.StatefulWidget {
   final CustomerController controller;
   final Customer customer;
-  const EditCustomer({super.key,required this.controller,required this.customer});
+  const EditCustomer(
+      {super.key, required this.controller, required this.customer});
 
   @override
   State<EditCustomer> createState() => _EditCustomerState();
@@ -23,18 +25,18 @@ class _EditCustomerState extends fluent_ui.State<EditCustomer> {
   late final Customer customer;
   final CustomerService _customerService = CustomerService();
   late Future<List<City>> _listCities;
-  List<String> typePersonList = ["NATURAL","JURIDICO"];
+  List<String> typePersonList = ["NATURAL", "JURIDICO"];
   String? selectedTypePerson = "NATURAL";
   City? city;
   DateTime? selectedDateTime;
   bool disabledCity = false;
-   @override
+  @override
   void initState() {
     super.initState();
     _listCities = _customerService.getAllCities();
     _customerController = widget.controller;
-    
-    // Inicializar los controladores con los valores del objeto Customer
+
+    _customerController.idController.text = widget.customer.identification!;
     _customerController.firstNameController.text = widget.customer.firstName!;
     _customerController.middleNameController.text = widget.customer.middleName!;
     _customerController.lastNameController.text = widget.customer.lastName!;
@@ -42,14 +44,14 @@ class _EditCustomerState extends fluent_ui.State<EditCustomer> {
     _customerController.emailController.text = widget.customer.email!;
     _customerController.phoneController.text = widget.customer.phoneNumber!;
     _customerController.addressController.text = widget.customer.address!;
-    _customerController.neighborhoodController.text = widget.customer.neighborhood!;
+    _customerController.neighborhoodController.text =
+        widget.customer.neighborhood!;
     _customerController.warrantyController.text = widget.customer.warranty!;
     _customerController.typePersonController.text = widget.customer.typePerson!;
     _customerController.ctyIdController.text = widget.customer.ctyId!;
     _customerController.dptIdController.text = widget.customer.dptCtyId!;
     _customerController.birthDateController.text = widget.customer.birthDate!;
-    
-    // Asignar valores adicionales si es necesario
+
     selectedTypePerson = widget.customer.typePerson;
     selectedDateTime = DateTime.parse(widget.customer.birthDate!);
   }
@@ -69,10 +71,21 @@ class _EditCustomerState extends fluent_ui.State<EditCustomer> {
               title: const fluent_ui.Row(
                 children: [
                   Icon(Icons.perm_identity),
+                  Text("Cedula"),
+                ],
+              ),
+              subtitle: fluent_ui.TextBox(
+                enabled: false,
+                controller: _customerController.idController,
+              ),
+            ),
+            fluent_ui.ListTile(
+              title: const fluent_ui.Row(
+                children: [
+                  Icon(Icons.perm_identity),
                   Text("Primer nombre"),
                 ],
               ),
-              
               subtitle: fluent_ui.TextBox(
                 controller: _customerController.firstNameController,
               ),
@@ -84,7 +97,6 @@ class _EditCustomerState extends fluent_ui.State<EditCustomer> {
                   Text("Segundo nombre(opcional)"),
                 ],
               ),
-              
               subtitle: fluent_ui.TextBox(
                 controller: _customerController.middleNameController,
               ),
@@ -119,17 +131,17 @@ class _EditCustomerState extends fluent_ui.State<EditCustomer> {
                 ],
               ),
               subtitle: fluent_ui.DatePicker(
-              selected: selectedDateTime,
-              headerStyle: const TextStyle(fontSize: 18),
-              contentPadding: const EdgeInsets.all(5),
-              onChanged: (time) => setState(() {
-                _customerController.birthDateController.text = time.toString();
-                print(_customerController.birthDateController.text);
-                selectedDateTime = time;
-              }),
+                selected: selectedDateTime,
+                headerStyle: const TextStyle(fontSize: 18),
+                contentPadding: const EdgeInsets.all(5),
+                onChanged: (time) => setState(() {
+                  _customerController.birthDateController.text =
+                      time.toString();
+                  print(_customerController.birthDateController.text);
+                  selectedDateTime = time;
+                }),
+              ),
             ),
-            ),
-            
             fluent_ui.ListTile(
                 title: const fluent_ui.Row(
                   children: [
@@ -177,15 +189,14 @@ class _EditCustomerState extends fluent_ui.State<EditCustomer> {
                   value: selectedTypePerson,
                   items: typePersonList.map((e) {
                     return fluent_ui.ComboBoxItem(
-                      child: Text(e),
                       value: e,
+                      child: Text(e),
                     );
                   }).toList(),
-                  onChanged: (typePerson){ 
+                  onChanged: (typePerson) {
                     setState(() => selectedTypePerson = typePerson);
                     print(typePerson);
                     _customerController.typePersonController.text = typePerson!;
-                    
                   },
                 ),
               ),
@@ -239,7 +250,7 @@ class _EditCustomerState extends fluent_ui.State<EditCustomer> {
               return fluent_ui.AutoSuggestBoxItem<String>(
                 value: city.name,
                 label: city.name!,
-                onSelected: (){
+                onSelected: () {
                   _customerController.ctyIdController.text = city.id!;
                   _customerController.dptIdController.text = city.dptId!;
                   print(city.id!);
@@ -253,7 +264,6 @@ class _EditCustomerState extends fluent_ui.State<EditCustomer> {
                 },
               );
             }).toList(),
-           
           );
         }
 
@@ -261,32 +271,30 @@ class _EditCustomerState extends fluent_ui.State<EditCustomer> {
       },
     );
   }
-
- 
-
 }
 
-
-
-dynamic editCustomer(
-    BuildContext context, Customer customerListItem, CustomerController customerController) async {
+dynamic editCustomer(BuildContext context, Customer customerListItem,
+    CustomerController customerController) async {
   // ignore: unused_local_variable
   final result = await showDialog<String>(
     context: context,
     builder: (context) => fluent_ui.ContentDialog(
       constraints: const BoxConstraints(maxWidth: 500, maxHeight: 800),
       title: const Text("Editar el cliente"),
-      content: EditCustomer(controller: customerController, customer: customerListItem),
+      content: EditCustomer(
+          controller: customerController, customer: customerListItem),
       actions: [
-       button(
-            context,
-            "Guardar",
-            () {
-              customerController.editCustomer();
-              Navigator.pop(context);
-              notification(context, "Cliente editado con exito", "Success", fluent_ui.InfoBarSeverity.success);
-            } ,
-            MyColor.btnAcep),
+        button(context, "Guardar", () async {
+          await customerController.editCustomer();
+
+          Future.delayed(const Duration(milliseconds: 200), () {
+            context.read<CustomersProvider>().setCustomers();
+            Navigator.pop(context);
+            Navigator.pop(context);
+            notification(context, "Cliente editado con exito", "Success",
+                fluent_ui.InfoBarSeverity.success);
+          });
+        }, MyColor.btnAcep),
         button(
             context,
             "Cancelar",

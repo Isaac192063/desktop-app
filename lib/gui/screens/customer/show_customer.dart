@@ -21,7 +21,7 @@ dynamic showDetailCustomer(BuildContext context, Customer customerListItem,
       title: Row(
         mainAxisAlignment: fluent_ui.MainAxisAlignment.spaceBetween,
         children: [
-          Text("${customerListItem.firstName!} ${customerListItem.lastName!}"),
+          Text("${customerListItem.firstName!}  ${customerListItem.lastName!} ${customerListItem.lastName2} "),
           IconButton(
             onPressed: () {
               Navigator.pop(context);
@@ -67,13 +67,11 @@ dynamic showDetailCustomer(BuildContext context, Customer customerListItem,
         child: fluent_ui.Column(
           crossAxisAlignment: fluent_ui.CrossAxisAlignment.start,
           children: [
-            
             fluent_ui.Padding(
               padding: const EdgeInsets.all(8.0),
               child: textModified("Informacion personal", 18),
             ),
             fluent_ui.ListTile(
-              onPressed: () {},
               title: const fluent_ui.Row(
                 children: [
                   Icon(Icons.perm_identity),
@@ -83,7 +81,24 @@ dynamic showDetailCustomer(BuildContext context, Customer customerListItem,
               subtitle: Text(customerListItem.identification!),
             ),
             fluent_ui.ListTile(
-              onPressed: () {},
+              title: const fluent_ui.Row(
+                children: [
+                  Icon(Icons.perm_identity),
+                  Text("Segundo nombre"),
+                ],
+              ),
+              subtitle: Text(customerListItem.middleName ?? "No tiene"),
+            ),
+            fluent_ui.ListTile(
+              title: const fluent_ui.Row(
+                children: [
+                  Icon(Icons.perm_identity),
+                  Text("Segundo apellido"),
+                ],
+              ),
+              subtitle: Text(customerListItem.lastName2 ?? "No tiene"),
+            ),
+            fluent_ui.ListTile(
               title: const fluent_ui.Row(
                 children: [
                   Icon(Icons.location_on),
@@ -93,7 +108,15 @@ dynamic showDetailCustomer(BuildContext context, Customer customerListItem,
               subtitle: Text(customerListItem.city!.name!),
             ),
             fluent_ui.ListTile(
-              onPressed: () {},
+              title: const fluent_ui.Row(
+                children: [
+                  Icon(Icons.perm_identity),
+                  Text("Fecha de nacimiento"),
+                ],
+              ),
+              subtitle: Text(customerListItem.birthDate!),
+            ),
+            fluent_ui.ListTile(
               title: const fluent_ui.Row(
                 children: [
                   Icon(Icons.my_location),
@@ -108,18 +131,24 @@ dynamic showDetailCustomer(BuildContext context, Customer customerListItem,
               child: textModified("Contacto", 18),
             ),
             fluent_ui.ListTile(
-              onPressed: () {},
               title: const fluent_ui.Row(
                 children: [Icon(Icons.email), Text("Correo")],
               ),
               subtitle: Text(customerListItem.email!),
             ),
             fluent_ui.ListTile(
-              onPressed: () {},
               title: const fluent_ui.Row(
                 children: [Icon(Icons.phone), Text("Telefono")],
               ),
               subtitle: Text(customerListItem.phoneNumber!),
+            ),
+            fluent_ui.Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: textModified("Datos de empresa", 18),
+            ),
+            fluent_ui.Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text("Tipo de persona: ${customerListItem.typePerson}"),
             ),
             fluent_ui.Padding(
               padding: const EdgeInsets.all(8.0),

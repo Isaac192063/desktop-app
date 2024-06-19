@@ -1,0 +1,1 @@
+ D:\\Desktop\\Proyectordq\\cambios\ mios\\desktop-app\\.dart_tool\\flutter_build\\ba89ee7709d43562355b2c86b4552ee4\\native_assets.yaml: 

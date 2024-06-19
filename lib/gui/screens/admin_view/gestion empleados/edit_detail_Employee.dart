@@ -14,15 +14,15 @@ import 'package:provider/provider.dart';
 
 Widget button(context, String text, Function execute, Color color) {
   return FilledButton(
-      child: Text(text),
       onPressed: () {
         execute();
       },
       style: ButtonStyle(
           backgroundColor: ButtonState.all(color),
-          padding: ButtonState.all(EdgeInsets.all(8)),
+          padding: ButtonState.all(const EdgeInsets.symmetric(horizontal: 80, vertical: 5)),
           textStyle: ButtonState.all(
-              const TextStyle(fontSize: 16, fontWeight: FontWeight.w500))));
+              const TextStyle(fontSize: 16, fontWeight: FontWeight.w500))),
+      child: Text(text));
 }
 
 void detalleEmployee(context, User user) async {

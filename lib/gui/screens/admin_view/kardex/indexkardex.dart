@@ -118,9 +118,9 @@ class _MyWidgetState extends State<IndexKardex> {
           children: [
             IconButton(
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-                    (Set<MaterialState> states) {
-                      if (states.contains(MaterialState.pressed)) {
+                  backgroundColor: WidgetStateProperty.resolveWith<Color?>(
+                    (Set<WidgetState> states) {
+                      if (states.contains(WidgetState.pressed)) {
                         return Colors.green;
                       }
                       return Colors.white;

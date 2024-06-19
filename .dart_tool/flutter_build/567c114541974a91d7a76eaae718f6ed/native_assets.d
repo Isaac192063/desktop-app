@@ -1,0 +1,1 @@
+ D:\\Desktop\\Proyectordq\\Nueva\ carpeta\\desktop-app\\.dart_tool\\flutter_build\\567c114541974a91d7a76eaae718f6ed\\native_assets.yaml: 

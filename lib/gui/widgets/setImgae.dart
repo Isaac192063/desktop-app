@@ -13,8 +13,8 @@ Widget setImage(String? image, double tam) {
     backgroundColor: Colors.black,
     child: CircleAvatar(
       radius: tam,
-      child: _imageUser(img, tam),
       backgroundColor: Colors.white,
+      child: _imageUser(img, tam),
     ),
   );
 }

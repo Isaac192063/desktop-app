@@ -40,9 +40,9 @@ class _nameState extends State<Register_edit_packaging> {
           children: [
             TextBox(
               placeholderStyle:
-                  TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-              padding: EdgeInsets.all(10),
+                  const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              padding: const EdgeInsets.all(10),
               placeholder: 'Codigo del cilindro',
               controller: _con!.cod,
             ),
@@ -51,9 +51,9 @@ class _nameState extends State<Register_edit_packaging> {
             ),
             TextBox(
               placeholderStyle:
-                  TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-              padding: EdgeInsets.all(10),
+                  const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              padding: const EdgeInsets.all(10),
               placeholder: 'dueño',
               controller: _con!.owner,
             ),
@@ -110,7 +110,7 @@ class _nameState extends State<Register_edit_packaging> {
           );
         }
 
-        return ProgressRing();
+        return const ProgressRing();
       },
     );
   }
@@ -125,8 +125,8 @@ class _nameState extends State<Register_edit_packaging> {
             value: content,
             items: listPackaging.map<ComboBoxItem<Content>>((e) {
               return ComboBoxItem<Content>(
-                child: Text(e.name!),
                 value: e,
+                child: Text(e.name!),
               );
             }).toList(),
             onChanged: disabled
@@ -139,7 +139,7 @@ class _nameState extends State<Register_edit_packaging> {
           );
         }
 
-        return ProgressRing();
+        return const ProgressRing();
       },
     );
   }

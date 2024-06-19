@@ -17,6 +17,7 @@ class CustomerController {
   TextEditingController warrantyController = TextEditingController();//
   TextEditingController typePersonController = TextEditingController();//
   TextEditingController ctyIdController = TextEditingController();//
+  TextEditingController ctyTextController = TextEditingController();//
   TextEditingController dptIdController = TextEditingController();//
   TextEditingController birthDateController = TextEditingController();//
   City? city;
@@ -35,8 +36,8 @@ class CustomerController {
   }
 
   Future<void> editCustomer() async {
-    String email = emailController.text.trim();
     String identification = idController.text.trim();
+    String email = emailController.text.trim();
     String birthDate = birthDateController.text.trim();
     String typePerson = typePersonController.text.trim();
     String city = ctyIdController.text.trim();
@@ -50,15 +51,15 @@ class CustomerController {
     String neighborhood = neighborhoodController.text.trim();
     String warranty = warrantyController.text.trim();
 
-    print(email);
     print(identification);
+    print(email);
     print(birthDate);
     print(typePerson);
     print(department);
     print(firstName);
     print(middleName);
-    print(lastName2);
     print(lastName);
+    print(lastName2);
     print(phoneNumber);
     print(neighborhood);
     print(city);
@@ -85,6 +86,8 @@ class CustomerController {
       );
 
       ResponseApi response = await _customerService.editCustomerService(editedCustomer);
+
+      
       print(response.success);
     } catch (e) {
       print('Exception occurred while registering customer: $e');
@@ -108,20 +111,21 @@ class CustomerController {
     String neighborhood = neighborhoodController.text.trim();
     String warranty = warrantyController.text.trim();
 
-    print(email);
-    print(identification);
-    print(birthDate);
-    print(typePerson);
-    print(department);
-    print(firstName);
-    print(middleName);
-    print(lastName2);
-    print(lastName);
-    print(phoneNumber);
-    print(neighborhood);
-    print(city);
-    print(warranty);
-    print(address);
+    print("Enviando.....");
+    print('email:$email');
+    print('id:$identification');
+    print('fecha:$birthDate');
+    print('tipo:$typePerson');
+    print('departamento:$department');
+    print('primernombre:$firstName');
+    print('Segundonombre:$middleName');
+    print('primerapellido:$lastName');
+    print('Segundoapellido:$lastName2');
+    print('telefono:$phoneNumber');
+    print('barrio:$neighborhood');
+    print('ciuddad:$city');
+    print('garantia:$warranty');
+    print('direccion:$address');
 
     try {
       Customer newCustomer = Customer(

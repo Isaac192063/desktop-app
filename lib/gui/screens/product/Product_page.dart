@@ -28,7 +28,7 @@ class _ProductPageState extends State<ProductPage> {
       context: context,
       builder: (context) => ContentDialog(
         constraints: const BoxConstraints(maxHeight: 500, maxWidth: 500),
-        title: Text('Agregar envase'),
+        title: const Text('Agregar envase'),
         content: Register_edit_packaging(con),
         actions: [
           Button(
@@ -57,7 +57,7 @@ class _ProductPageState extends State<ProductPage> {
       context: context,
       builder: (context) => ContentDialog(
         constraints: const BoxConstraints(maxHeight: 500, maxWidth: 500),
-        title: Text('Agregar envase'),
+        title: const Text('Agregar envase'),
         content: Container(
           child: Column(
             children: [Text(packaging.owner!)],
@@ -94,7 +94,7 @@ class _ProductPageState extends State<ProductPage> {
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   List<Packaging> pkgs = snapshot.data!;
-                  return Container(
+                  return SizedBox(
                     width: MediaQuery.of(context).size.width / 2,
                     height: MediaQuery.of(context).size.height / 1.5,
                     child: ListView.builder(
@@ -163,11 +163,11 @@ class _ProductPageState extends State<ProductPage> {
   Color editColor(String color) {
     Map<String, Color> colorEdit = {
       "gris os": const Color.fromARGB(255, 32, 32, 32),
-      "azul verdoso": Color.fromARGB(255, 28, 124, 94),
-      "dorado": Color.fromARGB(255, 86, 82, 57),
+      "azul verdoso": const Color.fromARGB(255, 28, 124, 94),
+      "dorado": const Color.fromARGB(255, 86, 82, 57),
       "negro": Colors.black,
       "gris": const Color.fromARGB(255, 76, 76, 76),
-      "Verde": Color.fromARGB(255, 38, 93, 21)
+      "Verde": const Color.fromARGB(255, 38, 93, 21)
     };
 
     return colorEdit[color]!;

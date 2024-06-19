@@ -1,4 +1,4 @@
-# Install script for directory: D:/Desktop/Proyectordq/isaac/desktop_app/windows/runner
+# Install script for directory: D:/Desktop/Proyectordq/cambios mios/desktop-app/windows/runner
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

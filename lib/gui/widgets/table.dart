@@ -1,6 +1,4 @@
-import 'dart:async';
 
-import 'package:desktop_app/domain/models/Product.dart';
 import 'package:desktop_app/domain/models/User.dart';
 import 'package:desktop_app/gui/widgets/textModified.dart';
 import 'package:desktop_app/gui/widgets/productView.dart';
@@ -77,10 +75,10 @@ Widget employessTbale(List<User> users, List<String> headers, context) {
           .map(
             (user) => DataRow(
               color: user.enabled
-                  ? MaterialStateColor.resolveWith(
-                      (states) => Color.fromARGB(255, 218, 255, 227))
-                  : MaterialStateColor.resolveWith(
-                      (states) => Color.fromARGB(255, 255, 230, 218)),
+                  ? WidgetStateColor.resolveWith(
+                      (states) => const Color.fromARGB(255, 218, 255, 227))
+                  : WidgetStateColor.resolveWith(
+                      (states) => const Color.fromARGB(255, 255, 230, 218)),
               cells: [
                 DataCell(
                   Row(

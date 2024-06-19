@@ -3,7 +3,6 @@ import 'package:desktop_app/domain/providers/customers_provider.dart';
 import 'package:desktop_app/domain/providers/employess_provider.dart';
 import 'package:desktop_app/domain/providers/mode_contrast_provider.dart';
 import 'package:desktop_app/gui/screens/admin_view/navigation_page_admin.dart';
-import 'package:desktop_app/gui/screens/login/logeo.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:provider/provider.dart';
 

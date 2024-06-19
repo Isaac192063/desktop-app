@@ -59,7 +59,7 @@ class UserService {
 
   Future<List<User>> findByUserName(String name) async {
     final response = await http.get(
-      Uri.parse("${Environment.API_RDQ}${_api}/search?name=${name}"),
+      Uri.parse("${Environment.API_RDQ}$_api/search?name=$name"),
       headers: {'Content-type': 'application/json'},
     );
 

@@ -18,7 +18,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{18DB9D2A-05FA-3DE5-A962-9203EFEA286B}</ProjectGuid>
+    <ProjectGuid>{CB2189D5-B54B-37E1-96D5-87CDCD8FC427}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
     <Platform>x64</Platform>
@@ -100,7 +100,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="D:\Desktop\Proyectordq\isaac\desktop_app\build\windows\x64\CMakeFiles\a88661c05c4466a45e1cd4972221bf07\INSTALL_force.rule">
+    <CustomBuild Include="D:\Desktop\Proyectordq\cambios mios\desktop-app\build\windows\x64\CMakeFiles\4dc2db4b0eb06cfe295fffadb14427d2\INSTALL_force.rule">
       <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"> </Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
@@ -113,7 +113,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Desktop\Proyectordq\isaac\desktop_app\build\windows\x64\CMakeFiles\INSTALL_force</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Desktop\Proyectordq\cambios mios\desktop-app\build\windows\x64\CMakeFiles\INSTALL_force</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</VerifyInputsAndOutputsExist>
       <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">true</BuildInParallel>
@@ -128,7 +128,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">D:\Desktop\Proyectordq\isaac\desktop_app\build\windows\x64\CMakeFiles\INSTALL_force</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">D:\Desktop\Proyectordq\cambios mios\desktop-app\build\windows\x64\CMakeFiles\INSTALL_force</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">false</VerifyInputsAndOutputsExist>
       <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</BuildInParallel>
@@ -143,20 +143,20 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Desktop\Proyectordq\isaac\desktop_app\build\windows\x64\CMakeFiles\INSTALL_force</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Desktop\Proyectordq\cambios mios\desktop-app\build\windows\x64\CMakeFiles\INSTALL_force</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</VerifyInputsAndOutputsExist>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="D:\Desktop\Proyectordq\isaac\desktop_app\build\windows\x64\ZERO_CHECK.vcxproj">
-      <Project>{9C712BD2-3D7B-399E-B78E-5E2F702E0AA1}</Project>
+    <ProjectReference Include="D:\Desktop\Proyectordq\cambios mios\desktop-app\build\windows\x64\ZERO_CHECK.vcxproj">
+      <Project>{043FC0B8-587A-32D8-AB78-8D9DD61D5821}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="D:\Desktop\Proyectordq\isaac\desktop_app\build\windows\x64\ALL_BUILD.vcxproj">
-      <Project>{00FB8DC0-7B6A-325D-822C-7B80A8A35D59}</Project>
+    <ProjectReference Include="D:\Desktop\Proyectordq\cambios mios\desktop-app\build\windows\x64\ALL_BUILD.vcxproj">
+      <Project>{088B3DBC-4C88-34C7-9BCD-BECB0E3E84BF}</Project>
       <Name>ALL_BUILD</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>

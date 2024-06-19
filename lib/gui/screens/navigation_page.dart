@@ -38,7 +38,7 @@ class _NavigationPageState extends State<NavigationPage> {
             color: Colors.white,
             width: double.infinity,
             height: double.infinity,
-            child: Center(child: const ProgressRing()))
+            child: const Center(child: ProgressRing()))
         : NavigationView(
             appBar: NavigationAppBar(
                 height: 50,

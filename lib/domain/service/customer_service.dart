@@ -96,10 +96,8 @@ class CustomerService {
       final res = jsonDecode(response.body);
 
       ResponseApi api = ResponseApi.fromJson(res);
-      print(api);
       return api;
     } catch (e) {
-      print(e);
       return ResponseApi.fromJson(
           {'success': false, 'message': "ocurrio un error"});
     }

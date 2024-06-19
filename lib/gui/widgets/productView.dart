@@ -20,11 +20,11 @@ class _LogeoState extends State<ProductView> {
             child: Column(
               children: [
                 FilledButton(
-                    child: Text("volver"),
+                    child: const Text("volver"),
                     onPressed: () {
                       Navigator.pop(context);
                     }),
-                Text("esta es la informacion que se deberia ver"),
+                const Text("esta es la informacion que se deberia ver"),
               ],
             ),
           ),

@@ -45,7 +45,7 @@ class _nameState extends State<ShowOrder> {
     return Container(
         margin: const EdgeInsets.all(10),
         child: Text("$type: $value",
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)));
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500)));
   }
 
   Widget button(String description, Function asa) {
@@ -138,7 +138,7 @@ class _nameState extends State<ShowOrder> {
   }
 
   Widget registroCompra() {
-    return Container(
+    return SizedBox(
       width: MediaQuery.of(context).size.width / 3,
       height: MediaQuery.of(context).size.height * 0.8,
       child: Column(
@@ -148,7 +148,7 @@ class _nameState extends State<ShowOrder> {
           children: [
             
             IconButton(
-                icon: Icon(FluentIcons.arrow_tall_up_left, size: 15),
+                icon: const Icon(FluentIcons.arrow_tall_up_left, size: 15),
                 onPressed: () => Navigator.pop(context)),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

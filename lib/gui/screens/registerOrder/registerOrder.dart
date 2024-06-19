@@ -1,9 +1,4 @@
-import 'dart:async';
 import 'dart:ui';
-import 'package:desktop_app/domain/models/Product.dart';
-import 'package:desktop_app/domain/service/Product_service.dart';
-import 'package:desktop_app/gui/screens/product/ProductController.dart';
-import 'package:desktop_app/gui/widgets/table.dart';
 import 'package:desktop_app/gui/utils/myColors.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
@@ -39,12 +34,12 @@ class _nameState extends State<PrimeraScreen> {
   // List<Product> productSelected = [];
 
   List<Cat> objectCats = [
-    Cat(1, 'Abyssinian', true),
-    Cat(2, 'Aegean', true),
-    Cat(3, 'American Bobtail', false),
-    Cat(4, 'American Curl', true),
-    Cat(5, 'American Ringtail', false),
-    Cat(6, 'American Shorthair', true),
+    const Cat(1, 'Abyssinian', true),
+    const Cat(2, 'Aegean', true),
+    const Cat(3, 'American Bobtail', false),
+    const Cat(4, 'American Curl', true),
+    const Cat(5, 'American Ringtail', false),
+    const Cat(6, 'American Shorthair', true),
   ];
 
   @override
@@ -77,7 +72,7 @@ class _nameState extends State<PrimeraScreen> {
     return Container(
         margin: const EdgeInsets.all(10),
         child: Text("$type: $value",
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)));
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500)));
   }
 
   Widget button(String description, Function asa) {
@@ -174,7 +169,7 @@ class _nameState extends State<PrimeraScreen> {
   }
 
   Widget registroCompra() {
-    return Container(
+    return SizedBox(
       width: MediaQuery.of(context).size.width / 3,
       height: MediaQuery.of(context).size.height * 0.8,
       child: Column(

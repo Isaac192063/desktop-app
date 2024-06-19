@@ -30,7 +30,7 @@ class _SearchEmployeeState extends State<SearchEmployee> {
         onChanged: (text, reason) {
           searchEmpServer(text);
         },
-        style: TextStyle(fontSize: 16),
+        style: const TextStyle(fontSize: 16),
         placeholder: "Buscar empleado",
         leadingIcon: const Padding(
           padding: EdgeInsets.all(12.0),

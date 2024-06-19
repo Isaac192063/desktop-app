@@ -18,7 +18,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{8615B690-AF6C-31B4-B3A2-0A9D3C5284F9}</ProjectGuid>
+    <ProjectGuid>{A23EE361-A269-33B3-9E27-E119CD0116E6}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
     <Platform>x64</Platform>
@@ -50,19 +50,19 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Desktop\Proyectordq\isaac\desktop_app\build\windows\x64\runner\Debug\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Desktop\Proyectordq\cambios mios\desktop-app\build\windows\x64\runner\Debug\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">desktop_app.dir\Debug\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">desktop_app</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">D:\Desktop\Proyectordq\isaac\desktop_app\build\windows\x64\runner\Profile\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">D:\Desktop\Proyectordq\cambios mios\desktop-app\build\windows\x64\runner\Profile\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">desktop_app.dir\Profile\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">desktop_app</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Desktop\Proyectordq\isaac\desktop_app\build\windows\x64\runner\Release\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Desktop\Proyectordq\cambios mios\desktop-app\build\windows\x64\runner\Release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">desktop_app.dir\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">desktop_app</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
@@ -71,7 +71,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Desktop\Proyectordq\isaac\desktop_app\windows;D:\Desktop\Proyectordq\isaac\desktop_app\windows\flutter\ephemeral;D:\Desktop\Proyectordq\isaac\desktop_app\windows\flutter\ephemeral\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Desktop\Proyectordq\cambios mios\desktop-app\windows;D:\Desktop\Proyectordq\cambios mios\desktop-app\windows\flutter\ephemeral;D:\Desktop\Proyectordq\cambios mios\desktop-app\windows\flutter\ephemeral\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -91,10 +91,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;_HAS_EXCEPTIONS=0;FLUTTER_VERSION=\"1.0.0+1\";FLUTTER_VERSION_MAJOR=1;FLUTTER_VERSION_MINOR=0;FLUTTER_VERSION_PATCH=0;FLUTTER_VERSION_BUILD=1;NOMINMAX;UNICODE;_UNICODE;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Desktop\Proyectordq\isaac\desktop_app\windows;D:\Desktop\Proyectordq\isaac\desktop_app\windows\flutter\ephemeral;D:\Desktop\Proyectordq\isaac\desktop_app\windows\flutter\ephemeral\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Desktop\Proyectordq\cambios mios\desktop-app\windows;D:\Desktop\Proyectordq\cambios mios\desktop-app\windows\flutter\ephemeral;D:\Desktop\Proyectordq\cambios mios\desktop-app\windows\flutter\ephemeral\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\Desktop\Proyectordq\isaac\desktop_app\windows;D:\Desktop\Proyectordq\isaac\desktop_app\windows\flutter\ephemeral;D:\Desktop\Proyectordq\isaac\desktop_app\windows\flutter\ephemeral\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Desktop\Proyectordq\cambios mios\desktop-app\windows;D:\Desktop\Proyectordq\cambios mios\desktop-app\windows\flutter\ephemeral;D:\Desktop\Proyectordq\cambios mios\desktop-app\windows\flutter\ephemeral\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -102,25 +102,25 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\flutter\Debug\flutter_wrapper_app.lib;dwmapi.lib;D:\Desktop\Proyectordq\isaac\desktop_app\windows\flutter\ephemeral\flutter_windows.dll.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\flutter\Debug\flutter_wrapper_app.lib;dwmapi.lib;D:\Desktop\Proyectordq\cambios mios\desktop-app\windows\flutter\ephemeral\flutter_windows.dll.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>D:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64/runner/Debug/desktop_app.lib</ImportLibrary>
-      <ProgramDataBaseFile>D:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64/runner/Debug/desktop_app.pdb</ProgramDataBaseFile>
+      <ImportLibrary>D:/Desktop/Proyectordq/cambios mios/desktop-app/build/windows/x64/runner/Debug/desktop_app.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/Desktop/Proyectordq/cambios mios/desktop-app/build/windows/x64/runner/Debug/desktop_app.pdb</ProgramDataBaseFile>
       <SubSystem>Windows</SubSystem>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
     <Manifest>
-      <AdditionalManifestFiles>D:\Desktop\Proyectordq\isaac\desktop_app\windows\runner\runner.exe.manifest;</AdditionalManifestFiles>
+      <AdditionalManifestFiles>D:\Desktop\Proyectordq\cambios mios\desktop-app\windows\runner\runner.exe.manifest;</AdditionalManifestFiles>
     </Manifest>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Desktop\Proyectordq\isaac\desktop_app\windows;D:\Desktop\Proyectordq\isaac\desktop_app\windows\flutter\ephemeral;D:\Desktop\Proyectordq\isaac\desktop_app\windows\flutter\ephemeral\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Desktop\Proyectordq\cambios mios\desktop-app\windows;D:\Desktop\Proyectordq\cambios mios\desktop-app\windows\flutter\ephemeral;D:\Desktop\Proyectordq\cambios mios\desktop-app\windows\flutter\ephemeral\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <DisableSpecificWarnings>"4100"</DisableSpecificWarnings>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -140,10 +140,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_HAS_EXCEPTIONS=0;FLUTTER_VERSION=\"1.0.0+1\";FLUTTER_VERSION_MAJOR=1;FLUTTER_VERSION_MINOR=0;FLUTTER_VERSION_PATCH=0;FLUTTER_VERSION_BUILD=1;NOMINMAX;UNICODE;_UNICODE;CMAKE_INTDIR=\"Profile\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Desktop\Proyectordq\isaac\desktop_app\windows;D:\Desktop\Proyectordq\isaac\desktop_app\windows\flutter\ephemeral;D:\Desktop\Proyectordq\isaac\desktop_app\windows\flutter\ephemeral\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Desktop\Proyectordq\cambios mios\desktop-app\windows;D:\Desktop\Proyectordq\cambios mios\desktop-app\windows\flutter\ephemeral;D:\Desktop\Proyectordq\cambios mios\desktop-app\windows\flutter\ephemeral\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\Desktop\Proyectordq\isaac\desktop_app\windows;D:\Desktop\Proyectordq\isaac\desktop_app\windows\flutter\ephemeral;D:\Desktop\Proyectordq\isaac\desktop_app\windows\flutter\ephemeral\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Desktop\Proyectordq\cambios mios\desktop-app\windows;D:\Desktop\Proyectordq\cambios mios\desktop-app\windows\flutter\ephemeral;D:\Desktop\Proyectordq\cambios mios\desktop-app\windows\flutter\ephemeral\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -151,25 +151,25 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\flutter\Profile\flutter_wrapper_app.lib;dwmapi.lib;D:\Desktop\Proyectordq\isaac\desktop_app\windows\flutter\ephemeral\flutter_windows.dll.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\flutter\Profile\flutter_wrapper_app.lib;dwmapi.lib;D:\Desktop\Proyectordq\cambios mios\desktop-app\windows\flutter\ephemeral\flutter_windows.dll.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>D:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64/runner/Profile/desktop_app.lib</ImportLibrary>
-      <ProgramDataBaseFile>D:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64/runner/Profile/desktop_app.pdb</ProgramDataBaseFile>
+      <ImportLibrary>D:/Desktop/Proyectordq/cambios mios/desktop-app/build/windows/x64/runner/Profile/desktop_app.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/Desktop/Proyectordq/cambios mios/desktop-app/build/windows/x64/runner/Profile/desktop_app.pdb</ProgramDataBaseFile>
       <SubSystem>Windows</SubSystem>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
     <Manifest>
-      <AdditionalManifestFiles>D:\Desktop\Proyectordq\isaac\desktop_app\windows\runner\runner.exe.manifest;</AdditionalManifestFiles>
+      <AdditionalManifestFiles>D:\Desktop\Proyectordq\cambios mios\desktop-app\windows\runner\runner.exe.manifest;</AdditionalManifestFiles>
     </Manifest>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Desktop\Proyectordq\isaac\desktop_app\windows;D:\Desktop\Proyectordq\isaac\desktop_app\windows\flutter\ephemeral;D:\Desktop\Proyectordq\isaac\desktop_app\windows\flutter\ephemeral\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Desktop\Proyectordq\cambios mios\desktop-app\windows;D:\Desktop\Proyectordq\cambios mios\desktop-app\windows\flutter\ephemeral;D:\Desktop\Proyectordq\cambios mios\desktop-app\windows\flutter\ephemeral\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <DisableSpecificWarnings>"4100"</DisableSpecificWarnings>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -189,10 +189,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_HAS_EXCEPTIONS=0;FLUTTER_VERSION=\"1.0.0+1\";FLUTTER_VERSION_MAJOR=1;FLUTTER_VERSION_MINOR=0;FLUTTER_VERSION_PATCH=0;FLUTTER_VERSION_BUILD=1;NOMINMAX;UNICODE;_UNICODE;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Desktop\Proyectordq\isaac\desktop_app\windows;D:\Desktop\Proyectordq\isaac\desktop_app\windows\flutter\ephemeral;D:\Desktop\Proyectordq\isaac\desktop_app\windows\flutter\ephemeral\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Desktop\Proyectordq\cambios mios\desktop-app\windows;D:\Desktop\Proyectordq\cambios mios\desktop-app\windows\flutter\ephemeral;D:\Desktop\Proyectordq\cambios mios\desktop-app\windows\flutter\ephemeral\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\Desktop\Proyectordq\isaac\desktop_app\windows;D:\Desktop\Proyectordq\isaac\desktop_app\windows\flutter\ephemeral;D:\Desktop\Proyectordq\isaac\desktop_app\windows\flutter\ephemeral\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Desktop\Proyectordq\cambios mios\desktop-app\windows;D:\Desktop\Proyectordq\cambios mios\desktop-app\windows\flutter\ephemeral;D:\Desktop\Proyectordq\cambios mios\desktop-app\windows\flutter\ephemeral\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -200,28 +200,28 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\flutter\Release\flutter_wrapper_app.lib;dwmapi.lib;D:\Desktop\Proyectordq\isaac\desktop_app\windows\flutter\ephemeral\flutter_windows.dll.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\flutter\Release\flutter_wrapper_app.lib;dwmapi.lib;D:\Desktop\Proyectordq\cambios mios\desktop-app\windows\flutter\ephemeral\flutter_windows.dll.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>D:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64/runner/Release/desktop_app.lib</ImportLibrary>
-      <ProgramDataBaseFile>D:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64/runner/Release/desktop_app.pdb</ProgramDataBaseFile>
+      <ImportLibrary>D:/Desktop/Proyectordq/cambios mios/desktop-app/build/windows/x64/runner/Release/desktop_app.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/Desktop/Proyectordq/cambios mios/desktop-app/build/windows/x64/runner/Release/desktop_app.pdb</ProgramDataBaseFile>
       <SubSystem>Windows</SubSystem>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
     <Manifest>
-      <AdditionalManifestFiles>D:\Desktop\Proyectordq\isaac\desktop_app\windows\runner\runner.exe.manifest;</AdditionalManifestFiles>
+      <AdditionalManifestFiles>D:\Desktop\Proyectordq\cambios mios\desktop-app\windows\runner\runner.exe.manifest;</AdditionalManifestFiles>
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="D:\Desktop\Proyectordq\isaac\desktop_app\windows\runner\CMakeLists.txt">
+    <CustomBuild Include="D:\Desktop\Proyectordq\cambios mios\desktop-app\windows\runner\CMakeLists.txt">
       <UseUtf8Encoding>Always</UseUtf8Encoding>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/Desktop/Proyectordq/isaac/desktop_app/windows/runner/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/Desktop/Proyectordq/cambios mios/desktop-app/windows/runner/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SD:/Desktop/Proyectordq/isaac/desktop_app/windows -BD:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64 --check-stamp-file D:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64/runner/CMakeFiles/generate.stamp
+"C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" "-SD:/Desktop/Proyectordq/cambios mios/desktop-app/windows" "-BD:/Desktop/Proyectordq/cambios mios/desktop-app/build/windows/x64" --check-stamp-file "D:/Desktop/Proyectordq/cambios mios/desktop-app/build/windows/x64/runner/CMakeFiles/generate.stamp"
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -230,11 +230,11 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Desktop\Proyectordq\isaac\desktop_app\build\windows\x64\runner\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Desktop\Proyectordq\cambios mios\desktop-app\build\windows\x64\runner\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">Building Custom Rule D:/Desktop/Proyectordq/isaac/desktop_app/windows/runner/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">Building Custom Rule D:/Desktop/Proyectordq/cambios mios/desktop-app/windows/runner/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">setlocal
-"C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SD:/Desktop/Proyectordq/isaac/desktop_app/windows -BD:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64 --check-stamp-file D:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64/runner/CMakeFiles/generate.stamp
+"C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" "-SD:/Desktop/Proyectordq/cambios mios/desktop-app/windows" "-BD:/Desktop/Proyectordq/cambios mios/desktop-app/build/windows/x64" --check-stamp-file "D:/Desktop/Proyectordq/cambios mios/desktop-app/build/windows/x64/runner/CMakeFiles/generate.stamp"
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -243,11 +243,11 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">D:\Desktop\Proyectordq\isaac\desktop_app\build\windows\x64\runner\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">D:\Desktop\Proyectordq\cambios mios\desktop-app\build\windows\x64\runner\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/Desktop/Proyectordq/isaac/desktop_app/windows/runner/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/Desktop/Proyectordq/cambios mios/desktop-app/windows/runner/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-"C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SD:/Desktop/Proyectordq/isaac/desktop_app/windows -BD:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64 --check-stamp-file D:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64/runner/CMakeFiles/generate.stamp
+"C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" "-SD:/Desktop/Proyectordq/cambios mios/desktop-app/windows" "-BD:/Desktop/Proyectordq/cambios mios/desktop-app/build/windows/x64" --check-stamp-file "D:/Desktop/Proyectordq/cambios mios/desktop-app/build/windows/x64/runner/CMakeFiles/generate.stamp"
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -256,33 +256,33 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Desktop\Proyectordq\isaac\desktop_app\build\windows\x64\runner\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Desktop\Proyectordq\cambios mios\desktop-app\build\windows\x64\runner\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="D:\Desktop\Proyectordq\isaac\desktop_app\windows\runner\flutter_window.cpp" />
-    <ClCompile Include="D:\Desktop\Proyectordq\isaac\desktop_app\windows\runner\main.cpp" />
-    <ClCompile Include="D:\Desktop\Proyectordq\isaac\desktop_app\windows\runner\utils.cpp" />
-    <ClCompile Include="D:\Desktop\Proyectordq\isaac\desktop_app\windows\runner\win32_window.cpp" />
-    <ClCompile Include="D:\Desktop\Proyectordq\isaac\desktop_app\windows\flutter\generated_plugin_registrant.cc" />
-    <ResourceCompile Include="D:\Desktop\Proyectordq\isaac\desktop_app\windows\runner\Runner.rc" />
+    <ClCompile Include="D:\Desktop\Proyectordq\cambios mios\desktop-app\windows\runner\flutter_window.cpp" />
+    <ClCompile Include="D:\Desktop\Proyectordq\cambios mios\desktop-app\windows\runner\main.cpp" />
+    <ClCompile Include="D:\Desktop\Proyectordq\cambios mios\desktop-app\windows\runner\utils.cpp" />
+    <ClCompile Include="D:\Desktop\Proyectordq\cambios mios\desktop-app\windows\runner\win32_window.cpp" />
+    <ClCompile Include="D:\Desktop\Proyectordq\cambios mios\desktop-app\windows\flutter\generated_plugin_registrant.cc" />
+    <ResourceCompile Include="D:\Desktop\Proyectordq\cambios mios\desktop-app\windows\runner\Runner.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="D:\Desktop\Proyectordq\isaac\desktop_app\build\windows\x64\ZERO_CHECK.vcxproj">
-      <Project>{9C712BD2-3D7B-399E-B78E-5E2F702E0AA1}</Project>
+    <ProjectReference Include="D:\Desktop\Proyectordq\cambios mios\desktop-app\build\windows\x64\ZERO_CHECK.vcxproj">
+      <Project>{043FC0B8-587A-32D8-AB78-8D9DD61D5821}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="D:\Desktop\Proyectordq\isaac\desktop_app\build\windows\x64\flutter\flutter_assemble.vcxproj">
-      <Project>{B3DB4D89-1506-3C7C-856F-85D51B8D9900}</Project>
+    <ProjectReference Include="D:\Desktop\Proyectordq\cambios mios\desktop-app\build\windows\x64\flutter\flutter_assemble.vcxproj">
+      <Project>{2C8A0028-8FB8-3AA9-B7DF-35A6AA8DA211}</Project>
       <Name>flutter_assemble</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="D:\Desktop\Proyectordq\isaac\desktop_app\build\windows\x64\flutter\flutter_wrapper_app.vcxproj">
-      <Project>{85FCE8BD-D2DF-35EB-8A3A-A79A68162295}</Project>
+    <ProjectReference Include="D:\Desktop\Proyectordq\cambios mios\desktop-app\build\windows\x64\flutter\flutter_wrapper_app.vcxproj">
+      <Project>{A5167F8C-4535-3155-B7F6-EA43535C8F58}</Project>
       <Name>flutter_wrapper_app</Name>
     </ProjectReference>
   </ItemGroup>

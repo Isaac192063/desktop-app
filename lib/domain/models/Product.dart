@@ -23,24 +23,24 @@ class Packaging {
     cttId = json['ctt_id'];
     tpgCod = json['tpg_cod'];
     content =
-        json['content'] != null ? new Content.fromJson(json['content']) : null;
+        json['content'] != null ? Content.fromJson(json['content']) : null;
     typePackaging = json['typePackaging'] != null
-        ? new TypePackaging.fromJson(json['typePackaging'])
+        ? TypePackaging.fromJson(json['typePackaging'])
         : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['hydrostatic_date'] = this.hydrostaticDate;
-    data['owner'] = this.owner;
-    data['ctt_id'] = this.cttId;
-    data['tpg_cod'] = this.tpgCod;
-    if (this.content != null) {
-      data['content'] = this.content!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['hydrostatic_date'] = hydrostaticDate;
+    data['owner'] = owner;
+    data['ctt_id'] = cttId;
+    data['tpg_cod'] = tpgCod;
+    if (content != null) {
+      data['content'] = content!.toJson();
     }
-    if (this.typePackaging != null) {
-      data['typePackaging'] = this.typePackaging!.toJson();
+    if (typePackaging != null) {
+      data['typePackaging'] = typePackaging!.toJson();
     }
     return data;
   }
@@ -60,10 +60,10 @@ class Content {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['color'] = this.color;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['color'] = color;
     return data;
   }
 }
@@ -82,10 +82,10 @@ class TypePackaging {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['cod'] = this.cod;
-    data['size'] = this.size;
-    data['pressure_amount'] = this.pressureAmount;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['cod'] = cod;
+    data['size'] = size;
+    data['pressure_amount'] = pressureAmount;
     return data;
   }
 }
