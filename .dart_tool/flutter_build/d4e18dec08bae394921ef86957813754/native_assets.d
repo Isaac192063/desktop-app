@@ -1,1 +1,0 @@
- D:\\Desktop\\Gerardo2\\Semestres\\Sexto\ semestre\\Bases\ de\ datos\\Diseño\ en\ flutter\\desktop-app\\.dart_tool\\flutter_build\\d4e18dec08bae394921ef86957813754\\native_assets.yaml: 

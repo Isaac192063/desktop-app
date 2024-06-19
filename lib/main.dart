@@ -1,20 +1,36 @@
-import 'package:desktop_app/api/models/User.dart';
-import 'package:desktop_app/screens/admin_view/navigation_page_admin.dart';
-import 'package:desktop_app/screens/login/logeo.dart';
-import 'package:desktop_app/screens/orders/registerOrder.dart';
+import 'package:desktop_app/domain/models/User.dart';
+import 'package:desktop_app/domain/providers/customers_provider.dart';
+import 'package:desktop_app/domain/providers/employess_provider.dart';
+import 'package:desktop_app/domain/providers/mode_contrast_provider.dart';
+import 'package:desktop_app/gui/screens/admin_view/navigation_page_admin.dart';
+import 'package:desktop_app/gui/screens/login/logeo.dart';
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:provider/provider.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(
+      create: (_) => ModeContrastProvider(),
+    ),
+    ChangeNotifierProvider(create: (_) => EmployeesProvider()),
+    ChangeNotifierProvider(
+      create: (_) => ModeContrastProvider(),
+    ),
+    ChangeNotifierProvider(create: (_) => CustomersProvider())
+  ], child: const MyApp()));
+}
+
 // usuario de ejemplo
 User user = User(
-    idEmployee: 1,
+    id: 1,
     name: "gerardo",
     lastName: "duarte",
     phoneNumber: "31226234631",
     initialData: DateTime.now(),
     email: "gerardo@gmail.com",
     password: "martin",
-    image: "paisaje-e1549600034372.jpg");
+    image: "1716681658040.jpg",
+    enabled: true);
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -22,12 +38,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FluentApp(
-        routes: {
-          '/Registrar_venta': (context) => const RegisterOrder(), // Define la página que quieres mostrar en el body
-        },
         title: 'Material',
         debugShowCheckedModeBanner: false,
-        theme: FluentThemeData.light(),
-        home: NavigationPageAdmin(user));
+        theme: context.watch<ModeContrastProvider>().getMode
+            ? FluentThemeData.dark()
+            : FluentThemeData.light(),
+        home: NavigationPageAdmin(user)
+        // home: const Logeo(),
+        );
   }
 }
+// 1234568
+// 1234568

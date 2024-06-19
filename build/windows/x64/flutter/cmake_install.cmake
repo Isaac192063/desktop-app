@@ -1,4 +1,4 @@
-# Install script for directory: D:/Desktop/desktop-app/windows/flutter
+# Install script for directory: D:/Desktop/Proyectordq/isaac/desktop_app/windows/flutter
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

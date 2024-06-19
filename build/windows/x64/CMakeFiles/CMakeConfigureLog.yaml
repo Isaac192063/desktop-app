@@ -24,9 +24,9 @@ events:
       The output was:
       0
       Versión de MSBuild 17.9.8+b34f75857 para .NET Framework
-      Compilación iniciada a las 26/04/2024 10:21:08 a. m..
+      Compilación iniciada a las 28/05/2024 04:07:05 p. m..
       
-      Proyecto "D:\\Desktop\\desktop-app\\build\\windows\\x64\\CMakeFiles\\3.28.0-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj" en nodo 1 (destinos predeterminados).
+      Proyecto "D:\\Desktop\\Proyectordq\\isaac\\desktop_app\\build\\windows\\x64\\CMakeFiles\\3.28.0-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj" en nodo 1 (destinos predeterminados).
       PrepareForBuild:
         Creando directorio "Debug\\".
         La salida estructurada está habilitada. El formato del diagnóstico del compilador reflejará la jerarquía de errores. Consulte https://aka.ms/cpp/structured-output para obtener más detalles.
@@ -39,7 +39,7 @@ events:
         CMakeCXXCompilerId.cpp
       Link:
         C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X64 Debug\\CMakeCXXCompilerId.obj
-        CompilerIdCXX.vcxproj -> D:\\Desktop\\desktop-app\\build\\windows\\x64\\CMakeFiles\\3.28.0-msvc1\\CompilerIdCXX\\CompilerIdCXX.exe
+        CompilerIdCXX.vcxproj -> D:\\Desktop\\Proyectordq\\isaac\\desktop_app\\build\\windows\\x64\\CMakeFiles\\3.28.0-msvc1\\CompilerIdCXX\\CompilerIdCXX.exe
       PostBuildEvent:
         for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
         :VCEnd
@@ -47,13 +47,13 @@ events:
       FinalizeBuildStatus:
         Se eliminará el archivo "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
         Aplicando tarea Touch a "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.lastbuildstate".
-      Compilación del proyecto terminada "D:\\Desktop\\desktop-app\\build\\windows\\x64\\CMakeFiles\\3.28.0-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj" (destinos predeterminados).
+      Compilación del proyecto terminada "D:\\Desktop\\Proyectordq\\isaac\\desktop_app\\build\\windows\\x64\\CMakeFiles\\3.28.0-msvc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj" (destinos predeterminados).
       
       Compilación correcta.
           0 Advertencia(s)
           0 Errores
       
-      Tiempo transcurrido 00:00:01.40
+      Tiempo transcurrido 00:00:03.65
       
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -61,7 +61,7 @@ events:
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
       
       The CXX compiler identification is MSVC, found in:
-        D:/Desktop/desktop-app/build/windows/x64/CMakeFiles/3.28.0-msvc1/CompilerIdCXX/CompilerIdCXX.exe
+        D:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64/CMakeFiles/3.28.0-msvc1/CompilerIdCXX/CompilerIdCXX.exe
       
   -
     kind: "try_compile-v1"
@@ -72,8 +72,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "D:/Desktop/desktop-app/build/windows/x64/CMakeFiles/CMakeScratch/TryCompile-uz6rlj"
-      binary: "D:/Desktop/desktop-app/build/windows/x64/CMakeFiles/CMakeScratch/TryCompile-uz6rlj"
+      source: "D:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64/CMakeFiles/CMakeScratch/TryCompile-nuip6c"
+      binary: "D:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64/CMakeFiles/CMakeScratch/TryCompile-nuip6c"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
@@ -82,40 +82,40 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'D:/Desktop/desktop-app/build/windows/x64/CMakeFiles/CMakeScratch/TryCompile-uz6rlj'
+        Change Dir: 'D:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64/CMakeFiles/CMakeScratch/TryCompile-nuip6c'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Professional/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_aad3e.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Professional/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_50951.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         Versión de MSBuild 17.9.8+b34f75857 para .NET Framework
-        Compilación iniciada a las 26/04/2024 10:21:10 a. m..
+        Compilación iniciada a las 28/05/2024 04:07:11 p. m..
         
-        Proyecto "D:\\Desktop\\desktop-app\\build\\windows\\x64\\CMakeFiles\\CMakeScratch\\TryCompile-uz6rlj\\cmTC_aad3e.vcxproj" en nodo 1 (destinos predeterminados).
+        Proyecto "D:\\Desktop\\Proyectordq\\isaac\\desktop_app\\build\\windows\\x64\\CMakeFiles\\CMakeScratch\\TryCompile-nuip6c\\cmTC_50951.vcxproj" en nodo 1 (destinos predeterminados).
         PrepareForBuild:
-          Creando directorio "cmTC_aad3e.dir\\Debug\\".
+          Creando directorio "cmTC_50951.dir\\Debug\\".
           La salida estructurada está habilitada. El formato del diagnóstico del compilador reflejará la jerarquía de errores. Consulte https://aka.ms/cpp/structured-output para obtener más detalles.
-          Creando directorio "D:\\Desktop\\desktop-app\\build\\windows\\x64\\CMakeFiles\\CMakeScratch\\TryCompile-uz6rlj\\Debug\\".
-          Creando directorio "cmTC_aad3e.dir\\Debug\\cmTC_aad3e.tlog\\".
+          Creando directorio "D:\\Desktop\\Proyectordq\\isaac\\desktop_app\\build\\windows\\x64\\CMakeFiles\\CMakeScratch\\TryCompile-nuip6c\\Debug\\".
+          Creando directorio "cmTC_50951.dir\\Debug\\cmTC_50951.tlog\\".
         InitializeBuildStatus:
-          Se creará "cmTC_aad3e.dir\\Debug\\cmTC_aad3e.tlog\\unsuccessfulbuild" porque se especificó "AlwaysCreate".
-          Aplicando tarea Touch a "cmTC_aad3e.dir\\Debug\\cmTC_aad3e.tlog\\unsuccessfulbuild".
+          Se creará "cmTC_50951.dir\\Debug\\cmTC_50951.tlog\\unsuccessfulbuild" porque se especificó "AlwaysCreate".
+          Aplicando tarea Touch a "cmTC_50951.dir\\Debug\\cmTC_50951.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_aad3e.dir\\Debug\\\\" /Fd"cmTC_aad3e.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\share\\cmake-3.28\\Modules\\CMakeCXXCompilerABI.cpp"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_50951.dir\\Debug\\\\" /Fd"cmTC_50951.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\share\\cmake-3.28\\Modules\\CMakeCXXCompilerABI.cpp"
           Compilador de optimización de C/C++ de Microsoft (R) versión 19.39.33523 para x64
           (C) Microsoft Corporation. Todos los derechos reservados.
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_aad3e.dir\\Debug\\\\" /Fd"cmTC_aad3e.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\share\\cmake-3.28\\Modules\\CMakeCXXCompilerABI.cpp"
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_50951.dir\\Debug\\\\" /Fd"cmTC_50951.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\share\\cmake-3.28\\Modules\\CMakeCXXCompilerABI.cpp"
           CMakeCXXCompilerABI.cpp
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\Desktop\\desktop-app\\build\\windows\\x64\\CMakeFiles\\CMakeScratch\\TryCompile-uz6rlj\\Debug\\cmTC_aad3e.exe" /INCREMENTAL /ILK:"cmTC_aad3e.dir\\Debug\\cmTC_aad3e.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Desktop/desktop-app/build/windows/x64/CMakeFiles/CMakeScratch/TryCompile-uz6rlj/Debug/cmTC_aad3e.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/Desktop/desktop-app/build/windows/x64/CMakeFiles/CMakeScratch/TryCompile-uz6rlj/Debug/cmTC_aad3e.lib" /MACHINE:X64  /machine:x64 cmTC_aad3e.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_aad3e.vcxproj -> D:\\Desktop\\desktop-app\\build\\windows\\x64\\CMakeFiles\\CMakeScratch\\TryCompile-uz6rlj\\Debug\\cmTC_aad3e.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\Desktop\\Proyectordq\\isaac\\desktop_app\\build\\windows\\x64\\CMakeFiles\\CMakeScratch\\TryCompile-nuip6c\\Debug\\cmTC_50951.exe" /INCREMENTAL /ILK:"cmTC_50951.dir\\Debug\\cmTC_50951.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64/CMakeFiles/CMakeScratch/TryCompile-nuip6c/Debug/cmTC_50951.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/Desktop/Proyectordq/isaac/desktop_app/build/windows/x64/CMakeFiles/CMakeScratch/TryCompile-nuip6c/Debug/cmTC_50951.lib" /MACHINE:X64  /machine:x64 cmTC_50951.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_50951.vcxproj -> D:\\Desktop\\Proyectordq\\isaac\\desktop_app\\build\\windows\\x64\\CMakeFiles\\CMakeScratch\\TryCompile-nuip6c\\Debug\\cmTC_50951.exe
         FinalizeBuildStatus:
-          Se eliminará el archivo "cmTC_aad3e.dir\\Debug\\cmTC_aad3e.tlog\\unsuccessfulbuild".
-          Aplicando tarea Touch a "cmTC_aad3e.dir\\Debug\\cmTC_aad3e.tlog\\cmTC_aad3e.lastbuildstate".
-        Compilación del proyecto terminada "D:\\Desktop\\desktop-app\\build\\windows\\x64\\CMakeFiles\\CMakeScratch\\TryCompile-uz6rlj\\cmTC_aad3e.vcxproj" (destinos predeterminados).
+          Se eliminará el archivo "cmTC_50951.dir\\Debug\\cmTC_50951.tlog\\unsuccessfulbuild".
+          Aplicando tarea Touch a "cmTC_50951.dir\\Debug\\cmTC_50951.tlog\\cmTC_50951.lastbuildstate".
+        Compilación del proyecto terminada "D:\\Desktop\\Proyectordq\\isaac\\desktop_app\\build\\windows\\x64\\CMakeFiles\\CMakeScratch\\TryCompile-nuip6c\\cmTC_50951.vcxproj" (destinos predeterminados).
         
         Compilación correcta.
             0 Advertencia(s)
             0 Errores
         
-        Tiempo transcurrido 00:00:00.95
+        Tiempo transcurrido 00:00:02.19
         
       exitCode: 0
 ...
